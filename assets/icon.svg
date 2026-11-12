@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Nokto">
+  <title>Nokto</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0a0f0a"/>
+      <stop offset="1" stop-color="#060806"/>
+    </linearGradient>
+    <linearGradient id="g" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#95BF47"/>
+      <stop offset="1" stop-color="#B8E05A"/>
+    </linearGradient>
+    <mask id="a" maskUnits="userSpaceOnUse">
+      <rect width="512" height="512" fill="#fff"/>
+      <rect x="196" y="144" width="120" height="120" rx="50" fill="#000"/>
+    </mask>
+    <mask id="b" maskUnits="userSpaceOnUse">
+      <rect width="512" height="512" fill="#fff"/>
+      <rect x="196" y="248" width="120" height="120" rx="50" fill="#000"/>
+    </mask>
+  </defs>
+  <!-- Background -->
+  <rect width="512" height="512" rx="114" fill="url(#bg)"/>
+  <!-- Subtle glow -->
+  <ellipse cx="256" cy="256" rx="200" ry="180" fill="#95BF47" fill-opacity=".06"/>
+  <!-- Mark -->
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <g stroke="#000" stroke-opacity=".55" stroke-width="42">
+      <rect x="93" y="173" width="326" height="167" rx="84" transform="rotate(-28 256 256)"/>
+      <rect x="93" y="173" width="326" height="167" rx="84" transform="rotate(28 256 256)"/>
+    </g>
+    <g stroke="url(#g)" stroke-width="32">
+      <rect x="93" y="173" width="326" height="167" rx="84" transform="rotate(-28 256 256)" mask="url(#a)"/>
+      <rect x="93" y="173" width="326" height="167" rx="84" transform="rotate(28 256 256)" mask="url(#b)"/>
+    </g>
+  </g>
+</svg>
