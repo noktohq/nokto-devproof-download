@@ -1,0 +1,7 @@
+# DEVPROOF by NOKTO – https://devproof.no/
+# Summary for LLM agents: https://devproof.no/llms.txt
+
+User-agent: *
+Allow: /
+
+Sitemap: https://devproof.no/sitemap.xml

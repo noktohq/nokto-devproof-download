@@ -1,0 +1,36 @@
+# DEVPROOF
+
+> DEVPROOF is a Windows desktop app by NOKTO that documents developer work from Git, GitHub, VS Code and Claude Code and turns it into a client report with your own logo.
+
+DEVPROOF connects a developer's working day to what was actually delivered (commits, pull requests and releases) and produces a branded client report. It is for developers and agencies.
+
+## Key facts
+
+- Platform: Windows only. Mac and Linux are not supported for now.
+- Language: the app itself is in Norwegian. Client reports can be created in English or Norwegian, as PDF, CSV and JSON.
+- Sources: Git, GitHub, VS Code, Claude Code and Windows activity. GitHub is optional; time from the PC, VS Code and Claude Code is recorded without it.
+- Privacy: data is stored locally on your PC. No screen recording and no keylogging. Code, prompts and passwords are not stored. Nothing is shared with the client until you export the report yourself.
+- Honest numbers: documented time and estimates are shown separately; estimates are always labelled as estimates.
+- Report: your own logo and colour on the cover, deliveries with clickable GitHub references (commit, pull request or release).
+- Pricing (all prices exclude VAT; 25% Norwegian VAT is added):
+  - Black Friday: half price for the first year, NOK 1,250 (NOK 1,562.50 incl. VAT), for the first 20 buyers, until 30 November 2026. The code BLACKFRIDAY50 is applied automatically when buying from the website.
+  - After that: NOK 2,500 per year (NOK 3,125 incl. VAT).
+- Subscription: paid one year in advance and renews automatically. Cancel by emailing edin@nokto.no before the renewal date; you keep access for the period you have paid for. Periods already paid are not refunded.
+- Checkout: secure payment via Stripe. Checkout is in Norwegian.
+- Installer: not code-signed yet, so Windows SmartScreen may show "Windows protected your PC". Choose "More info" and "Run anyway".
+
+## Pages
+
+- [DEVPROOF (Norwegian)](https://devproof.no/): main product page in Norwegian Bokmål
+- [DEVPROOF (English)](https://devproof.no/en/): the same product page in English
+- [Full English page text](https://devproof.no/llms-full.txt): all copy and FAQ answers as plain text
+
+## Resources
+
+- [Sample client report (PDF)](https://devproof.no/assets/eksempel-kunderapport.pdf): 3 pages, fictional client, in Norwegian
+
+## Company
+
+- NOKTO, org. no. 929 345 029 (Norway)
+- Website: https://nokto.no
+- Contact and support: edin@nokto.no

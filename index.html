@@ -6,29 +6,44 @@
 <title>DEVPROOF – dokumentert utviklingsarbeid, klart for kunden</title>
 <meta name="description" content="DEVPROOF dokumenterer utviklingsarbeidet ditt fra Git, GitHub, VS Code og Claude Code, og lager en kunderapport med din egen logo. Alt lagres lokalt på din PC.">
 <meta name="theme-color" content="#060806">
+<meta name="color-scheme" content="dark">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta property="og:title" content="DEVPROOF – slutt å forklare. Begynn å bevise.">
 <meta property="og:description" content="Arbeidsdagen fra Git, GitHub, VS Code og Claude Code – som kunderapport med din egen logo. Black Friday: første år 1 250 kr eks. mva.">
 <meta property="og:url" content="https://devproof.no/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="DEVPROOF">
 <meta property="og:locale" content="nb_NO">
+<meta property="og:locale:alternate" content="en_US">
 <meta property="og:image" content="https://devproof.no/assets/og-no.jpg?v=2">
 <meta property="og:image:width" content="2400">
 <meta property="og:image:height" content="1260">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:alt" content="DEVPROOF – slutt å forklare, begynn å bevise. Kunderapport med din egen logo.">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="DEVPROOF – slutt å forklare. Begynn å bevise.">
+<meta name="twitter:description" content="Arbeidsdagen fra Git, GitHub, VS Code og Claude Code – som kunderapport med din egen logo. Black Friday: første år 1 250 kr eks. mva.">
 <meta name="twitter:image" content="https://devproof.no/assets/og-no.jpg?v=2">
 <meta name="twitter:image:alt" content="DEVPROOF – slutt å forklare, begynn å bevise. Kunderapport med din egen logo.">
 <link rel="alternate" hreflang="nb" href="https://devproof.no/">
+<link rel="alternate" hreflang="no" href="https://devproof.no/">
 <link rel="alternate" hreflang="en" href="https://devproof.no/en/">
 <link rel="alternate" hreflang="x-default" href="https://devproof.no/">
 <link rel="canonical" href="https://devproof.no/">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">
+<link rel="preload" href="assets/fonts/inter-latin-var.woff2?v=1" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/instrument-serif-italic-latin.woff2?v=1" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/poster-hype.webp?v=1" as="image" type="image/webp" fetchpriority="high">
+<link rel="dns-prefetch" href="https://buy.stripe.com">
 <style>
+@font-face{font-family:Inter;font-style:normal;font-weight:400 800;font-display:swap;src:url(assets/fonts/inter-latin-var.woff2?v=1) format("woff2")}
+@font-face{font-family:'Instrument Serif';font-style:italic;font-weight:400;font-display:swap;src:url(assets/fonts/instrument-serif-italic-latin.woff2?v=1) format("woff2")}
+@font-face{font-family:"Inter Fallback";src:local("Arial"),local("Helvetica Neue"),local("Helvetica"),local("Liberation Sans");size-adjust:107.5%;ascent-override:90.1%;descent-override:22.4%;line-gap-override:0%}
+@font-face{font-family:"Instrument Serif Fallback";font-style:italic;src:local("Times New Roman Italic"),local("TimesNewRomanPS-ItalicMT"),local("Liberation Serif Italic"),local("Georgia Italic");size-adjust:85%;ascent-override:111.2%;descent-override:34.8%;line-gap-override:0%}
 :root{
   --bg:#060806;--bg-2:#0a0d0a;--surface:#0f140f;--surface-2:#151b15;--panel:#111711;--panel-2:#172017;
   --line:rgba(240,255,244,.08);--line-strong:rgba(240,255,244,.16);
@@ -36,28 +51,35 @@
   --green:#95BF47;--accent:#B8E05A;--accent-ink:#0b1206;
   --r:20px;--r-lg:28px;--shadow:0 24px 64px rgba(0,0,0,.55);
   --glow:0 0 0 1px rgba(184,224,90,.28),0 20px 60px -10px rgba(149,191,71,.35);
-  --tight:-.032em;--serif:'Instrument Serif',Georgia,'Times New Roman',serif;
+  --tight:-.032em;--serif:'Instrument Serif','Instrument Serif Fallback',Georgia,'Times New Roman',serif;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:80px}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,'Segoe UI',sans-serif;font-size:16.5px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.05;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,'Inter Fallback',system-ui,-apple-system,'Segoe UI',sans-serif;font-size:16.5px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.02;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+@media (hover:hover) and (pointer:fine){body:before{opacity:.05;mix-blend-mode:overlay}}
 a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+summary:focus-visible{outline-offset:6px;border-radius:8px}
+.skip{position:absolute;left:12px;top:-60px;z-index:200;background:var(--accent);color:var(--accent-ink);padding:10px 16px;border-radius:999px;font-weight:700;font-size:14px}
+.skip:focus{top:10px}
 img,video{display:block;max-width:100%}
 em.s{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--accent);letter-spacing:-.01em}
 .wrap{max-width:1200px;margin:0 auto;padding:0 24px}
-.micro{font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.micro{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
 
 /* topbar + nav */
 .top{border-bottom:1px solid var(--line);background:var(--bg)}
-.top .wrap{display:flex;justify-content:space-between;align-items:center;height:34px;color:var(--muted);font-size:12.5px}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:34px;padding-top:6px;padding-bottom:6px;line-height:1.35;color:var(--muted);font-size:12.5px}
 .top .live{display:flex;align-items:center;gap:8px;color:var(--text-2)}
 .top .links{display:flex;gap:18px}
 .top .links a:hover{color:var(--text)}
+.top .links a,footer .r a{position:relative}
+.top .links a:after,footer .r a:after,.sub a:after{content:"";position:absolute;left:-4px;right:-4px;top:-12px;bottom:-12px}
 .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px rgba(184,224,90,.18),0 0 12px rgba(184,224,90,.7);flex:none}
 nav{position:sticky;top:0;z-index:50;background:rgba(6,8,6,.78);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid var(--line)}
 nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:20px}
-.brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:.16em;font-size:15px}
+.brand{display:flex;align-items:center;min-height:44px;gap:11px;font-weight:800;letter-spacing:.16em;font-size:15px}
 .brand img{width:28px;height:28px}
 .brand small{font-weight:500;letter-spacing:.02em;color:var(--muted);font-size:12.5px}
 .menu{display:flex;gap:28px;font-size:14.5px;color:var(--text-2);font-weight:500}
@@ -69,7 +91,7 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 .btn-a:hover{background:#c6ea6c;transform:translateY(-1px)}
 .btn-g{border:1px solid var(--line-strong);color:var(--text);background:rgba(240,255,244,.02)}
 .btn-g:hover{border-color:rgba(240,255,244,.32);background:rgba(240,255,244,.05)}
-nav .btn{padding:10px 18px;font-size:14px}
+nav .btn{padding:10px 18px;font-size:14px;min-height:44px;white-space:nowrap}
 .pill{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line-strong);background:rgba(15,20,15,.7);border-radius:999px;padding:7px 14px 7px 12px;color:var(--text-2)}
 
 /* hero */
@@ -83,15 +105,15 @@ h1 em.s{font-size:1.08em;line-height:.9}
 .note{color:var(--muted);font-size:13.5px;margin-top:18px}
 .stage{position:relative}
 .frame{position:relative;border-radius:var(--r-lg);padding:8px;background:linear-gradient(180deg,rgba(240,255,244,.09),rgba(240,255,244,.02));border:1px solid var(--line-strong);box-shadow:var(--shadow),0 0 120px -30px rgba(149,191,71,.45)}
-.frame video,.frame img{width:100%;height:auto;border-radius:21px;background:#000}
-.chip{position:absolute;display:flex;align-items:center;gap:11px;background:rgba(15,20,15,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--line-strong);border-radius:16px;padding:10px 15px 10px 10px;box-shadow:var(--shadow);font-size:14px;font-weight:600;z-index:2;animation:float 6s ease-in-out infinite}
+.frame video,.frame img{width:100%;height:auto;aspect-ratio:16/9;border-radius:21px;background:#000}
+.chip{position:absolute;display:flex;align-items:center;gap:11px;background:rgba(15,20,15,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--line-strong);border-radius:16px;padding:10px 15px 10px 10px;box-shadow:var(--shadow);font-size:14px;font-weight:600;z-index:2;pointer-events:none;animation:float 6s ease-in-out infinite}
 .chip i{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:rgba(184,224,90,.12);border:1px solid rgba(184,224,90,.25);color:var(--accent);font-style:normal}
 .chip i svg{width:17px;height:17px}
-.chip span{display:block;font-size:11.5px;font-weight:500;color:var(--muted);display:flex;align-items:center;gap:6px}
+.chip span{display:block;font-size:12px;font-weight:500;color:var(--muted);display:flex;align-items:center;gap:6px}
 .chip span .dot{width:6px;height:6px;box-shadow:none}
 .c1{left:-34px;top:12%}
-.c2{right:-26px;top:44%;animation-delay:-2s}
-.c3{left:12%;bottom:-24px;animation-delay:-4s}
+.c2{right:-26px;top:18%;animation-delay:-2s}
+.c3{left:12%;bottom:-46px;animation-delay:-4s}
 @keyframes float{50%{transform:translateY(-8px)}}
 
 /* stats */
@@ -112,7 +134,8 @@ h1 em.s{font-size:1.08em;line-height:.9}
 .lang-bryter:hover,.lang-bryter:focus-visible{border-color:rgba(184,224,90,.55);color:var(--text)}
 .lang-flagg{width:20px;height:14px;border-radius:2px;display:block}
 .navr{display:flex;align-items:center;gap:10px}
-@media (max-width:640px){.lang-bryter{width:40px;height:40px;padding:0;justify-content:center;gap:0}.lang-bryter span{display:none}}
+@media (pointer:coarse){.lang-bryter{height:44px}}
+@media (max-width:640px){.lang-bryter{width:44px;height:44px;padding:0;justify-content:center;gap:0}.lang-bryter span{display:none}}
 /* sections */
 section{padding:120px 0;position:relative}
 .head{max-width:760px;margin-bottom:56px}
@@ -140,7 +163,8 @@ h2{font-size:clamp(34px,4.4vw,58px);line-height:1.02;letter-spacing:var(--tight)
 
 /* report showcase */
 .show{position:relative;margin-top:8px}
-.stage3d{display:block;position:relative;aspect-ratio:16/9.4;perspective:2000px;perspective-origin:50% 30%;cursor:pointer;--rx:8deg;--ry:0deg;outline:none}
+.stage3d{display:block;position:relative;aspect-ratio:16/9.4;perspective:2000px;perspective-origin:50% 30%;cursor:pointer;--rx:8deg;--ry:0deg}
+.stage3d:focus-visible{outline:2px solid var(--accent);outline-offset:6px;border-radius:var(--r)}
 .stage3d:before{content:"";position:absolute;left:6%;right:6%;bottom:-2%;height:46%;border-radius:50%;background:radial-gradient(closest-side,rgba(149,191,71,.30),rgba(149,191,71,.08) 55%,transparent);filter:blur(10px);pointer-events:none}
 .stage3d:after{content:"";position:absolute;inset:auto 0 -4% 0;height:60%;pointer-events:none;
   background:linear-gradient(90deg,rgba(184,224,90,.07) 1px,transparent 1px) 0 0/48px 48px,linear-gradient(0deg,rgba(184,224,90,.07) 1px,transparent 1px) 0 0/48px 48px;
@@ -155,7 +179,7 @@ h2{font-size:clamp(34px,4.4vw,58px);line-height:1.02;letter-spacing:var(--tight)
   background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.55) 45%,rgba(184,224,90,.25) 50%,transparent 62%);
   background-size:260% 100%;background-position:130% 0;mix-blend-mode:soft-light;opacity:0}
 .stage3d.in .pg:before{animation:sheen 1.6s 1s cubic-bezier(.3,.6,.2,1) forwards}
-.stage3d:hover .pg:before{animation:sheen 1.4s cubic-bezier(.3,.6,.2,1)}
+.stage3d:hover .pg:before,.stage3d:focus-visible .pg:before{animation:sheen 1.4s cubic-bezier(.3,.6,.2,1)}
 @keyframes sheen{0%{opacity:1;background-position:130% 0}100%{opacity:1;background-position:-40% 0}}
 .p1{left:6%;transform:translate3d(0,6%,-120px) rotateY(18deg) rotateZ(-3deg)}
 .p2{left:33.5%;transform:translate3d(0,0,40px)}
@@ -173,7 +197,7 @@ h2{font-size:clamp(34px,4.4vw,58px);line-height:1.02;letter-spacing:var(--tight)
 .hs .tag{position:absolute;top:0;display:flex;align-items:center;gap:9px;white-space:nowrap;transform:translateY(-50%);
   background:rgba(10,14,10,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(184,224,90,.35);border-radius:999px;padding:7px 14px 7px 7px;
   font-size:13px;font-weight:600;color:var(--text);box-shadow:0 12px 30px rgba(0,0,0,.6);opacity:0;transition:opacity .6s,transform .6s}
-.hs .tag b{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--accent);color:var(--accent-ink);font-size:11.5px;font-weight:800}
+.hs .tag b{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--accent);color:var(--accent-ink);font-size:12px;font-weight:800}
 .hs .tag:before{content:"";position:absolute;top:50%;width:var(--lead,46px);height:1px}
 .hs.l .tag{right:calc(var(--lead,46px) + 8px)}
 .hs.l .tag:before{left:100%;background:linear-gradient(90deg,rgba(184,224,90,.6),rgba(184,224,90,.0));margin-left:0}
@@ -204,8 +228,8 @@ h2{font-size:clamp(34px,4.4vw,58px);line-height:1.02;letter-spacing:var(--tight)
 .tier .badge{position:absolute;top:-13px;left:34px;background:var(--accent);color:var(--accent-ink);border-radius:999px;padding:5px 13px}
 .tier h3{margin:0 0 4px;font-size:18px;font-weight:700}
 .tier .for{color:var(--muted);font-size:14.5px;margin:0}
-.amt{display:flex;align-items:baseline;gap:10px;margin:26px 0 4px}
-.amt b{font-size:clamp(52px,6vw,72px);font-weight:800;letter-spacing:-.045em;line-height:1}
+.amt{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;margin:26px 0 4px}
+.amt b{white-space:nowrap;font-size:clamp(52px,6vw,72px);font-weight:800;letter-spacing:-.045em;line-height:1}
 .amt span{color:var(--muted);font-size:15px;font-weight:500}
 .vat{color:var(--muted);font-size:13.5px;margin:0 0 6px}
 .tier .list{margin-top:22px}
@@ -213,18 +237,19 @@ h2{font-size:clamp(34px,4.4vw,58px);line-height:1.02;letter-spacing:var(--tight)
 .count{display:flex;gap:8px;margin-top:22px}
 .count div{flex:1;background:rgba(6,8,6,.6);border:1px solid var(--line);border-radius:14px;padding:12px 0;text-align:center}
 .count b{display:block;font-size:24px;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
-.count span{font-size:11px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;font-weight:600}
+.count span{font-size:12px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;font-weight:600}
 .fine{color:var(--muted);font-size:13px;margin-top:22px}
 
 /* faq */
 .faqw{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px}
-details{border-top:1px solid var(--line);padding:22px 0}
+details{border-top:1px solid var(--line);padding:16px 0}
 details:last-child{border-bottom:1px solid var(--line)}
-summary{cursor:pointer;font-weight:600;font-size:17.5px;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;letter-spacing:-.01em}
+summary{min-height:44px;padding:6px 0;cursor:pointer;font-weight:600;font-size:17.5px;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;letter-spacing:-.01em}
 summary::-webkit-details-marker{display:none}
 summary:after{content:"";flex:none;width:30px;height:30px;border-radius:50%;border:1px solid var(--line-strong);background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 3.5v9M3.5 8h9' stroke='%23B8E05A' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E") center/14px no-repeat;transition:transform .2s}
 details[open] summary:after{transform:rotate(45deg)}
-details p{color:var(--muted);margin:12px 0 0;max-width:620px}
+details p{color:var(--muted);margin:6px 0 0;max-width:620px}
+.sub a{position:relative;color:var(--accent);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
 
 /* final */
 .final{text-align:center;padding:140px 0;overflow:hidden}
@@ -241,18 +266,19 @@ footer a:hover{color:var(--text)}
 
 @media (max-width:1000px){
   .menu{display:none}
-  .hero .grid,.split,.price,.faqw{grid-template-columns:1fr}
-  .facts{grid-template-columns:1fr}
+  .hero .grid,.split,.price,.faqw{grid-template-columns:minmax(0,1fr)}
+  .facts{grid-template-columns:minmax(0,1fr)}
   .hs .tag{font-size:12px}
   .hero .grid{gap:52px}
-  .c1{left:-8px}.c2{right:-8px}
+  .c1{left:-8px}.c2{right:0}
   .stats .wrap{grid-template-columns:1fr 1fr}
   .stat:nth-child(3){border-left:0;padding-left:0}
   .stat:nth-child(n+3){border-top:1px solid var(--line)}
-  .cards{grid-template-columns:1fr}
+  .cards{grid-template-columns:minmax(0,1fr)}
   section{padding:88px 0}
   .faqw{gap:20px}
 }
+@media (min-width:641px) and (max-width:1360px){.hs.h1 .tag{left:-15px;right:auto;padding:5px}.hs.h1 .tag span,.hs.h1 .tag:before,.hs.h1 .ring{display:none}}
 @media (max-width:640px){
   .wrap{padding:0 16px}
   .top .links a:not(:last-child){display:none}
@@ -261,37 +287,290 @@ footer a:hover{color:var(--text)}
   .hero{padding-top:52px}
   .chip{font-size:12.5px;padding:7px 11px 7px 7px}
   .chip i{width:28px;height:28px}
-  .c1{top:-20px;left:4px}.c2{top:auto;bottom:-20px;right:4px}.c3{display:none}
+  .stage{display:flex;flex-wrap:wrap;gap:8px}.stage .frame{order:-1;width:100%}
+  .chip{position:static;animation:none}.c3{display:none}
   .stats{margin-top:64px}
   .stat{padding:20px 14px}
   .stat b{font-size:24px}
   .tier{padding:30px 22px}
-  .btn{padding:15px 22px}
+  .btn{padding:15px 22px;white-space:normal;text-align:center}
+  .amt b{font-size:clamp(36px,13.4vw,52px)}
   .cta .btn{width:100%}
-  .stage3d{aspect-ratio:4/4.1;--rx:4deg}
-  .pg{width:52%}.p2{left:24%}.p1{left:-2%}.p3{left:50%}
+  .stage3d{aspect-ratio:1/.86;--rx:4deg}
+  .pg{width:52%}.p2{left:24%}.p1{left:1%}.p3{left:47%}
   .stage3d:not(.in) .p1,.stage3d:not(.in) .p3{left:24%}
   .hs .tag span{display:none}.hs .tag{padding:5px}
   .hs.l .tag,.hs.r .tag{left:-15px;right:auto}.hs .tag:before,.hs .ring{display:none}
   .hint{display:none}
   .showcta{padding:18px}.showcta .btn{width:100%}
 }
-@media (prefers-reduced-motion:reduce){.chip{animation:none}html{scroll-behavior:auto}}
+@media (max-width:420px){.top .links{display:none}}
+@media (max-width:360px){nav .wrap{gap:10px}.navr{gap:6px}.brand{gap:8px;letter-spacing:.1em;font-size:13.5px;min-width:0}.brand img{width:24px;height:24px}nav .btn{padding:10px 14px}}
+@media (prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0s!important}.chip{animation:none}html{scroll-behavior:auto}.hs .ring:after{display:none}}
 </style>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Organization",
+   "@id": "https://nokto.no/#organization",
+   "name": "NOKTO",
+   "url": "https://nokto.no",
+   "email": "edin@nokto.no",
+   "taxID": "929345029",
+   "identifier": {
+    "@type": "PropertyValue",
+    "propertyID": "Organisasjonsnummer (Brønnøysundregistrene)",
+    "value": "929345029"
+   },
+   "logo": {
+    "@type": "ImageObject",
+    "url": "https://devproof.no/assets/icon-512.png",
+    "width": 512,
+    "height": 512
+   },
+   "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer support",
+    "email": "edin@nokto.no",
+    "availableLanguage": [
+     "nb",
+     "en"
+    ]
+   }
+  },
+  {
+   "@type": "WebSite",
+   "@id": "https://devproof.no/#website",
+   "url": "https://devproof.no/",
+   "name": "DEVPROOF",
+   "inLanguage": [
+    "nb",
+    "en"
+   ],
+   "publisher": {
+    "@id": "https://nokto.no/#organization"
+   }
+  },
+  {
+   "@type": "WebPage",
+   "@id": "https://devproof.no/#webpage",
+   "url": "https://devproof.no/",
+   "name": "DEVPROOF – dokumentert utviklingsarbeid, klart for kunden",
+   "description": "DEVPROOF dokumenterer utviklingsarbeidet ditt fra Git, GitHub, VS Code og Claude Code, og lager en kunderapport med din egen logo. Alt lagres lokalt på din PC.",
+   "inLanguage": "nb",
+   "isPartOf": {
+    "@id": "https://devproof.no/#website"
+   },
+   "about": {
+    "@id": "https://devproof.no/#software"
+   },
+   "mainEntity": {
+    "@id": "https://devproof.no/#software"
+   },
+   "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://devproof.no/assets/og-no.jpg?v=2",
+    "width": 2400,
+    "height": 1260
+   },
+   "video": [
+    {
+     "@id": "https://devproof.no/#video-hype"
+    },
+    {
+     "@id": "https://devproof.no/#video-produkt"
+    }
+   ]
+  },
+  {
+   "@type": "SoftwareApplication",
+   "@id": "https://devproof.no/#software",
+   "name": "DEVPROOF",
+   "applicationCategory": "BusinessApplication",
+   "operatingSystem": "Windows",
+   "inLanguage": "nb",
+   "description": "DEVPROOF kobler arbeidsdagen din fra Git, GitHub, VS Code og Claude Code til det du faktisk har levert – og gir kunden en rapport med din egen logo.",
+   "url": "https://devproof.no/",
+   "image": "https://devproof.no/assets/og-no.jpg?v=2",
+   "screenshot": [
+    "https://devproof.no/assets/rapport-s1.webp",
+    "https://devproof.no/assets/rapport-s2.webp",
+    "https://devproof.no/assets/rapport-s3.webp"
+   ],
+   "featureList": [
+    "Prosjekter gjenkjennes automatisk fra Git, VS Code og GitHub",
+    "Tidslinjen viser hele dagen – klikk et tidsrom og se hva som dokumenterer det",
+    "Kunde, timepris og leveranser samlet per prosjekt",
+    "Rapport som PDF, CSV og JSON, på norsk eller engelsk",
+    "Beregninger merkes alltid som beregning, aldri som fakta"
+   ],
+   "publisher": {
+    "@id": "https://nokto.no/#organization"
+   },
+   "author": {
+    "@id": "https://nokto.no/#organization"
+   },
+   "offers": [
+    {
+     "@type": "Offer",
+     "name": "Black Friday – første år",
+     "description": "Halv pris første år. Betaler seg med noen få fakturerte timer. Black Friday gjelder de 20 første kjøperne, til og med 30. november.",
+     "price": "1250",
+     "priceCurrency": "NOK",
+     "priceValidUntil": "2026-11-30",
+     "availability": "https://schema.org/LimitedAvailability",
+     "url": "https://devproof.no/#pris",
+     "seller": {
+      "@id": "https://nokto.no/#organization"
+     },
+     "priceSpecification": {
+      "@type": "UnitPriceSpecification",
+      "price": 1250,
+      "priceCurrency": "NOK",
+      "valueAddedTaxIncluded": false,
+      "billingDuration": "P1Y",
+      "referenceQuantity": {
+       "@type": "QuantitativeValue",
+       "value": 1,
+       "unitCode": "ANN"
+      }
+     }
+    },
+    {
+     "@type": "Offer",
+     "name": "Årlig abonnement",
+     "description": "Fornyes automatisk hvert år. Si opp før fornyelsesdatoen, så stopper den.",
+     "price": "2500",
+     "priceCurrency": "NOK",
+     "availability": "https://schema.org/InStock",
+     "url": "https://devproof.no/#pris",
+     "seller": {
+      "@id": "https://nokto.no/#organization"
+     },
+     "priceSpecification": {
+      "@type": "UnitPriceSpecification",
+      "price": 2500,
+      "priceCurrency": "NOK",
+      "valueAddedTaxIncluded": false,
+      "billingDuration": "P1Y",
+      "referenceQuantity": {
+       "@type": "QuantitativeValue",
+       "value": 1,
+       "unitCode": "ANN"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "@type": "VideoObject",
+   "@id": "https://devproof.no/#video-hype",
+   "name": "DEVPROOF – introduksjonsvideo",
+   "description": "DEVPROOF kobler arbeidsdagen din fra Git, GitHub, VS Code og Claude Code til det du faktisk har levert – og gir kunden en rapport med din egen logo.",
+   "thumbnailUrl": "https://devproof.no/assets/poster-hype.jpg",
+   "contentUrl": "https://devproof.no/assets/devproof-hype.mp4",
+   "uploadDate": "2026-11-12T00:00:00+01:00",
+   "duration": "PT49S",
+   "width": 1280,
+   "height": 720,
+   "publisher": {
+    "@id": "https://nokto.no/#organization"
+   }
+  },
+  {
+   "@type": "VideoObject",
+   "@id": "https://devproof.no/#video-produkt",
+   "name": "DEVPROOF – produktvideo: slik virker det",
+   "description": "Fra arbeidsdag til kunderapport. Uten å føre timer for hånd. Uten å gjette hva du gjorde på tirsdag.",
+   "thumbnailUrl": "https://devproof.no/assets/poster-produkt.jpg",
+   "contentUrl": "https://devproof.no/assets/devproof-produktvideo.mp4",
+   "uploadDate": "2026-11-12T00:00:00+01:00",
+   "duration": "PT1M9S",
+   "width": 1280,
+   "height": 720,
+   "publisher": {
+    "@id": "https://nokto.no/#organization"
+   }
+  },
+  {
+   "@type": "FAQPage",
+   "@id": "https://devproof.no/#faq",
+   "inLanguage": "nb",
+   "isPartOf": {
+    "@id": "https://devproof.no/#webpage"
+   },
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Hva skjer etter at jeg har betalt?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Du kommer rett til en side med lisensnøkkelen og nedlastingen. Ta vare på nøkkelen, for eksempel i passordbehandleren din."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Fungerer det på Mac eller Linux?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Foreløpig bare Windows."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Ser kunden dataene mine?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Nei. Alt lagres lokalt på din PC. Kunden ser bare rapporten du selv velger å eksportere og sende."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Trenger jeg GitHub?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "GitHub gir leveranser og prosjekter automatisk. Tid fra PC, VS Code og Claude Code registreres også uten."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Windows sier «Windows beskyttet PC-en». Er det farlig?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Nei. Installasjonsfilen er ennå ikke kodesignert, så Windows kjenner den ikke igjen. Velg «Mer info» og «Kjør likevel»."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Kan jeg si opp?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Ja. Abonnementet betales forskuddsvis for ett år og fornyes automatisk. Send en e-post til edin@nokto.no før fornyelsesdatoen, så stopper vi fornyelsen. Du beholder tilgangen ut perioden du har betalt for. Allerede betalte perioder refunderes ikke."
+     }
+    }
+   ]
+  }
+ ]
+}
+</script>
 </head>
 <body>
+<a class="skip" href="#innhold">Hopp til innhold</a>
 
-<div class="top"><div class="wrap">
-  <span class="live"><span class="dot"></span>Black Friday · første år 1 250 kr eks. mva</span>
+<aside class="top" aria-label="Tilbud"><div class="wrap">
+  <span class="live"><span class="dot"></span>Black Friday · første år 1&nbsp;250&nbsp;kr eks. mva</span>
   <span class="links"><a href="https://nokto.no">nokto.no</a><a href="mailto:edin@nokto.no">edin@nokto.no</a></span>
-</div></div>
+</div></aside>
 
-<nav><div class="wrap">
-  <a class="brand" href="#"><img src="assets/icon.svg" alt="">DEVPROOF <small>av NOKTO</small></a>
+<nav aria-label="Hovedmeny"><div class="wrap">
+  <a class="brand" href="/"><img src="assets/icon.svg" alt="" width="28" height="28">DEVPROOF <small>av NOKTO</small></a>
   <div class="menu"><a href="#slik">Slik virker det</a><a href="#rapport">Rapporten</a><a href="#personvern">Personvern</a><a href="#pris">Pris</a><a href="#faq">Spørsmål</a></div>
-  <div class="navr"><a class="lang-bryter" href="/en/" hreflang="en" lang="en" aria-label="English version"><svg class="lang-flagg" viewBox="0 0 60 40" aria-hidden="true"><clipPath id="lf-c"><path d="M0 0v40h60V0z"/></clipPath><clipPath id="lf-t"><path d="M30 20h30v20zv20H0zH0V0zV0h30z"/></clipPath><g clip-path="url(#lf-c)"><path d="M0 0v40h60V0z" fill="#012169"/><path d="M0 0l60 40m0-40L0 40" stroke="#fff" stroke-width="8"/><path d="M0 0l60 40m0-40L0 40" clip-path="url(#lf-t)" stroke="#C8102E" stroke-width="5"/><path d="M30 0v40M0 20h60" stroke="#fff" stroke-width="12"/><path d="M30 0v40M0 20h60" stroke="#C8102E" stroke-width="7"/></g></svg><span>EN</span></a>  <a class="btn btn-a" href="https://buy.stripe.com/14AeVdgCGe7r0RjgMHdfG0u?prefilled_promo_code=BLACKFRIDAY50"><span>Kjøp<span class="xs">&nbsp;for 1 250 kr</span></span><svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+  <div class="navr"><a class="lang-bryter" href="/en/" hreflang="en" lang="en" aria-label="EN – English version"><svg class="lang-flagg" viewBox="0 0 60 40" aria-hidden="true"><clipPath id="lf-c"><path d="M0 0v40h60V0z"/></clipPath><clipPath id="lf-t"><path d="M30 20h30v20zv20H0zH0V0zV0h30z"/></clipPath><g clip-path="url(#lf-c)"><path d="M0 0v40h60V0z" fill="#012169"/><path d="M0 0l60 40m0-40L0 40" stroke="#fff" stroke-width="8"/><path d="M0 0l60 40m0-40L0 40" clip-path="url(#lf-t)" stroke="#C8102E" stroke-width="5"/><path d="M30 0v40M0 20h60" stroke="#fff" stroke-width="12"/><path d="M30 0v40M0 20h60" stroke="#C8102E" stroke-width="7"/></g></svg><span>EN</span></a>  <a class="btn btn-a" href="https://buy.stripe.com/14AeVdgCGe7r0RjgMHdfG0u?prefilled_promo_code=BLACKFRIDAY50"><span>Kjøp<span class="xs">&nbsp;for 1&nbsp;250&nbsp;kr</span></span><svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
 </div></nav>
 
+<main id="innhold">
 <header class="hero"><div class="wrap grid">
   <div>
     <span class="pill micro"><span class="dot"></span>For utviklere og byråer · Windows</span>
@@ -307,12 +586,12 @@ footer a:hover{color:var(--text)}
     <div class="chip c1"><i><svg viewBox="0 0 20 20" fill="none"><circle cx="6" cy="5" r="2" stroke="currentColor" stroke-width="1.6"/><circle cx="6" cy="15" r="2" stroke="currentColor" stroke-width="1.6"/><circle cx="14" cy="8" r="2" stroke="currentColor" stroke-width="1.6"/><path d="M6 7v6M14 10c0 3-8 1-8 3" stroke="currentColor" stroke-width="1.6"/></svg></i><div>GitHub<span><span class="dot"></span>Synkronisert</span></div></div>
     <div class="chip c2"><i><svg viewBox="0 0 20 20" fill="none"><path d="M5 2.5h7l3.5 3.5v11.5H5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8 10h5M8 13h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></i><div>Kunderapport<span><span class="dot"></span>Klar som PDF</span></div></div>
     <div class="chip c3"><i><svg viewBox="0 0 20 20" fill="none"><rect x="3" y="4" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M7 17h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></i><div>Lagret lokalt<span><span class="dot"></span>På din PC</span></div></div>
-    <div class="frame"><video src="assets/devproof-hype.mp4" poster="assets/poster-hype.jpg" controls playsinline preload="metadata"></video></div>
+    <div class="frame"><video src="assets/devproof-hype.mp4?v=2" poster="assets/poster-hype.webp?v=1" width="1280" height="720" controls playsinline preload="metadata" aria-label="DEVPROOF – introduksjonsvideo"></video></div>
   </div>
 </div>
 
 <div class="stats"><div class="wrap">
-  <div class="stat"><b><small>fra </small>1 250 kr</b><span>første år, eks. mva</span></div>
+  <div class="stat"><b><small>fra </small>1&nbsp;250&nbsp;kr</b><span>første år, eks. mva</span></div>
   <div class="stat"><b>1 klikk</b><span>fra arbeidsdag til kunderapport</span></div>
   <div class="stat"><b>0 timer</b><span>ført for hånd</span></div>
   <div class="stat"><b>100 %</b><span>lokalt på din PC</span></div>
@@ -323,10 +602,10 @@ footer a:hover{color:var(--text)}
 </div></div>
 </header>
 
-<section><div class="wrap">
+<section aria-labelledby="problem-tittel"><div class="wrap">
   <span class="eyebrow micro">Problemet</span>
-  <p class="quote" style="margin-top:18px">«Hva har du <em class="s">egentlig</em> gjort?»</p>
-  <p class="sub" style="margin-bottom:56px">Du har levert commits, pull requests og utgivelser. Timelisten sier «utvikling 7,5 t». DEVPROOF kobler tiden til leveransene, så kunden ser arbeidet – og du slipper å forsvare fakturaen.</p>
+  <h2 class="quote" id="problem-tittel" style="margin-top:18px">«Hva har du <em class="s">egentlig</em> gjort?»</h2>
+  <p class="sub" style="margin-bottom:56px">Du har levert commits, pull requests og utgivelser. Timelisten sier «utvikling 7,5&nbsp;t». DEVPROOF kobler tiden til leveransene, så kunden ser arbeidet – og du slipper å forsvare fakturaen.</p>
   <div class="cards">
     <div class="card"><span class="ic"><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.6"/><path d="M10 6v4l2.5 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span><span class="n">01</span><h3>Tid med kilde</h3><p>Arbeidsdagen registreres fra PC, VS Code, Claude Code og Git. Hver time peker på noe du kan vise til.</p></div>
     <div class="card"><span class="ic"><svg viewBox="0 0 20 20" fill="none"><circle cx="6" cy="5" r="2" stroke="currentColor" stroke-width="1.6"/><circle cx="6" cy="15" r="2" stroke="currentColor" stroke-width="1.6"/><circle cx="14" cy="8" r="2" stroke="currentColor" stroke-width="1.6"/><path d="M6 7v6M14 10c0 3-8 1-8 3" stroke="currentColor" stroke-width="1.6"/></svg></span><span class="n">02</span><h3>Leveranser fra GitHub</h3><p>Commits, pull requests og utgivelser hentes automatisk og kobles til riktig prosjekt og kunde.</p></div>
@@ -334,10 +613,10 @@ footer a:hover{color:var(--text)}
   </div>
 </div></section>
 
-<section id="slik" class="alt"><div class="wrap split">
+<section id="slik" aria-labelledby="slik-tittel" class="alt"><div class="wrap split">
   <div>
     <span class="eyebrow micro">Slik virker det</span>
-    <h2>Fra arbeidsdag til <em class="s">kunderapport</em>.</h2>
+    <h2 id="slik-tittel">Fra arbeidsdag til <em class="s">kunderapport</em>.</h2>
     <p class="sub">Uten å føre timer for hånd. Uten å gjette hva du gjorde på tirsdag.</p>
     <ul class="list">
       <li>Prosjekter gjenkjennes automatisk fra Git, VS Code og GitHub</li>
@@ -347,28 +626,28 @@ footer a:hover{color:var(--text)}
       <li>Beregninger merkes alltid som beregning, aldri som fakta</li>
     </ul>
   </div>
-  <div class="frame"><video src="assets/devproof-produktvideo.mp4" poster="assets/poster-produkt.jpg" controls playsinline preload="metadata"></video></div>
+  <div class="frame"><video src="assets/devproof-produktvideo.mp4?v=2" poster="assets/poster-produkt.webp?v=1" width="1280" height="720" controls playsinline preload="none" aria-label="DEVPROOF – produktvideo: slik virker det"></video></div>
 </div></section>
 
-<section id="rapport"><div class="wrap">
+<section id="rapport" aria-labelledby="rapport-tittel"><div class="wrap">
   <div class="head">
     <span class="eyebrow micro">Kunderapporten</span>
-    <h2>Dette er det <em class="s">kunden</em> får.</h2>
+    <h2 id="rapport-tittel">Dette er det <em class="s">kunden</em> får.</h2>
     <p class="sub">Din logo på forsiden, leveransene med klikkbare GitHub-referanser og tall der dokumentert og estimert alltid holdes adskilt.</p>
   </div>
   <div class="show">
-    <a class="stage3d" id="stage" href="assets/eksempel-kunderapport.pdf" target="_blank" rel="noopener" aria-label="Åpne eksempelrapport (PDF)">
-      <div class="deck" id="deck">
-        <div class="pg p1"><img src="assets/rapport-s1.webp" alt="Forside med kundens logo" loading="lazy">
+    <a class="stage3d" id="stage" href="assets/eksempel-kunderapport.pdf" target="_blank" rel="noopener" aria-label="Klikk for å åpne hele rapporten (PDF)">
+      <div class="deck" id="deck" aria-hidden="true">
+        <div class="pg p1"><img src="assets/rapport-s1.webp" srcset="assets/rapport-s1-480.webp 480w, assets/rapport-s1-640.webp 640w, assets/rapport-s1.webp 900w" sizes="(max-width:640px) 52vw, 380px" width="900" height="1272" decoding="async" alt="Forside med kundens logo" loading="lazy">
           <div class="hs l h1" style="left:16%;top:9.5%;--lead:56px"><span class="ring"></span><span class="tag"><b>1</b><span>Din logo og farge</span></span></div>
         </div>
-        <div class="pg p3"><img src="assets/rapport-s3.webp" alt="Totaler og verifisering" loading="lazy"></div>
-        <div class="pg p2"><img src="assets/rapport-s2.webp" alt="Leveranser med GitHub-referanser og nøkkeltall" loading="lazy">
+        <div class="pg p3"><img src="assets/rapport-s3.webp" srcset="assets/rapport-s3-480.webp 480w, assets/rapport-s3-640.webp 640w, assets/rapport-s3.webp 900w" sizes="(max-width:640px) 52vw, 380px" width="900" height="1272" decoding="async" alt="Totaler og verifisering" loading="lazy"></div>
+        <div class="pg p2"><img src="assets/rapport-s2.webp" srcset="assets/rapport-s2-480.webp 480w, assets/rapport-s2-640.webp 640w, assets/rapport-s2.webp 900w" sizes="(max-width:640px) 52vw, 380px" width="900" height="1272" decoding="async" alt="Leveranser med GitHub-referanser og nøkkeltall" loading="lazy">
           <div class="hs l h2" style="left:58%;top:44.6%;--lead:120px"><span class="ring"></span><span class="tag"><b>2</b><span>Klikkbar GitHub-referanse</span></span></div>
           <div class="hs r h3" style="left:88%;top:13%;--lead:70px"><span class="ring"></span><span class="tag"><b>3</b><span>Merket som beregning</span></span></div>
         </div>
       </div>
-      <span class="hint"><span class="dot"></span>Klikk for å åpne hele rapporten</span>
+      <span class="hint" aria-hidden="true"><span class="dot"></span>Klikk for å åpne hele rapporten</span>
     </a>
     <div class="facts">
       <div class="fact"><span class="k">1</span><b>Din merkevare</b><p>Egen logo og farge på forsiden. Kunden ser deg – ikke verktøyet.</p></div>
@@ -379,10 +658,10 @@ footer a:hover{color:var(--text)}
   </div>
 </div></section>
 
-<section id="personvern" class="alt"><div class="wrap">
+<section id="personvern" aria-labelledby="personvern-tittel" class="alt"><div class="wrap">
   <div class="head">
     <span class="eyebrow micro">Personvern først</span>
-    <h2>Ditt arbeid. Din <em class="s">maskin</em>.</h2>
+    <h2 id="personvern-tittel">Ditt arbeid. Din <em class="s">maskin</em>.</h2>
     <p class="sub">Laget for utviklere som ikke vil bli overvåket.</p>
   </div>
   <div class="cards">
@@ -392,52 +671,52 @@ footer a:hover{color:var(--text)}
   </div>
 </div></section>
 
-<section id="pris"><div class="wrap">
+<section id="pris" aria-labelledby="pris-tittel"><div class="wrap">
   <div class="head">
     <span class="eyebrow micro">Pris</span>
-    <h2>Fast pris. <em class="s">Eks. mva.</em></h2>
-    <p class="sub">Halv pris første år. Betaler seg med noen få fakturerte timer. Black Friday gjelder de 20 første kjøperne, til og med 30. november.</p>
+    <h2 id="pris-tittel">Fast pris. <em class="s">Eks. mva.</em></h2>
+    <p class="sub">Halv pris første år. Betaler seg med noen få fakturerte timer. Black Friday gjelder de 20 første kjøperne, til og med 30.&nbsp;november.</p>
   </div>
   <div class="price">
     <div class="tier hot">
       <span class="badge micro">Black Friday · −50 %</span>
       <h3>Første år</h3>
       <p class="for">Full versjon. Samme produkt, lavere startpris.</p>
-      <div class="amt"><b>1 250 kr</b><span><s>2 500 kr</s> første år</span></div>
-      <p class="vat">eks. mva · 1 562,50 kr inkl. 25 % mva</p>
-      <div class="count" id="count" aria-label="Tid igjen av tilbudet"><div><b id="d">–</b><span>dager</span></div><div><b id="h">–</b><span>timer</span></div><div><b id="m">–</b><span>min</span></div></div>
+      <div class="amt"><b>1&nbsp;250&nbsp;kr</b><span><s>2&nbsp;500&nbsp;kr</s> første år</span></div>
+      <p class="vat">eks. mva · 1&nbsp;562,50&nbsp;kr inkl. 25&nbsp;% mva</p>
+      <div class="count" id="count" role="timer" aria-live="off" aria-label="Tid igjen av tilbudet"><div><b id="d">–</b><span>dager</span></div><div><b id="h">–</b><span>timer</span></div><div><b id="m">–</b><span>min</span></div></div>
       <ul class="list">
         <li>Full versjon for Windows</li>
         <li>Kunderapporter med egen logo og farge</li>
         <li>Ubegrenset antall prosjekter</li>
         <li>Automatiske oppdateringer</li>
       </ul>
-      <a class="btn btn-a" href="https://buy.stripe.com/14AeVdgCGe7r0RjgMHdfG0u?prefilled_promo_code=BLACKFRIDAY50">Kjøp DEVPROOF for 1 250 kr<svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a class="btn btn-a" href="https://buy.stripe.com/14AeVdgCGe7r0RjgMHdfG0u?prefilled_promo_code=BLACKFRIDAY50">Kjøp DEVPROOF for 1&nbsp;250&nbsp;kr<svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
     <div class="tier">
       <h3>Deretter</h3>
       <p class="for">Fornyes automatisk hvert år. Si opp før fornyelsesdatoen, så stopper den.</p>
-      <div class="amt"><b>2 500 kr</b><span>per år</span></div>
-      <p class="vat">eks. mva · 3 125 kr inkl. 25 % mva</p>
+      <div class="amt"><b>2&nbsp;500&nbsp;kr</b><span>per år</span></div>
+      <p class="vat">eks. mva · 3&nbsp;125&nbsp;kr inkl. 25&nbsp;% mva</p>
       <ul class="list">
         <li>Alt i full versjon</li>
         <li>Nye funksjoner etter hvert som de kommer</li>
         <li>Support på e-post fra NOKTO</li>
         <li>Ingen binding utover året du har betalt for</li>
       </ul>
-      <p class="fine">Alle priser er eks. mva; 25 % mva kommer i tillegg. Sikker betaling via Stripe. Koden BLACKFRIDAY50 legges inn automatisk når du kjøper fra denne siden.</p>
+      <p class="fine">Alle priser er eks. mva; 25&nbsp;% mva kommer i tillegg. Sikker betaling via Stripe. Koden BLACKFRIDAY50 legges inn automatisk når du kjøper fra denne siden.</p>
     </div>
   </div>
 </div></section>
 
-<section id="faq" class="alt"><div class="wrap faqw">
+<section id="faq" aria-labelledby="faq-tittel" class="alt"><div class="wrap faqw">
   <div>
     <span class="eyebrow micro">Spørsmål</span>
-    <h2>Ofte <em class="s">spurt</em>.</h2>
+    <h2 id="faq-tittel">Ofte <em class="s">spurt</em>.</h2>
     <p class="sub">Finner du ikke svaret? Skriv til <a href="mailto:edin@nokto.no" style="color:var(--accent)">edin@nokto.no</a>.</p>
   </div>
   <div>
-    <details><summary>Hva skjer etter at jeg har betalt?</summary><p>Du kommer rett til nedlastingen, og du får en e-post fra oss innen én arbeidsdag.</p></details>
+    <details><summary>Hva skjer etter at jeg har betalt?</summary><p>Du kommer rett til en side med lisensnøkkelen og nedlastingen. Ta vare på nøkkelen, for eksempel i passordbehandleren din.</p></details>
     <details><summary>Fungerer det på Mac eller Linux?</summary><p>Foreløpig bare Windows.</p></details>
     <details><summary>Ser kunden dataene mine?</summary><p>Nei. Alt lagres lokalt på din PC. Kunden ser bare rapporten du selv velger å eksportere og sende.</p></details>
     <details><summary>Trenger jeg GitHub?</summary><p>GitHub gir leveranser og prosjekter automatisk. Tid fra PC, VS Code og Claude Code registreres også uten.</p></details>
@@ -446,15 +725,16 @@ footer a:hover{color:var(--text)}
   </div>
 </div></section>
 
-<section class="final"><div class="wrap">
-  <span class="pill micro"><span class="dot"></span>Black Friday til og med 30. november · 20 plasser</span>
-  <h2>Slutt å forklare.<br>Begynn å <em class="s">bevise</em>.</h2>
-  <div class="cta"><a class="btn btn-a" href="https://buy.stripe.com/14AeVdgCGe7r0RjgMHdfG0u?prefilled_promo_code=BLACKFRIDAY50">Kjøp DEVPROOF for 1 250 kr første år<svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+<section class="final" aria-labelledby="final-tittel"><div class="wrap">
+  <span class="pill micro"><span class="dot"></span>Black Friday til og med 30.&nbsp;november · 20 plasser</span>
+  <h2 id="final-tittel">Slutt å forklare.<br>Begynn å <em class="s">bevise</em>.</h2>
+  <div class="cta"><a class="btn btn-a" href="https://buy.stripe.com/14AeVdgCGe7r0RjgMHdfG0u?prefilled_promo_code=BLACKFRIDAY50">Kjøp DEVPROOF for 1&nbsp;250&nbsp;kr første år<svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
   <p class="note">Priser eks. mva</p>
 </div></section>
+</main>
 
 <footer><div class="wrap">
-  <div class="l"><img src="assets/icon.svg" alt=""><span>DEVPROOF er laget av NOKTO · Org.nr. 929 345 029</span></div>
+  <div class="l"><img src="assets/icon.svg" alt="" width="24" height="24"><span>DEVPROOF er laget av NOKTO · Org.nr.&nbsp;929&nbsp;345&nbsp;029</span></div>
   <div class="r"><a href="mailto:edin@nokto.no">edin@nokto.no</a><a href="https://nokto.no">nokto.no</a></div>
 </div></footer>
 

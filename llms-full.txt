@@ -1,0 +1,128 @@
+# DEVPROOF – full page text (English)
+
+> Plain-text copy of https://devproof.no/en/ for LLM agents. Norwegian page: https://devproof.no/. Summary: https://devproof.no/llms.txt
+
+## Stop explaining. Start proving.
+
+For developers and agencies · Windows
+
+DEVPROOF connects your working day in Git, GitHub, VS Code and Claude Code to what you actually delivered – and gives your client a report with your own logo.
+
+Stored locally · No screen recording · No lock-in beyond the paid year
+
+- from NOK 1,250: first year, excl. VAT
+- 1 click: from working day to client report
+- 0 hours: logged by hand
+- 100%: local on your PC
+
+Pulls from: Git, GitHub, VS Code, Claude Code, Windows activity
+
+## The problem
+
+“What have you actually done?”
+
+You shipped commits, pull requests and releases. The timesheet says “development 7.5 h”. DEVPROOF connects your time to your deliveries, so the client sees the work – and you no longer have to defend the invoice.
+
+- **Time with a source**: Your working day is recorded from your PC, VS Code, Claude Code and Git. Every hour points to something you can show.
+- **Deliveries from GitHub**: Commits, pull requests and releases are fetched automatically and linked to the right project and client.
+- **A report with your logo**: One button gives your client a clean PDF with your logo and colour, clickable references and a clear line between documented and estimated.
+
+## How it works
+
+From working day to client report.
+
+No manual timesheets. No guessing what you did on Tuesday.
+
+- Projects are detected automatically from Git, VS Code and GitHub
+- The timeline shows your whole day – click a time span to see what documents it
+- Client, hourly rate and deliveries gathered per project
+- Reports as PDF, CSV and JSON, in English or Norwegian
+- Estimates are always labelled as estimates, never as facts
+
+## The client report
+
+This is what your client gets.
+
+Your logo on the cover, deliveries with clickable GitHub references, and figures where documented and estimated are always kept apart.
+
+- **Your brand**: Your own logo and colour on the cover. The client sees you – not the tool.
+- **Verifiable**: Every delivery links to a commit, pull request or release on GitHub.
+- **Honest numbers**: Documented time and estimates are shown separately. Nothing is dressed up.
+
+Sample report · 3 pages · PDF · fictional client, in Norwegian: https://devproof.no/assets/eksempel-kunderapport.pdf
+
+## Privacy first
+
+Your work. Your machine.
+
+Built for developers who refuse to be monitored.
+
+- **No screen recording**: DEVPROOF never takes screenshots and never reads the content of what you work on.
+- **No keylogging**: Only when you are active, never what you type. Code, prompts and passwords are not stored.
+- **Everything stays local**: Your data lives on your PC. Nothing is shared with the client until you export the report yourself.
+
+## Pricing
+
+Fixed price. Excl. VAT.
+
+Half price for the first year. Pays for itself with a few billable hours. Black Friday applies to the first 20 buyers, until 30 November.
+
+### First year (Black Friday · −50%)
+
+Full version. Same product, lower starting price.
+
+NOK 1,250 (regular NOK 2,500) first year – excl. VAT · NOK 1,562.50 incl. 25% Norwegian VAT
+
+- Full version for Windows
+- Client reports with your own logo and colour
+- Unlimited projects
+- Automatic updates
+
+### After that
+
+Renews automatically every year. Cancel before the renewal date and it stops.
+
+NOK 2,500 per year – excl. VAT · NOK 3,125 incl. 25% Norwegian VAT
+
+- Everything in the full version
+- New features as they ship
+- Email support from NOKTO
+- No commitment beyond the year you paid for
+
+All prices exclude VAT; 25% Norwegian VAT is added. Secure payment via Stripe. The code BLACKFRIDAY50 is applied automatically when you buy from this page. Checkout is in Norwegian.
+
+## FAQ
+
+Can’t find the answer? Write to edin@nokto.no.
+
+### What happens after I pay?
+
+You go straight to the download, and you get an email from us within one working day.
+
+### Does it work on Mac or Linux?
+
+Windows only for now.
+
+### Can my client see my data?
+
+No. Everything is stored locally on your PC. The client only sees the report you choose to export and send.
+
+### Do I need GitHub?
+
+GitHub provides deliveries and projects automatically. Time from your PC, VS Code and Claude Code is recorded without it too.
+
+### Is the app in English?
+
+The app itself is in Norwegian today. Client reports can be created in English or Norwegian.
+
+### Windows says “Windows protected your PC”. Is that dangerous?
+
+No. The installer is not code-signed yet, so Windows does not recognise it. Choose “More info” and “Run anyway”.
+
+### Can I cancel?
+
+Yes. The subscription is paid one year in advance and renews automatically. Email edin@nokto.no before the renewal date and we stop the renewal. You keep access for the period you have paid for. Periods already paid are not refunded.
+
+## Company
+
+DEVPROOF is made by NOKTO · Org. no. 929 345 029. Contact: edin@nokto.no. Website: https://nokto.no
