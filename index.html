@@ -122,13 +122,64 @@ h2{font-size:clamp(34px,4.4vw,58px);line-height:1.02;letter-spacing:var(--tight)
 .list li:last-child{border-bottom:1px solid var(--line)}
 .list li:before{content:"";flex:none;margin-top:5px;width:16px;height:16px;border-radius:50%;background:rgba(184,224,90,.14) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.5 8.3l2.2 2.2 4.8-4.9' fill='none' stroke='%23B8E05A' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat;border:1px solid rgba(184,224,90,.3)}
 
-.report{display:grid;grid-template-columns:1.25fr .75fr;gap:24px;align-items:stretch}
-.report .frame{padding:8px;align-self:center}
-.report .frame img{border-radius:21px}
-.facts{display:grid;gap:16px}
-.fact{background:linear-gradient(180deg,var(--panel-2),var(--panel));border:1px solid var(--line);border-radius:var(--r);padding:24px 24px}
-.fact b{display:block;font-size:17px;margin-bottom:6px;letter-spacing:-.01em}
+/* report showcase */
+.show{position:relative;margin-top:8px}
+.stage3d{display:block;position:relative;aspect-ratio:16/9.4;perspective:2000px;perspective-origin:50% 30%;cursor:pointer;--rx:8deg;--ry:0deg;outline:none}
+.stage3d:before{content:"";position:absolute;left:6%;right:6%;bottom:-2%;height:46%;border-radius:50%;background:radial-gradient(closest-side,rgba(149,191,71,.30),rgba(149,191,71,.08) 55%,transparent);filter:blur(10px);pointer-events:none}
+.stage3d:after{content:"";position:absolute;inset:auto 0 -4% 0;height:60%;pointer-events:none;
+  background:linear-gradient(90deg,rgba(184,224,90,.07) 1px,transparent 1px) 0 0/48px 48px,linear-gradient(0deg,rgba(184,224,90,.07) 1px,transparent 1px) 0 0/48px 48px;
+  transform:perspective(600px) rotateX(62deg);transform-origin:50% 100%;
+  -webkit-mask-image:radial-gradient(ellipse 60% 70% at 50% 100%,#000 20%,transparent 75%);mask-image:radial-gradient(ellipse 60% 70% at 50% 100%,#000 20%,transparent 75%)}
+.deck{position:absolute;inset:0;transform-style:preserve-3d;transform:rotateX(var(--rx)) rotateY(var(--ry));transition:transform .5s cubic-bezier(.2,.7,.2,1);z-index:1}
+.pg{position:absolute;top:4%;width:33%;aspect-ratio:900/1272;border-radius:10px;background:#fff;transform-style:preserve-3d;
+  box-shadow:0 1px 0 rgba(255,255,255,.6) inset,0 40px 80px -20px rgba(0,0,0,.85),0 18px 36px -12px rgba(0,0,0,.7),0 0 0 1px rgba(240,255,244,.12);
+  transition:transform 1.1s cubic-bezier(.16,1,.3,1),opacity .8s ease,box-shadow .3s}
+.pg img{width:100%;height:100%;object-fit:cover;border-radius:10px;display:block}
+.pg:before{content:"";position:absolute;inset:0;border-radius:10px;pointer-events:none;z-index:2;
+  background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.55) 45%,rgba(184,224,90,.25) 50%,transparent 62%);
+  background-size:260% 100%;background-position:130% 0;mix-blend-mode:soft-light;opacity:0}
+.stage3d.in .pg:before{animation:sheen 1.6s 1s cubic-bezier(.3,.6,.2,1) forwards}
+.stage3d:hover .pg:before{animation:sheen 1.4s cubic-bezier(.3,.6,.2,1)}
+@keyframes sheen{0%{opacity:1;background-position:130% 0}100%{opacity:1;background-position:-40% 0}}
+.p1{left:6%;transform:translate3d(0,6%,-120px) rotateY(18deg) rotateZ(-3deg)}
+.p2{left:33.5%;transform:translate3d(0,0,40px)}
+.p3{left:61%;transform:translate3d(0,6%,-120px) rotateY(-18deg) rotateZ(3deg)}
+.stage3d:not(.in) .pg{transform:translate3d(0,14%,-300px) rotateX(20deg);opacity:0}
+.stage3d:not(.in) .p1{left:33.5%}
+.stage3d:not(.in) .p3{left:33.5%}
+.p2{transition-delay:.05s}.p1,.p3{transition-delay:.2s}
+.stage3d:hover .p2{box-shadow:0 1px 0 rgba(255,255,255,.6) inset,0 50px 100px -20px rgba(0,0,0,.9),0 0 0 1px rgba(184,224,90,.5),0 0 80px -10px rgba(149,191,71,.45)}
+/* hotspots */
+.hs{position:absolute;z-index:3;transform:translateZ(60px);pointer-events:none}
+.hs .ring{position:absolute;left:0;top:0;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(184,224,90,.25),0 0 18px rgba(184,224,90,.9)}
+.hs .ring:after{content:"";position:absolute;inset:-4px;border-radius:50%;border:2px solid var(--accent);animation:ping 2.2s cubic-bezier(0,0,.2,1) infinite}
+@keyframes ping{0%{transform:scale(.6);opacity:1}80%,100%{transform:scale(2.6);opacity:0}}
+.hs .tag{position:absolute;top:0;display:flex;align-items:center;gap:9px;white-space:nowrap;transform:translateY(-50%);
+  background:rgba(10,14,10,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(184,224,90,.35);border-radius:999px;padding:7px 14px 7px 7px;
+  font-size:13px;font-weight:600;color:var(--text);box-shadow:0 12px 30px rgba(0,0,0,.6);opacity:0;transition:opacity .6s,transform .6s}
+.hs .tag b{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--accent);color:var(--accent-ink);font-size:11.5px;font-weight:800}
+.hs .tag:before{content:"";position:absolute;top:50%;width:var(--lead,46px);height:1px}
+.hs.l .tag{right:calc(var(--lead,46px) + 8px)}
+.hs.l .tag:before{left:100%;background:linear-gradient(90deg,rgba(184,224,90,.6),rgba(184,224,90,.0));margin-left:0}
+.hs.r .tag{left:calc(var(--lead,46px) + 8px)}
+.hs.r .tag:before{right:100%;background:linear-gradient(270deg,rgba(184,224,90,.6),rgba(184,224,90,0))}
+.hs.l .tag:before{background:linear-gradient(270deg,rgba(184,224,90,.0),rgba(184,224,90,.6))}
+.stage3d.in .hs .tag{opacity:1}
+.stage3d.in .h1 .tag{transition-delay:1.3s}.stage3d.in .h2 .tag{transition-delay:1.5s}.stage3d.in .h3 .tag{transition-delay:1.7s}
+.hs .ring{opacity:0;transition:opacity .4s}
+.stage3d.in .hs .ring{opacity:1;transition-delay:1.1s}
+.hint{position:absolute;left:50%;bottom:1%;transform:translateX(-50%);z-index:2;display:inline-flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);background:rgba(6,8,6,.7);border:1px solid var(--line);border-radius:999px;padding:6px 14px}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
+.fact{position:relative;background:linear-gradient(180deg,var(--panel-2),var(--panel));border:1px solid var(--line);border-radius:var(--r);padding:26px 26px 24px;overflow:hidden;transition:border-color .25s,transform .25s}
+.fact:hover{border-color:rgba(184,224,90,.35);transform:translateY(-2px)}
+.fact:after{content:"";position:absolute;inset:0 0 auto;height:1px;background:linear-gradient(90deg,transparent,rgba(184,224,90,.6),transparent);opacity:0;transition:opacity .25s}
+.fact:hover:after{opacity:1}
+.fact .k{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--accent);color:var(--accent-ink);font-size:12.5px;font-weight:800;margin-bottom:16px;box-shadow:0 0 0 4px rgba(184,224,90,.14)}
+.fact b{display:block;font-size:17.5px;margin-bottom:6px;letter-spacing:-.015em}
 .fact p{margin:0;color:var(--muted);font-size:15px}
+.showcta{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:16px;padding:18px 18px 18px 26px;border:1px solid var(--line);border-radius:var(--r);background:rgba(15,20,15,.5)}
+.showcta span{color:var(--text-2);font-size:15px}
+.showcta span em{font-style:normal;color:var(--muted)}
 
 /* pricing */
 .price{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:stretch}
@@ -174,7 +225,9 @@ footer a:hover{color:var(--text)}
 
 @media (max-width:1000px){
   .menu{display:none}
-  .hero .grid,.split,.report,.price,.faqw{grid-template-columns:1fr}
+  .hero .grid,.split,.price,.faqw{grid-template-columns:1fr}
+  .facts{grid-template-columns:1fr}
+  .hs .tag{font-size:12px}
   .hero .grid{gap:52px}
   .c1{left:-8px}.c2{right:-8px}
   .stats .wrap{grid-template-columns:1fr 1fr}
@@ -199,6 +252,13 @@ footer a:hover{color:var(--text)}
   .tier{padding:30px 22px}
   .btn{padding:15px 22px}
   .cta .btn{width:100%}
+  .stage3d{aspect-ratio:4/4.1;--rx:4deg}
+  .pg{width:52%}.p2{left:24%}.p1{left:-2%}.p3{left:50%}
+  .stage3d:not(.in) .p1,.stage3d:not(.in) .p3{left:24%}
+  .hs .tag span{display:none}.hs .tag{padding:5px}
+  .hs.l .tag,.hs.r .tag{left:-15px;right:auto}.hs .tag:before,.hs .ring{display:none}
+  .hint{display:none}
+  .showcta{padding:18px}.showcta .btn{width:100%}
 }
 @media (prefers-reduced-motion:reduce){.chip{animation:none}html{scroll-behavior:auto}}
 </style>
@@ -225,7 +285,7 @@ footer a:hover{color:var(--text)}
       <a class="btn btn-a" href="https://buy.stripe.com/fZufZhgCG1kF43v1RNdfG0t?prefilled_promo_code=BLACKFRIDAY">Kjøp DEVPROOF<svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       <a class="btn btn-g" href="#slik">Se hvordan det virker</a>
     </div>
-    <p class="note">Alt lagres lokalt · Ingen skjermopptak · Kan sies opp når som helst</p>
+    <p class="note">Alt lagres lokalt · Ingen skjermopptak · Ingen bindingstid utover betalt år</p>
   </div>
   <div class="stage">
     <div class="chip c1"><i><svg viewBox="0 0 20 20" fill="none"><circle cx="6" cy="5" r="2" stroke="currentColor" stroke-width="1.6"/><circle cx="6" cy="15" r="2" stroke="currentColor" stroke-width="1.6"/><circle cx="14" cy="8" r="2" stroke="currentColor" stroke-width="1.6"/><path d="M6 7v6M14 10c0 3-8 1-8 3" stroke="currentColor" stroke-width="1.6"/></svg></i><div>GitHub<span><span class="dot"></span>Synkronisert</span></div></div>
@@ -280,14 +340,26 @@ footer a:hover{color:var(--text)}
     <h2>Dette er det <em class="s">kunden</em> får.</h2>
     <p class="sub">Din logo på forsiden, leveransene med klikkbare GitHub-referanser og tall der dokumentert og estimert alltid holdes adskilt.</p>
   </div>
-  <div class="report">
-    <a class="frame" href="assets/eksempel-kunderapport.pdf" target="_blank" rel="noopener"><img src="assets/rapport.jpg" alt="Eksempel på kunderapport fra DEVPROOF: forside med logo, leveranser og totaler" loading="lazy"></a>
+  <div class="show">
+    <a class="stage3d" id="stage" href="assets/eksempel-kunderapport.pdf" target="_blank" rel="noopener" aria-label="Åpne eksempelrapport (PDF)">
+      <div class="deck" id="deck">
+        <div class="pg p1"><img src="assets/rapport-s1.webp" alt="Forside med kundens logo" loading="lazy">
+          <div class="hs l h1" style="left:16%;top:9.5%;--lead:56px"><span class="ring"></span><span class="tag"><b>1</b><span>Din logo og farge</span></span></div>
+        </div>
+        <div class="pg p3"><img src="assets/rapport-s3.webp" alt="Totaler og verifisering" loading="lazy"></div>
+        <div class="pg p2"><img src="assets/rapport-s2.webp" alt="Leveranser med GitHub-referanser og nøkkeltall" loading="lazy">
+          <div class="hs l h2" style="left:58%;top:44.6%;--lead:120px"><span class="ring"></span><span class="tag"><b>2</b><span>Klikkbar GitHub-referanse</span></span></div>
+          <div class="hs r h3" style="left:88%;top:13%;--lead:70px"><span class="ring"></span><span class="tag"><b>3</b><span>Merket som beregning</span></span></div>
+        </div>
+      </div>
+      <span class="hint"><span class="dot"></span>Klikk for å åpne hele rapporten</span>
+    </a>
     <div class="facts">
-      <div class="fact"><b>Din merkevare</b><p>Egen logo og farge. Kunden ser deg – ikke verktøyet.</p></div>
-      <div class="fact"><b>Etterprøvbart</b><p>Hver leveranse lenker til commit, pull request eller utgivelse.</p></div>
-      <div class="fact"><b>Ærlige tall</b><p>Dokumentert tid og estimater vises hver for seg. Ingenting pyntes.</p></div>
-      <a class="btn btn-g" href="assets/eksempel-kunderapport.pdf" target="_blank" rel="noopener">Åpne eksempelrapport (PDF)<svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <div class="fact"><span class="k">1</span><b>Din merkevare</b><p>Egen logo og farge på forsiden. Kunden ser deg – ikke verktøyet.</p></div>
+      <div class="fact"><span class="k">2</span><b>Etterprøvbart</b><p>Hver leveranse lenker til commit, pull request eller utgivelse på GitHub.</p></div>
+      <div class="fact"><span class="k">3</span><b>Ærlige tall</b><p>Dokumentert tid og beregninger vises hver for seg. Ingenting pyntes.</p></div>
     </div>
+    <div class="showcta"><span>Eksempelrapport · 3 sider · PDF <em>· fiktiv kunde</em></span><a class="btn btn-g" href="assets/eksempel-kunderapport.pdf" target="_blank" rel="noopener">Åpne eksempelrapport<svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
   </div>
 </div></section>
 
@@ -328,14 +400,14 @@ footer a:hover{color:var(--text)}
     </div>
     <div class="tier">
       <h3>Deretter</h3>
-      <p class="for">Fornyes årlig. Kan sies opp når som helst.</p>
+      <p class="for">Fornyes automatisk hvert år. Si opp før fornyelsesdatoen, så stopper den.</p>
       <div class="amt"><b>2 490 kr</b><span>per år</span></div>
       <p class="vat">eks. mva · 3 112,50 kr inkl. 25 % mva</p>
       <ul class="list">
         <li>Alt i full versjon</li>
         <li>Nye funksjoner etter hvert som de kommer</li>
         <li>Support på e-post fra NOKTO</li>
-        <li>Ingen bindingstid</li>
+        <li>Ingen binding utover året du har betalt for</li>
       </ul>
       <p class="fine">Alle priser er eks. mva; 25 % mva kommer i tillegg. Sikker betaling via Stripe. Koden BLACKFRIDAY legges inn automatisk når du kjøper fra denne siden.</p>
     </div>
@@ -354,7 +426,7 @@ footer a:hover{color:var(--text)}
     <details><summary>Ser kunden dataene mine?</summary><p>Nei. Alt lagres lokalt på din PC. Kunden ser bare rapporten du selv velger å eksportere og sende.</p></details>
     <details><summary>Trenger jeg GitHub?</summary><p>GitHub gir leveranser og prosjekter automatisk. Tid fra PC, VS Code og Claude Code registreres også uten.</p></details>
     <details><summary>Windows sier «Windows beskyttet PC-en». Er det farlig?</summary><p>Nei. Installasjonsfilen er ennå ikke kodesignert, så Windows kjenner den ikke igjen. Velg «Mer info» og «Kjør likevel».</p></details>
-    <details><summary>Kan jeg si opp?</summary><p>Ja, når som helst. Send en e-post til edin@nokto.no, så stopper vi fornyelsen.</p></details>
+    <details><summary>Kan jeg si opp?</summary><p>Ja. Abonnementet betales forskuddsvis for ett år og fornyes automatisk. Send en e-post til edin@nokto.no før fornyelsesdatoen, så stopper vi fornyelsen. Du beholder tilgangen ut perioden du har betalt for. Allerede betalte perioder refunderes ikke.</p></details>
   </div>
 </div></section>
 
@@ -371,6 +443,16 @@ footer a:hover{color:var(--text)}
 </div></footer>
 
 <script>
+(function(){
+  var st=document.getElementById('stage'); if(!st) return;
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce||!('IntersectionObserver' in window)){st.classList.add('in');}
+  else{var io=new IntersectionObserver(function(e){if(e[0].isIntersecting){st.classList.add('in');io.disconnect();}},{threshold:.25});io.observe(st);}
+  if(reduce||!window.matchMedia('(hover: hover)').matches) return;
+  st.addEventListener('pointermove',function(e){var r=st.getBoundingClientRect();var x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+    st.style.setProperty('--ry',(x*14).toFixed(2)+'deg');st.style.setProperty('--rx',(8-y*10).toFixed(2)+'deg');});
+  st.addEventListener('pointerleave',function(){st.style.removeProperty('--ry');st.style.removeProperty('--rx');});
+})();
 (function(){
   var end = new Date('2026-12-01T00:00:00+01:00').getTime();
   function tick(){
