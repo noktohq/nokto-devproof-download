@@ -7,11 +7,22 @@
 <meta name="description" content="DEVPROOF dokumenterer utviklingsarbeidet ditt fra Git, GitHub, VS Code og Claude Code, og lager en kunderapport med din egen logo. Alt lagres lokalt på din PC.">
 <meta name="theme-color" content="#060806">
 <meta property="og:title" content="DEVPROOF – slutt å forklare. Begynn å bevise.">
-<meta property="og:description" content="Dokumentert utviklingsarbeid med kunderapport i din egen logo. Black Friday: første år 990 kr eks. mva.">
-<meta property="og:image" content="https://devproof.no/assets/og.jpg">
+<meta property="og:description" content="Arbeidsdagen fra Git, GitHub, VS Code og Claude Code – som kunderapport med din egen logo. Black Friday: første år 990 kr eks. mva.">
 <meta property="og:url" content="https://devproof.no/">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="DEVPROOF">
+<meta property="og:locale" content="nb_NO">
+<meta property="og:image" content="https://devproof.no/assets/og-no.jpg?v=1">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="DEVPROOF – slutt å forklare, begynn å bevise. Kunderapport med din egen logo.">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://devproof.no/assets/og-no.jpg?v=1">
+<meta name="twitter:image:alt" content="DEVPROOF – slutt å forklare, begynn å bevise. Kunderapport med din egen logo.">
+<link rel="alternate" hreflang="nb" href="https://devproof.no/">
+<link rel="alternate" hreflang="en" href="https://devproof.no/en/">
+<link rel="alternate" hreflang="x-default" href="https://devproof.no/">
 <link rel="canonical" href="https://devproof.no/">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -97,6 +108,11 @@ h1 em.s{font-size:1.08em;line-height:.9}
 .src ul{display:flex;gap:10px;flex-wrap:wrap;list-style:none;margin:0;padding:0}
 .src li{border:1px solid var(--line-strong);border-radius:999px;padding:7px 15px;font-size:13.5px;font-weight:600;color:var(--text-2);background:rgba(240,255,244,.02)}
 
+.lang-bryter{display:inline-flex;align-items:center;gap:7px;height:36px;padding:0 11px;flex:none;border:1px solid var(--line-strong);border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.04em;color:var(--text-2);transition:border-color .2s,color .2s}
+.lang-bryter:hover,.lang-bryter:focus-visible{border-color:rgba(184,224,90,.55);color:var(--text)}
+.lang-flagg{width:20px;height:14px;border-radius:2px;display:block}
+.navr{display:flex;align-items:center;gap:10px}
+@media (max-width:640px){.lang-bryter{width:40px;height:40px;padding:0;justify-content:center;gap:0}.lang-bryter span{display:none}}
 /* sections */
 section{padding:120px 0;position:relative}
 .head{max-width:760px;margin-bottom:56px}
@@ -241,7 +257,7 @@ footer a:hover{color:var(--text)}
   .wrap{padding:0 16px}
   .top .links a:not(:last-child){display:none}
   .brand small{display:none}
-  nav .btn span{display:none}
+  nav .btn .xs{display:none}
   .hero{padding-top:52px}
   .chip{font-size:12.5px;padding:7px 11px 7px 7px}
   .chip i{width:28px;height:28px}
@@ -273,7 +289,7 @@ footer a:hover{color:var(--text)}
 <nav><div class="wrap">
   <a class="brand" href="#"><img src="assets/icon.svg" alt="">DEVPROOF <small>av NOKTO</small></a>
   <div class="menu"><a href="#slik">Slik virker det</a><a href="#rapport">Rapporten</a><a href="#personvern">Personvern</a><a href="#pris">Pris</a><a href="#faq">Spørsmål</a></div>
-  <a class="btn btn-a" href="https://buy.stripe.com/fZufZhgCG1kF43v1RNdfG0t?prefilled_promo_code=BLACKFRIDAY">Kjøp<span>&nbsp;– 990 kr</span><svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  <div class="navr"><a class="lang-bryter" href="/en/" hreflang="en" lang="en" aria-label="English version"><svg class="lang-flagg" viewBox="0 0 60 40" aria-hidden="true"><clipPath id="lf-c"><path d="M0 0v40h60V0z"/></clipPath><clipPath id="lf-t"><path d="M30 20h30v20zv20H0zH0V0zV0h30z"/></clipPath><g clip-path="url(#lf-c)"><path d="M0 0v40h60V0z" fill="#012169"/><path d="M0 0l60 40m0-40L0 40" stroke="#fff" stroke-width="8"/><path d="M0 0l60 40m0-40L0 40" clip-path="url(#lf-t)" stroke="#C8102E" stroke-width="5"/><path d="M30 0v40M0 20h60" stroke="#fff" stroke-width="12"/><path d="M30 0v40M0 20h60" stroke="#C8102E" stroke-width="7"/></g></svg><span>EN</span></a>  <a class="btn btn-a" href="https://buy.stripe.com/fZufZhgCG1kF43v1RNdfG0t?prefilled_promo_code=BLACKFRIDAY"><span>Kjøp<span class="xs">&nbsp;– 990 kr</span></span><svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
 </div></nav>
 
 <header class="hero"><div class="wrap grid">
