@@ -71,7 +71,7 @@ Built for developers who refuse to be monitored.
 - **No keylogging**: Only when you are active, never what you type. Code, prompts and passwords are not stored.
 - **Everything stays local**: Your data lives on your PC. Nothing is shared with the client until you export the report yourself.
 
-The Ask DEVPROOF guide on the website runs via ElevenLabs and only starts when you press it. Nothing from ElevenLabs loads before that. Audio is not stored, and the text is deleted after 30 days.
+The DEV chat on the website runs via ElevenLabs and only starts when you press it. Nothing from ElevenLabs loads before that. Audio is not stored, and the text is deleted after 30 days.
 
 ## Pricing
 

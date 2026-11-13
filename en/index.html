@@ -547,6 +547,7 @@ html:has(#sbar.on) .agent{bottom:calc(88px + env(safe-area-inset-bottom))}
 .dpc-logo{display:flex;align-items:center;gap:10px}
 .dpc-logo img{width:26px;height:26px}
 .dpc-logo b{font:700 16px/1 var(--mono);letter-spacing:.24em;color:var(--text)}
+.dpc-rolle{font:600 10.5px/1 var(--mono);font-style:normal;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);padding:4px 8px;border-radius:999px;border:1px solid rgba(184,224,90,.3);background:rgba(184,224,90,.06)}
 .dpc-x{flex:none;display:grid;place-items:center;width:36px;height:36px;border-radius:10px;border:1px solid transparent;background:none;color:var(--text-2);cursor:pointer}
 .dpc-x:hover{border-color:var(--line-strong);color:var(--text)}
 .dpc-x svg,.dpc-f button svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
@@ -563,12 +564,15 @@ html:has(#sbar.on) .agent{bottom:calc(88px + env(safe-area-inset-bottom))}
 .dpc-chips{display:flex;flex-wrap:wrap;gap:8px;padding:4px 16px 12px}
 .dpc-chips button{border:1px solid rgba(184,224,90,.3);background:rgba(184,224,90,.05);color:var(--text-2);border-radius:999px;padding:7px 12px;font:13px/1.2 Inter,'Inter Fallback',system-ui,sans-serif;cursor:pointer}
 .dpc-chips button:hover{border-color:var(--accent);color:var(--text)}
-.dpc-f{display:flex;align-items:center;gap:8px;margin:0 12px;padding:6px 6px 6px 14px;border:1px solid var(--line-strong);border-radius:14px;background:#070a07}
+.dpc-f{display:flex;align-items:center;gap:8px;margin:0 12px;padding:6px 6px 6px 4px;border:1px solid var(--line-strong);border-radius:14px;background:#070a07}
 .dpc-f:focus-within{border-color:rgba(184,224,90,.6);box-shadow:0 0 0 3px rgba(184,224,90,.12)}
 .dpc-p{font:600 14px/1 var(--mono);color:var(--accent)}
 .dpc-f input{flex:1;min-width:0;border:0;background:none;color:var(--text);font:16px/1.4 Inter,'Inter Fallback',system-ui,sans-serif;padding:8px 0;outline:0}
 .dpc-f input::placeholder{color:#6f7d70}
 .dpc-f button{flex:none;display:grid;place-items:center;width:38px;height:38px;border:0;border-radius:10px;background:var(--accent);color:var(--accent-ink);cursor:pointer}
+.dpc-f .dpc-clip{width:34px;margin-right:-4px;background:none;color:#6f7d70}
+.dpc-f .dpc-clip:hover{color:var(--text)}
+.dpc-f .dpc-clip:disabled{opacity:.4;cursor:default}
 .dpc-ft{margin:0;padding:10px 16px 12px;display:flex;justify-content:center;align-items:center;gap:6px;font-size:11.5px;color:#6f7d70}
 .dpc-ft a{display:inline-flex;align-items:center;gap:5px;color:var(--text-2);font:700 10.5px/1 var(--mono);letter-spacing:.16em}
 .dpc-ft img{width:12px;height:12px;opacity:.85}
@@ -1112,7 +1116,7 @@ html:has(#sbar.on) .agent{bottom:calc(88px + env(safe-area-inset-bottom))}
     <div class="card"><span class="ic"><svg viewBox="0 0 20 20" fill="none"><rect x="2.5" y="5.5" width="15" height="9" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M6 11.5h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span><span class="n">02</span><h3>No keylogging</h3><p>Only when you are active, never what you type. Code, prompts and passwords are not stored.</p></div>
     <div class="card"><span class="ic"><svg viewBox="0 0 20 20" fill="none"><path d="M10 2.5l6 2.5v4.5c0 4-2.7 6.7-6 8-3.3-1.3-6-4-6-8V5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span><span class="n">03</span><h3>Everything stays local</h3><p>Your data lives on your PC. Nothing is shared with the client until you export the report yourself.</p></div>
   </div>
-  <p class="pnote mono"><span aria-hidden="true">#</span> The Ask DEVPROOF guide runs via ElevenLabs and only starts when you press it. Audio is not stored, and the text is deleted after 30 days.</p>
+  <p class="pnote mono"><span aria-hidden="true">#</span> The DEV chat runs via ElevenLabs and only starts when you press it. Audio is not stored, and the text is deleted after 30 days.</p>
 </div></section>
 
 <section id="pris" class="alt" aria-labelledby="pris-tittel"><div class="wrap">
@@ -1221,7 +1225,7 @@ html:has(#sbar.on) .agent{bottom:calc(88px + env(safe-area-inset-bottom))}
 </div></section>
 </main>
 <div class="sbar" id="sbar" data-bf aria-hidden="true"><div class="i"><b>NOK&nbsp;1,250</b><s>NOK&nbsp;2,500</s><small><i>−50%</i> first year · ends in <span class="cdi">–</span></small></div><a class="btn btn-a" tabindex="-1" href="https://buy.stripe.com/14AeVdgCGe7r0RjgMHdfG0u?prefilled_promo_code=BLACKFRIDAY50">Try free<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
-<button type="button" class="agent" id="agent" data-src="../assets/js/dp-sdk.js?v=1250" data-agent="agent_4401m79mvp9sepgssr57ysbxjzrq" data-icon="../assets/icon.svg"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 8v4M6.5 5v10M10 3v14M13.5 6v8M17 8.5v3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span class="al">Ask DEVPROOF</span></button>
+<button type="button" class="agent" id="agent" data-src="../assets/js/dp-sdk.js?v=1250" data-agent="agent_4401m79mvp9sepgssr57ysbxjzrq" data-salg="agent_3801m7a55dmme4r82jc17z8hnzbv" data-kundeservice="agent_3701m7a55fdper2sc64jfp8je7cm" data-icon="../assets/icon.svg"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 8v4M6.5 5v10M10 3v14M13.5 6v8M17 8.5v3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span class="al">Ask DEV</span></button>
 
 <footer><div class="wrap">
   <nav class="fnav" id="contents" aria-label="Contents"><ul>
@@ -1434,39 +1438,69 @@ d.addEventListener('keydown',function(e){
 var d=document,btn=d.getElementById('agent');if(!btn||!window.WebSocket)return;
 var EN=d.documentElement.lang=='en',AGENT=btn.dataset.agent,SDK=btn.dataset.src,ICON=btn.dataset.icon;
 var T=EN?{
-  name:'DEVPROOF',ready:'Guide · replies in seconds',conn:'Connecting',typing:'Typing',input:'Ask about the app or pricing',send:'Send',close:'Close',
+  name:'DEV',ready:'Online',conn:'Connecting',typing:'Typing',input:'Ask about the app or pricing',send:'Send',close:'Close',
   hello:'Hi. What would you like to know?',
   chips:['What does it cost?','Free trial','Is my code uploaded?'],
   err:'Could not connect. Try again, or email edin@nokto.no.',cut:'The reply was interrupted when you left the page. Ask again.',
-  foot:'AI assistant · Powered by',unread:'new reply'
+  foot:'Powered by',unread:'new reply',
+  attach:'Attach file',upFor:'Uploading ',upOk:'Received: ',upBig:'The file is too large. Max 10 MB, or send it to edin@nokto.no.',
+  upErr:'The file did not arrive. Send it to edin@nokto.no.',upSaid:'I have attached the file ',
+  errLoop:'The handover stalled. Type your question again, or email edin@nokto.no.',salg:'Sales',kundeservice:'Support'
 }:{
-  name:'DEVPROOF',ready:'Guide · svarer på sekunder',conn:'Kobler til',typing:'Skriver',input:'Spør om appen eller prisen',send:'Send',close:'Lukk',
+  name:'DEV',ready:'Tilkoblet',conn:'Kobler til',typing:'Skriver',input:'Spør om appen eller prisen',send:'Send',close:'Lukk',
   hello:'Hei. Hva lurer du på?',
   chips:['Hva koster det?','Prøv gratis','Lastes koden opp?'],
   err:'Fikk ikke kontakt. Prøv igjen, eller send e-post til edin@nokto.no.',cut:'Svaret ble avbrutt da du forlot siden. Spør på nytt.',
-  foot:'KI-assistent · Drevet av',unread:'nytt svar'
+  foot:'Drevet av',unread:'nytt svar',
+  attach:'Legg ved fil',upFor:'Laster opp ',upOk:'Mottatt: ',upBig:'Fila er for stor. Maks 10 MB, eller send den til edin@nokto.no.',
+  upErr:'Fila kom ikke fram. Send den til edin@nokto.no.',upSaid:'Jeg har lagt ved fila ',
+  errLoop:'Overføringen stoppet opp. Skriv spørsmålet på nytt, eller send e-post til edin@nokto.no.',salg:'Salg',kundeservice:'Kundeservice'
 };
 var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,fine=!matchMedia('(pointer: coarse)').matches;
 function el(t,c,h){var e=d.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e}
 var X='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>';
 var ARR='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>';
+var CLIP='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 11-8.6 8.6a5 5 0 0 1-7-7l8.5-8.6a3.3 3.3 0 0 1 4.7 4.7l-8.6 8.6a1.7 1.7 0 0 1-2.4-2.4l7.9-7.9"/></svg>';
 var MARK='<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 8v4M6.5 5v10M10 3v14M13.5 6v8M17 8.5v3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
 
 var panel=el('section','dpc');panel.id='dpc';panel.hidden=true;panel.tabIndex=-1;panel.setAttribute('aria-label',T.name);
 panel.innerHTML=
- '<div class="dpc-h"><span class="dpc-logo"><img src="'+ICON+'" alt="" width="26" height="26"><b>DEVPROOF</b></span><span class="dpc-st vh" aria-live="polite"><span>'+T.ready+'</span></span>'+
+ '<div class="dpc-h"><span class="dpc-logo"><img src="'+ICON+'" alt="" width="26" height="26"><b>DEV</b><em class="dpc-rolle" hidden></em></span><span class="dpc-st vh" aria-live="polite"><span>'+T.ready+'</span></span>'+
  '<button type="button" class="dpc-x" aria-label="'+T.close+'">'+X+'</button></div>'+
  '<div class="dpc-log" aria-live="polite"></div>'+
  '<div class="dpc-chips">'+T.chips.map(function(c){return '<button type="button">'+c+'</button>'}).join('')+'</div>'+
- '<form class="dpc-f"><span class="dpc-p" aria-hidden="true">&gt;</span><input type="text" autocomplete="off" maxlength="600" placeholder="'+T.input+'" aria-label="'+T.input+'"><button type="submit" aria-label="'+T.send+'">'+ARR+'</button></form>'+
+ '<form class="dpc-f"><button type="button" class="dpc-clip" aria-label="'+T.attach+'" title="'+T.attach+'">'+CLIP+'</button>'+
+ '<input class="dpc-fil" type="file" hidden accept="image/*,.heic,.pdf,.xlsx,.docx,.pptx,.csv,.txt">'+
+ '<span class="dpc-p" aria-hidden="true">&gt;</span><input class="dpc-in" type="text" autocomplete="off" maxlength="600" placeholder="'+T.input+'" aria-label="'+T.input+'"><button type="submit" aria-label="'+T.send+'">'+ARR+'</button></form>'+
  '<p class="dpc-ft">'+T.foot+' <a href="https://nokto.no/" rel="noopener" target="_blank"><img src="'+ICON+'" alt="" width="12" height="12">NOKTO</a></p>';
 d.body.appendChild(panel);
 btn.insertAdjacentHTML('beforeend','<span class="ax">'+X+'</span>');btn.setAttribute('aria-controls','dpc');btn.setAttribute('aria-expanded','false');
-btn.setAttribute('aria-label',EN?'Ask DEVPROOF':'Spør DEVPROOF');
+btn.setAttribute('aria-label',EN?'Ask DEV':'Spør DEV');
 var $=function(s){return panel.querySelector(s)};
-var log=$('.dpc-log'),st=$('.dpc-st span'),chips=$('.dpc-chips'),form=$('.dpc-f'),input=$('input');
+var log=$('.dpc-log'),st=$('.dpc-st span'),chips=$('.dpc-chips'),form=$('.dpc-f'),input=$('.dpc-in');
 
 var conv=null,starting=null,firstAi=false,wait=null,lastAi='',hist=[],saved=[],KEY='dp-chat-v1';
+// Rollemerket: Resepsjonen er inngangen og har ikke merke. ID-ene til Salg og Kundeservice står på #agent.
+var ROLLER={};if(btn.dataset.salg)ROLLER[btn.dataset.salg]=T.salg;if(btn.dataset.kundeservice)ROLLER[btn.dataset.kundeservice]=T.kundeservice;
+var rolleEl=$('.dpc-rolle'),rolle='',sprang=0,MAKS_SPRANG=2,sisteKall='';
+function setRolle(id){
+  rolle=id&&Object.prototype.hasOwnProperty.call(ROLLER,id)?id:'';
+  rolleEl.textContent=rolle?ROLLER[rolle]:'';rolleEl.hidden=!rolle;
+  panel.setAttribute('aria-label',rolle?T.name+' · '+ROLLER[rolle]:T.name);
+}
+// Overføringen kommer som verktøysvar. full_tool_result (med to_agent) kan mangle; da avgjør
+// topologien: Salg sender bare til Kundeservice og omvendt. Fra Resepsjonen er målet ukjent, og da vises ikke noe merke.
+function onTool(p){
+  if(!p||p.tool_name!=='transfer_to_agent'||p.is_error)return;
+  var til=null,r=p.full_tool_result;
+  try{if(typeof r=='string')r=JSON.parse(r);if(r&&r.to_agent)til=r.to_agent}catch(e){}
+  // Samme kall kan komme to ganger (agent_tool_response og _full_payload): teller bare én gang.
+  var ny=!p.tool_call_id||p.tool_call_id!==sisteKall;sisteKall=p.tool_call_id||'';
+  // Sperre: agentene skal ikke sende samtalen fram og tilbake uten at personen har skrevet noe.
+  if(ny&&++sprang>MAKS_SPRANG){if(conv){noWait();bubble('sys',T.errLoop);setSt(T.ready);conv.endSession().catch(function(){})}return}
+  if(!til&&ny){var ids=Object.keys(ROLLER);til=ids.length==1?ids[0]:rolle?ids.filter(function(i){return i!==rolle})[0]:null}
+  if(til||ny)setRolle(til);
+}
 function save(open){try{sessionStorage.setItem(KEY,JSON.stringify({log:saved,open:open===undefined?!panel.hidden:open,wait:!!wait}))}catch(e){}}
 function dropChips(){if(chips){chips.remove();chips=null}}
 // Lenker: bare devproof.no, Stripe-kassene og edin@nokto.no blir klikkbare.
@@ -1490,7 +1524,7 @@ function bubble(who,t,restore){
   var b=el('p','dpc-m dpc-'+who);if(who=='ai')fill(b,t);else b.textContent=t;
   log.appendChild(b);log.scrollTop=log.scrollHeight;
   if(!restore&&(who=='ai'||who=='user')){saved.push({h:who,t:t});if(saved.length>40)saved.shift();hist.push((who=='ai'?'Guide: ':'Personen: ')+t);if(hist.length>12)hist.shift();save()}
-  if(who=='ai'&&panel.hidden&&!restore){btn.classList.add('unread');btn.setAttribute('aria-label',(EN?'Ask DEVPROOF – ':'Spør DEVPROOF – ')+T.unread)}
+  if(who=='ai'&&panel.hidden&&!restore){btn.classList.add('unread');btn.setAttribute('aria-label',(EN?'Ask DEV – ':'Spør DEV – ')+T.unread)}
   return b;
 }
 function noWait(){if(wait){wait.remove();wait=null}}
@@ -1509,7 +1543,8 @@ function start(){
   starting=loadSdk().then(function(C){
     var o={agentId:AGENT,connectionType:'websocket',textOnly:true,dynamicVariables:{source:'widget',page:String(location.pathname).slice(0,200),caller_name:'',caller_company:'',caller_phone:'',caller_email:''},
       onConnect:function(){panel.classList.remove('is-conn');panel.classList.add('is-live');setSt(T.ready)},
-      onDisconnect:function(x){noWait();conv=null;panel.classList.remove('is-live','is-conn');setSt(T.ready);if(x&&x.reason=='error')bubble('sys',T.err)},
+      onAgentToolResponse:onTool,
+      onDisconnect:function(x){noWait();conv=null;setRolle('');sprang=0;panel.classList.remove('is-live','is-conn');setSt(T.ready);if(x&&x.reason=='error')bubble('sys',T.err)},
       onError:function(){noWait();bubble('sys',T.err);setSt(T.ready)},
       onMessage:function(p){
         if(!p||!p.message||p.source!=='ai')return;
@@ -1529,11 +1564,11 @@ function start(){
   return starting;
 }
 function send(t){
-  t=t.trim();if(!t)return;input.value='';bubble('user',t);typing();setSt(T.typing);
+  t=t.trim();if(!t)return;input.value='';bubble('user',t);sprang=0;typing();setSt(T.typing);
   start().then(function(c){c.sendUserMessage(t)}).catch(function(){noWait()});
 }
 function open(focus){
-  btn.classList.remove('unread');btn.setAttribute('aria-label',EN?'Ask DEVPROOF':'Spør DEVPROOF');
+  btn.classList.remove('unread');btn.setAttribute('aria-label',EN?'Ask DEV':'Spør DEV');
   panel.hidden=false;d.documentElement.classList.add('dpc-open');btn.setAttribute('aria-expanded','true');save(true);
   if(!log.childElementCount){var h=el('p','dpc-m dpc-ai');h.textContent=T.hello;lastAi=T.hello;log.appendChild(h)}
   // Last SDK-en i bakgrunnen, så første svar kommer raskere. Økten starter ved første melding.
@@ -1547,6 +1582,27 @@ function close(){
 }
 form.addEventListener('submit',function(e){e.preventDefault();send(input.value)});
 panel.addEventListener('click',function(e){var c=e.target.closest&&e.target.closest('.dpc-chips button');if(c)send(c.textContent)});
+// Vedlegg: fila går til nokto.no/agent/vedlegg.php med samtale-ID-en og videre til Edin på e-post.
+// Enkel CORS-forespørsel (ingen egne headere, ingen cookies). Agenten får beskjed, så den ikke ber om fila igjen.
+var MAKS_FIL=10*1024*1024,UP='https://nokto.no/agent/vedlegg.php',clip=$('.dpc-clip'),filIn=$('.dpc-fil');
+clip.addEventListener('click',function(){filIn.click()});
+filIn.addEventListener('change',function(){
+  var f=filIn.files&&filIn.files[0];filIn.value='';if(!f)return;
+  if(f.size>MAKS_FIL){bubble('sys',T.upBig);return}
+  var info=bubble('sys',T.upFor+f.name+' …');clip.disabled=true;
+  start().then(function(c){
+    var fd=new FormData();fd.append('conversation_id',c.getId?c.getId():'');fd.append('fil',f,f.name);
+    return fetch(UP,{method:'POST',body:fd,credentials:'omit'})
+      .then(function(r){return r.json().catch(function(){return{ok:false}})})
+      .then(function(j){
+        if(!j||!j.ok){info.textContent=(j&&typeof j.error=='string'&&j.error)||T.upErr;return}
+        info.textContent=T.upOk+j.filnavn;
+        if(c.sendContextualUpdate)c.sendContextualUpdate('Personen la ved en fil i chatten: «'+j.filnavn+'», vedlegg '+j.vedlegg_id+'. Fila er sendt til Edin på e-post, merket med denne samtalen. Ikke be om den på nytt.');
+        var t=T.upSaid+j.filnavn+'.';bubble('user',t);sprang=0;typing();setSt(T.typing);c.sendUserMessage(t);
+      })
+      .catch(function(){info.textContent=T.upErr});
+  },function(){info.remove()}).then(function(){clip.disabled=false});
+});
 input.addEventListener('input',function(){if(conv&&conv.sendUserActivity)conv.sendUserActivity()});
 $('.dpc-x').addEventListener('click',close);
 btn.addEventListener('click',function(){panel.hidden?open():close()});
