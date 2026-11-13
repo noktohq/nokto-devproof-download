@@ -585,6 +585,8 @@ html:has(#sbar.on) .agent{bottom:calc(88px + env(safe-area-inset-bottom))}
 .dpc{left:8px;right:8px;width:auto;bottom:calc(8px + env(safe-area-inset-bottom));height:min(640px,calc(100dvh - 16px));border-radius:20px}
 .dpc-open .agent,.dpc-open .sbar{display:none!important}
 }
+.dpc-handoff{align-self:stretch;max-width:100%;display:flex;align-items:center;gap:10px;margin:2px 0;padding:0;background:none;border:0;color:var(--accent);font:600 10.5px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase}
+.dpc-handoff:before,.dpc-handoff:after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(184,224,90,.35),transparent)}
 </style>
 <script type="application/ld+json">
 {
@@ -1445,7 +1447,7 @@ var T=EN?{
   foot:'Powered by',unread:'new reply',
   attach:'Attach file',upFor:'Uploading ',upOk:'Received: ',upBig:'The file is too large. Max 10 MB, or send it to edin@nokto.no.',
   upErr:'The file did not arrive. Send it to edin@nokto.no.',upSaid:'I have attached the file ',
-  errLoop:'The handover stalled. Type your question again, or email edin@nokto.no.',salg:'Sales',kundeservice:'Support'
+  errLoop:'The handover stalled. Type your question again, or email edin@nokto.no.',salg:'Sales',kundeservice:'Support',satt:'Transferred',sattTil:'Transferred to '
 }:{
   name:'DEV',ready:'Tilkoblet',conn:'Kobler til',typing:'Skriver',input:'Spør om appen eller prisen',send:'Send',close:'Lukk',
   hello:'Hei. Hva lurer du på?',
@@ -1454,7 +1456,7 @@ var T=EN?{
   foot:'Drevet av',unread:'nytt svar',
   attach:'Legg ved fil',upFor:'Laster opp ',upOk:'Mottatt: ',upBig:'Fila er for stor. Maks 10 MB, eller send den til edin@nokto.no.',
   upErr:'Fila kom ikke fram. Send den til edin@nokto.no.',upSaid:'Jeg har lagt ved fila ',
-  errLoop:'Overføringen stoppet opp. Skriv spørsmålet på nytt, eller send e-post til edin@nokto.no.',salg:'Salg',kundeservice:'Kundeservice'
+  errLoop:'Overføringen stoppet opp. Skriv spørsmålet på nytt, eller send e-post til edin@nokto.no.',salg:'Salg',kundeservice:'Kundeservice',satt:'Satt over',sattTil:'Satt over til '
 };
 var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,fine=!matchMedia('(pointer: coarse)').matches;
 function el(t,c,h){var e=d.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e}
@@ -1503,6 +1505,8 @@ function onTool(p){
   if(ny&&++sprang>MAKS_SPRANG){if(conv){noWait();bubble('sys',T.errLoop);setSt(T.ready);conv.endSession().catch(function(){})}return}
   if(!til&&ny){var ids=Object.keys(ROLLER);til=ids.length==1?ids[0]:rolle?ids.filter(function(i){return i!==rolle})[0]:null}
   if(til||ny)setRolle(til);
+  // Synlig skille i samtalen, så personen ser at en annen svarer nå (målet er ofte ukjent for klienten).
+  if(ny){dropChips();var n=til?navnFor(til):'';var d=el('p','dpc-m dpc-handoff');var sp=el('span');sp.textContent=n?T.sattTil+n:T.satt;d.appendChild(sp);log.appendChild(d);log.scrollTop=log.scrollHeight}
 }
 function save(open){try{sessionStorage.setItem(KEY,JSON.stringify({log:saved,open:open===undefined?!panel.hidden:open,wait:!!wait}))}catch(e){}}
 function dropChips(){if(chips){chips.remove();chips=null}}
