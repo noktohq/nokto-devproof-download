@@ -587,6 +587,8 @@ html:has(#sbar.on) .agent{bottom:calc(88px + env(safe-area-inset-bottom))}
 }
 .dpc-handoff{align-self:stretch;max-width:100%;display:flex;align-items:center;gap:10px;margin:2px 0;padding:0;background:none;border:0;color:var(--accent);font:600 10.5px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase}
 .dpc-handoff:before,.dpc-handoff:after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(184,224,90,.35),transparent)}
+.dpc-from{margin:6px 0 -4px 2px;font:600 10.5px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.dpc-w span{margin-left:6px;font:500 11.5px/1 var(--mono);color:var(--muted)}
 </style>
 <script type="application/ld+json">
 {
@@ -1524,19 +1526,23 @@ function fill(n,t){
   }
   if(p<t.length)n.appendChild(d.createTextNode(t.slice(p)));
 }
-function bubble(who,t,restore){
+// Hvem som skriver: et lite navn over første svar i hver runde (DEV, Salg, NOKTO Salg …).
+var sisteAvsender='';
+function avsender(){return rolle?navnFor(rolle):'DEV'}
+function bubble(who,t,restore,fra){
   t=String(t).trim().replace(/[ \t]*\n[ \t]*(\n[ \t]*)+/g,'\n');if(!t)return null;
   if(who=='ai'){if(t===lastAi)return null;lastAi=t}
   if(who!='sys')dropChips();
+  if(who=='ai'){fra=fra||avsender();if(fra!==sisteAvsender){var f=el('p','dpc-from');f.textContent=fra;log.appendChild(f);sisteAvsender=fra}}else if(who=='user')sisteAvsender='';
   var b=el('p','dpc-m dpc-'+who);if(who=='ai')fill(b,t);else b.textContent=t;
   log.appendChild(b);log.scrollTop=log.scrollHeight;
-  if(!restore&&(who=='ai'||who=='user')){saved.push({h:who,t:t});if(saved.length>40)saved.shift();hist.push((who=='ai'?'Guide: ':'Personen: ')+t);if(hist.length>12)hist.shift();save()}
+  if(!restore&&(who=='ai'||who=='user')){saved.push(who=='ai'?{h:who,t:t,f:fra}:{h:who,t:t});if(saved.length>40)saved.shift();hist.push((who=='ai'?'Guide: ':'Personen: ')+t);if(hist.length>12)hist.shift();save()}
   if(who=='ai'&&panel.hidden&&!restore){btn.classList.add('unread');btn.setAttribute('aria-label',(EN?'Ask DEV – ':'Spør DEV – ')+T.unread)}
   return b;
 }
 function noWait(){if(wait){wait.remove();wait=null}}
 var waitT=0;
-function typing(){noWait();dropChips();clearTimeout(waitT);waitT=setTimeout(function(){if(wait){noWait();bubble('sys',T.err);setSt(T.ready)}},25000);wait=el('p','dpc-m dpc-ai dpc-w','<i></i><i></i><i></i>');wait.setAttribute('aria-label',T.typing);log.appendChild(wait);log.scrollTop=log.scrollHeight}
+function typing(){noWait();dropChips();clearTimeout(waitT);waitT=setTimeout(function(){if(wait){noWait();bubble('sys',T.err);setSt(T.ready)}},25000);wait=el('p','dpc-m dpc-ai dpc-w','<i></i><i></i><i></i><span></span>');wait.querySelector('span').textContent=avsender()+(EN?' is typing':' skriver');wait.setAttribute('aria-label',avsender()+(EN?' is typing':' skriver'));log.appendChild(wait);log.scrollTop=log.scrollHeight}
 function setSt(s){st.textContent=s}
 
 function loadSdk(){
@@ -1577,7 +1583,7 @@ function send(t){
 function open(focus){
   btn.classList.remove('unread');btn.setAttribute('aria-label',EN?'Ask DEV':'Spør DEV');
   panel.hidden=false;d.documentElement.classList.add('dpc-open');btn.setAttribute('aria-expanded','true');save(true);
-  if(!log.childElementCount){var h=el('p','dpc-m dpc-ai');h.textContent=T.hello;lastAi=T.hello;log.appendChild(h)}
+  if(!log.childElementCount){var hf=el('p','dpc-from');hf.textContent='DEV';log.appendChild(hf);sisteAvsender='DEV';var h=el('p','dpc-m dpc-ai');h.textContent=T.hello;lastAi=T.hello;log.appendChild(h)}
   // Last SDK-en i bakgrunnen, så første svar kommer raskere. Økten starter ved første melding.
   loadSdk().catch(function(){});
   if(focus===false)return;
@@ -1618,7 +1624,7 @@ addEventListener('pagehide',function(){save();if(conv)conv.endSession().catch(fu
 
 var prev=null;try{prev=JSON.parse(sessionStorage.getItem(KEY)||'null')}catch(e){}
 if(prev&&prev.log&&prev.log.length){
-  prev.log.forEach(function(m){if(m.h=='ai'||m.h=='user'){bubble(m.h,m.t,true);saved.push(m);hist.push((m.h=='ai'?'Guide: ':'Personen: ')+m.t)}});
+  prev.log.forEach(function(m){if(m.h=='ai'||m.h=='user'){bubble(m.h,m.t,true,m.f);saved.push(m);hist.push((m.h=='ai'?'Guide: ':'Personen: ')+m.t)}});
   if(prev.wait)bubble('sys',T.cut,true);
   if(prev.open)open(false);
 }
