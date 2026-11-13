@@ -1494,7 +1494,8 @@ function bubble(who,t,restore){
   return b;
 }
 function noWait(){if(wait){wait.remove();wait=null}}
-function typing(){noWait();dropChips();wait=el('p','dpc-m dpc-ai dpc-w','<i></i><i></i><i></i>');wait.setAttribute('aria-label',T.typing);log.appendChild(wait);log.scrollTop=log.scrollHeight}
+var waitT=0;
+function typing(){noWait();dropChips();clearTimeout(waitT);waitT=setTimeout(function(){if(wait){noWait();bubble('sys',T.err);setSt(T.ready)}},25000);wait=el('p','dpc-m dpc-ai dpc-w','<i></i><i></i><i></i>');wait.setAttribute('aria-label',T.typing);log.appendChild(wait);log.scrollTop=log.scrollHeight}
 function setSt(s){st.textContent=s}
 
 function loadSdk(){
@@ -1513,7 +1514,8 @@ function start(){
       onMessage:function(p){
         if(!p||!p.message||p.source!=='ai')return;
         // Agentens åpningsreplikk kommer ved hver ny økt; hilsenen står alt i panelet.
-        if(firstAi){firstAi=false;return}
+        // Bare hilsenen kastes; i tekstmodus kan første melding være selve svaret.
+        if(firstAi){firstAi=false;if(/^(Hei\. Hva lurer du på\?|Hi\. What would you like to know\?)$/.test(String(p.message).trim()))return}
         noWait();bubble('ai',p.message);setSt(T.ready);
       }};
     return C.startSession(o);
