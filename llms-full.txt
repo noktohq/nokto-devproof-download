@@ -4,40 +4,42 @@
 
 ## Stop explaining. Start proving.
 
-For developers and agencies · Windows
+// for developers and agencies · Windows
 
-DEVPROOF connects your working day in Git, GitHub, VS Code and Claude Code to what you actually delivered – and gives your client a report with your own logo.
+DEVPROOF reads your working day from Windows, VS Code, Claude Code, Git and GitHub and turns it into a client report with your logo. Everything stays on your PC.
+
+Try free for 14 days (Solo checkout link). 14 days free · nothing is charged before day 14 · cancel any time.
 
 Stored locally · No screen recording · No lock-in beyond the paid year
 
-- from NOK 1,250: first year, excl. VAT
-- 1 click: from working day to client report
-- 0 hours: logged by hand
-- 100%: local on your PC
+The page shows an example terminal session (fictional client, CLI output in Norwegian): `devproof status`, `devproof github sync` and `devproof report export --project "Nettbutikk 2.0" --from 2026-11-01 --to 2026-11-12 --format pdf,json`. In the app these are buttons; the CLI (devproof.exe) ships with the app and sits next to it.
 
-Pulls from: Git, GitHub, VS Code, Claude Code, Windows activity
+0 screenshots · 0 keystrokes stored · only the licence key goes to NOKTO · PDF, CSV, JSON
+
+## Sources
+
+From `git log` to invoice. Five sources merge into one timeline. Projects are detected automatically.
+
+- windows-activity: active or idle, and which program is in front (file name only, e.g. Code.exe); never window titles or what you type
+- vscode: editor sessions, via the extension
+- claude-code: sessions, via hooks
+- git: repo and branch for the folder you work in (from .git; commits are not read locally)
+- github: commits, pull requests, releases and CI
 
 ## The problem
 
-“What have you actually done?”
+Your timesheet doesn’t lie. It just says nothing.
 
-You shipped commits, pull requests and releases. The timesheet says “development 7.5 h”. DEVPROOF connects your time to your deliveries, so the client sees the work – and you no longer have to defend the invoice.
-
-- **Time with a source**: Your working day is recorded from your PC, VS Code, Claude Code and Git. Every hour points to something you can show.
-- **Deliveries from GitHub**: Commits, pull requests and releases are fetched automatically and linked to the right project and client.
-- **A report with your logo**: One button gives your client a clean PDF with your logo and colour, clickable references and a clear line between documented and estimated.
+You shipped commits, pull requests and releases. The timesheet says “development 7.5 h”. DEVPROOF connects your time to your deliveries, so the client sees the work – and you no longer have to defend the invoice. Manual entries and estimates are labelled separately, in the report too.
 
 ## How it works
 
-From working day to client report.
+Four steps. No timesheet.
 
-No manual timesheets. No guessing what you did on Tuesday.
-
-- Projects are detected automatically from Git, VS Code and GitHub
-- The timeline shows your whole day – click a time span to see what documents it
-- Client, hourly rate and deliveries gathered per project
-- Reports as PDF, CSV and JSON, in English or Norwegian
-- Estimates are always labelled as estimates, never as facts
+1. Install: install the app on Windows and connect VS Code, Claude Code and GitHub.
+2. Work as usual: your working day is recorded from Windows activity, VS Code, Claude Code and Git. Projects are detected automatically.
+3. See your day: the timeline shows your whole day. Click a time span to see what documents it. Client, hourly rate and deliveries are gathered per project.
+4. Send the report: PDF, CSV or JSON, in English or Norwegian, with your logo and colour. Estimates are always labelled as estimates.
 
 ## The client report
 
@@ -49,7 +51,15 @@ Your logo on the cover, deliveries with clickable GitHub references, and figures
 - **Verifiable**: Every delivery links to a commit, pull request or release on GitHub.
 - **Honest numbers**: Documented time and estimates are shown separately. Nothing is dressed up.
 
+The report is exported as PDF, CSV (several files, e.g. days.csv) and report.json.
+
 Sample report · 3 pages · PDF · fictional client, in Norwegian: https://devproof.no/assets/eksempel-kunderapport.pdf
+
+## Verification
+
+Don’t trust me. Verify.
+
+Each export has an Ed25519-signed manifest (report.manifest.json). The recipient can check the folder without your database: `devproof report verify-bundle <folder> --expect-fingerprint <64-char fingerprint>`, or with OpenSSL following VERIFY.md in the folder. Change one byte and the check fails. The signature shows the bundle has not changed since it was signed. It does not show that the numbers are right.
 
 ## Privacy first
 
@@ -61,15 +71,17 @@ Built for developers who refuse to be monitored.
 - **No keylogging**: Only when you are active, never what you type. Code, prompts and passwords are not stored.
 - **Everything stays local**: Your data lives on your PC. Nothing is shared with the client until you export the report yourself.
 
+The Ask DEVPROOF guide on the website runs via ElevenLabs and only starts when you press it. Nothing from ElevenLabs loads before that. Audio is not stored, and the text is deleted after 30 days.
+
 ## Pricing
 
 Fixed price. Excl. VAT.
 
-Half price for the first year. Pays for itself with a few billable hours. Black Friday applies to the first 20 buyers, until 30 November.
+14 days free on both plans. Solo is half price for the first year: Black Friday applies to the first 20 buyers, through 30 November.
 
-### First year (Black Friday · −50%)
+### Solo · first year (Black Friday · −50%)
 
-Full version. Same product, lower starting price.
+For one developer. Full version, lower starting price.
 
 NOK 1,250 (regular NOK 2,500) first year – excl. VAT · NOK 1,562.50 incl. 25% Norwegian VAT
 
@@ -78,7 +90,9 @@ NOK 1,250 (regular NOK 2,500) first year – excl. VAT · NOK 1,562.50 incl. 25%
 - Unlimited projects
 - Automatic updates
 
-### After that
+Button: Try free – then NOK 1,250 (https://buy.stripe.com/14AeVdgCGe7r0RjgMHdfG0u?prefilled_promo_code=BLACKFRIDAY50)
+
+### Solo · after that
 
 Renews automatically every year. Cancel before the renewal date and it stops.
 
@@ -89,15 +103,40 @@ NOK 2,500 per year – excl. VAT · NOK 3,125 incl. 25% Norwegian VAT
 - Email support from NOKTO
 - No commitment beyond the year you paid for
 
-All prices exclude VAT; 25% Norwegian VAT is added. Secure payment via Stripe. The code BLACKFRIDAY50 is applied automatically when you buy from this page. Checkout is in Norwegian.
+How Solo is charged: day 0–14 free, nothing is charged · day 14: NOK 1,250 for the first year (Black Friday, if bought through 30 November) · year 2 onwards: NOK 2,500 per year.
+
+### Agency (up to 5 developers)
+
+For agencies with up to 5 developers. Same app, one invoice. No Black Friday discount.
+
+NOK 12,500 per year – excl. VAT · NOK 15,625 incl. 25% Norwegian VAT
+
+- Everything in Solo for up to 5 developers
+- One invoice for the whole agency
+- 14 days free
+- Email support from NOKTO
+
+How Agency is charged: day 0–14 free, nothing is charged · day 14 onwards: NOK 12,500 per year. Company name is required in checkout.
+
+Button: Try Agency free for 14 days (https://buy.stripe.com/5kQaEX4TY3sN43v53ZdfG0v)
+
+All prices exclude VAT; 25% Norwegian VAT is added. 14 days free on both plans: you enter your card in Stripe checkout, and nothing is charged until the trial ends. Cancel before day 14 and you pay nothing. After that the subscription renews every year; cancel before the renewal date. Paid periods are not refunded. Secure payment via Stripe; checkout is in Norwegian. The code BLACKFRIDAY50 is applied automatically to Solo when you buy from this page.
 
 ## FAQ
 
 Can’t find the answer? Write to edin@nokto.no.
 
+### Is there a free trial?
+
+Yes, 14 days. You enter your card in Stripe checkout, but nothing is charged until the trial ends. If you cancel before day 14, you pay nothing.
+
+### What is the difference between Solo and Agency?
+
+Solo is for one developer. Agency is for up to five developers on one invoice. The app and features are the same.
+
 ### What happens after I pay?
 
-You go straight to the download, and you get an email from us within one working day.
+You go straight to a page with your licence key and the download. Keep the key safe, for example in your password manager.
 
 ### Does it work on Mac or Linux?
 

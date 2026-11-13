@@ -10,12 +10,15 @@ DEVPROOF connects a developer's working day to what was actually delivered (comm
 - Language: the app itself is in Norwegian. Client reports can be created in English or Norwegian, as PDF, CSV and JSON.
 - Sources: Git, GitHub, VS Code, Claude Code and Windows activity. GitHub is optional; time from the PC, VS Code and Claude Code is recorded without it.
 - Privacy: data is stored locally on your PC. No screen recording and no keylogging. Code, prompts and passwords are not stored. Nothing is shared with the client until you export the report yourself.
-- Honest numbers: documented time and estimates are shown separately; estimates are always labelled as estimates.
+- CLI: a command-line tool (devproof.exe) ships with the app and sits next to it. CLI output is in Norwegian.
+- Honest numbers: documented time, manual entries and estimates are shown separately; estimates are always labelled as estimates.
 - Report: your own logo and colour on the cover, deliveries with clickable GitHub references (commit, pull request or release).
+- Free trial: 14 days on both plans. The card is entered in Stripe checkout; nothing is charged until the trial ends. Cancel before day 14 and you pay nothing.
 - Pricing (all prices exclude VAT; 25% Norwegian VAT is added):
-  - Black Friday: half price for the first year, NOK 1,250 (NOK 1,562.50 incl. VAT), for the first 20 buyers, until 30 November 2026. The code BLACKFRIDAY50 is applied automatically when buying from the website.
-  - After that: NOK 2,500 per year (NOK 3,125 incl. VAT).
-- Subscription: paid one year in advance and renews automatically. Cancel by emailing edin@nokto.no before the renewal date; you keep access for the period you have paid for. Periods already paid are not refunded.
+  - Solo (1 developer): NOK 2,500 per year (NOK 3,125 incl. VAT).
+  - Solo, Black Friday: half price for the first year, NOK 1,250 (NOK 1,562.50 incl. VAT), for the first 20 buyers, through 30 November 2026, inclusive. With the trial, the first payment after day 14 is NOK 1,250. The code BLACKFRIDAY50 is applied automatically via the Solo link on the website.
+  - Agency (up to 5 developers): NOK 12,500 per year (NOK 15,625 incl. VAT). Same app and features as Solo, one invoice for the whole agency. No Black Friday discount. Company name is required in checkout.
+- Subscription: paid one year in advance (after the trial) and renews automatically. Cancel by emailing edin@nokto.no before the renewal date; you keep access for the period you have paid for. Periods already paid are not refunded.
 - Checkout: secure payment via Stripe. Checkout is in Norwegian.
 
 ## Pages
@@ -23,6 +26,11 @@ DEVPROOF connects a developer's working day to what was actually delivered (comm
 - [DEVPROOF (Norwegian)](https://devproof.no/): main product page in Norwegian Bokmål
 - [DEVPROOF (English)](https://devproof.no/en/): the same product page in English
 - [Full English page text](https://devproof.no/llms-full.txt): all copy and FAQ answers as plain text
+
+## Checkout (Stripe)
+
+- [Solo – 14 days free, Black Friday code applied](https://buy.stripe.com/14AeVdgCGe7r0RjgMHdfG0u?prefilled_promo_code=BLACKFRIDAY50)
+- [Agency – 14 days free](https://buy.stripe.com/5kQaEX4TY3sN43v53ZdfG0v)
 
 ## Resources
 

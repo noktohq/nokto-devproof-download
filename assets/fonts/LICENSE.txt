@@ -4,3 +4,4 @@ Self-hosted web fonts (Latin subsets, served from Google Fonts originals):
 - Instrument Serif Italic (instrument-serif-italic-latin.woff2), Copyright 2022 The Instrument Serif Project Authors (https://github.com/Instrument/instrument-serif)
 
 Both are licensed under the SIL Open Font License, Version 1.1: https://openfontlicense.org
+- JetBrains Mono Regular (jetbrains-mono-latin-400.woff2, Latin subset from @fontsource/jetbrains-mono 5.2.8), Copyright 2020 The JetBrains Mono Project Authors (https://github.com/JetBrains/JetBrainsMono). SIL Open Font License 1.1, see OFL-JetBrainsMono.txt
