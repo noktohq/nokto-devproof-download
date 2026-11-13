@@ -539,21 +539,14 @@ html:has(#sbar.on) .agent{bottom:calc(88px + env(safe-area-inset-bottom))}
 .tier .btn{white-space:normal;text-align:center}
 @media (min-width:1100px) and (max-width:1399px){.tier{padding:34px 26px 26px}.tier .btn{padding:15px 16px;font-size:15px;gap:8px}.tl{font-size:11.5px;padding:12px 14px}.tl li{gap:10px}.tl li span{min-width:8ch}}
 .agent.unread:after{content:"";position:absolute;top:6px;right:8px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px #0a0e0a}
-.dpc-open .agent{border-color:var(--accent)}
-.dpc{padding:0;margin:0;position:fixed;right:20px;bottom:calc(84px + env(safe-area-inset-bottom));z-index:59;width:min(400px,calc(100vw - 40px));height:min(600px,calc(100dvh - 120px));display:flex;flex-direction:column;border-radius:22px;border:1px solid var(--line-strong);background:linear-gradient(180deg,#0f150f,#090c09);box-shadow:0 30px 80px rgba(0,0,0,.7),0 0 0 1px rgba(184,224,90,.08),0 0 60px -20px rgba(149,191,71,.45);overflow:hidden;font-family:Inter,'Inter Fallback',system-ui,sans-serif;transform-origin:100% 100%;animation:dpcIn .22s cubic-bezier(.2,.8,.2,1)}
+.dpc{padding:0;margin:0;position:fixed;right:20px;bottom:calc(88px + env(safe-area-inset-bottom));z-index:59;width:min(400px,calc(100vw - 40px));height:min(600px,calc(100dvh - 120px));display:flex;flex-direction:column;border-radius:22px;border:1px solid var(--line-strong);background:linear-gradient(180deg,#0f150f,#090c09);box-shadow:0 30px 80px rgba(0,0,0,.7),0 0 0 1px rgba(184,224,90,.08),0 0 60px -20px rgba(149,191,71,.45);overflow:hidden;font-family:Inter,'Inter Fallback',system-ui,sans-serif;transform-origin:100% 100%;animation:dpcIn .22s cubic-bezier(.2,.8,.2,1)}
 .dpc:focus{outline:0}
 @keyframes dpcIn{from{opacity:0;transform:translateY(10px) scale(.98)}}
 @media (prefers-reduced-motion:reduce){.dpc{animation:none}}
-.dpc-h{display:flex;align-items:center;gap:12px;padding:14px 14px 14px 16px;border-bottom:1px solid var(--line);background:rgba(184,224,90,.03)}
-.dpc-h>div{flex:1;min-width:0}
-.dpc-av{flex:none;display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:#0b120b;border:1px solid rgba(184,224,90,.35);color:var(--accent)}
-.dpc-av svg{width:20px;height:20px}
-.dpc-h strong{display:flex;align-items:baseline;gap:8px;font-size:15px;letter-spacing:.02em}
-.dpc-h strong i{font:500 11px/1 var(--mono);font-style:normal;color:var(--muted);letter-spacing:0}
-.dpc-st{display:flex;align-items:center;gap:7px;margin-top:3px;font:12px/1.2 var(--mono);color:var(--muted)}
-.dpc-st b{width:7px;height:7px;border-radius:50%;background:#4a564a;flex:none}
-.dpc.is-live .dpc-st b{background:var(--accent);box-shadow:0 0 10px var(--accent)}
-.dpc.is-conn .dpc-st b{background:var(--n);animation:blink 1s steps(1) infinite}
+.dpc-h{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 14px 14px 20px;border-bottom:1px solid var(--line)}
+.dpc-logo{display:flex;align-items:center;gap:10px}
+.dpc-logo img{width:26px;height:26px}
+.dpc-logo b{font:700 16px/1 var(--mono);letter-spacing:.24em;color:var(--text)}
 .dpc-x{flex:none;display:grid;place-items:center;width:36px;height:36px;border-radius:10px;border:1px solid transparent;background:none;color:var(--text-2);cursor:pointer}
 .dpc-x:hover{border-color:var(--line-strong);color:var(--text)}
 .dpc-x svg,.dpc-f button svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
@@ -576,8 +569,14 @@ html:has(#sbar.on) .agent{bottom:calc(88px + env(safe-area-inset-bottom))}
 .dpc-f input{flex:1;min-width:0;border:0;background:none;color:var(--text);font:16px/1.4 Inter,'Inter Fallback',system-ui,sans-serif;padding:8px 0;outline:0}
 .dpc-f input::placeholder{color:#6f7d70}
 .dpc-f button{flex:none;display:grid;place-items:center;width:38px;height:38px;border:0;border-radius:10px;background:var(--accent);color:var(--accent-ink);cursor:pointer}
-.dpc-ft{margin:0;padding:10px 16px 12px;font:11.5px/1.4 var(--mono);color:#6f7d70}
-.dpc-ft a{color:var(--text-2);text-decoration:underline;text-underline-offset:2px}
+.dpc-ft{margin:0;padding:10px 16px 12px;display:flex;justify-content:center;align-items:center;gap:6px;font-size:11.5px;color:#6f7d70}
+.dpc-ft a{display:inline-flex;align-items:center;gap:5px;color:var(--text-2);font:700 10.5px/1 var(--mono);letter-spacing:.16em}
+.dpc-ft img{width:12px;height:12px;opacity:.85}
+.agent .ax{display:none}
+.agent .ax svg{color:var(--accent-ink);width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round}
+.dpc-open .agent{width:56px;height:56px;min-height:56px;padding:0;justify-content:center;background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.dpc-open .agent>svg,.dpc-open .agent .al{display:none}
+.dpc-open .agent .ax{display:grid}
 @media (max-width:860px){
 .dpc{left:8px;right:8px;width:auto;bottom:calc(8px + env(safe-area-inset-bottom));height:min(640px,calc(100dvh - 16px));border-radius:20px}
 .dpc-open .agent,.dpc-open .sbar{display:none!important}
@@ -1222,7 +1221,7 @@ html:has(#sbar.on) .agent{bottom:calc(88px + env(safe-area-inset-bottom))}
 </div></section>
 </main>
 <div class="sbar" id="sbar" data-bf aria-hidden="true"><div class="i"><b>NOK&nbsp;1,250</b><s>NOK&nbsp;2,500</s><small><i>−50%</i> first year · ends in <span class="cdi">–</span></small></div><a class="btn btn-a" tabindex="-1" href="https://buy.stripe.com/14AeVdgCGe7r0RjgMHdfG0u?prefilled_promo_code=BLACKFRIDAY50">Try free<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
-<button type="button" class="agent" id="agent" data-src="../assets/js/dp-sdk.js?v=1250" data-agent="agent_4401m79mvp9sepgssr57ysbxjzrq"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 8v4M6.5 5v10M10 3v14M13.5 6v8M17 8.5v3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span class="al">Ask DEVPROOF</span></button>
+<button type="button" class="agent" id="agent" data-src="../assets/js/dp-sdk.js?v=1250" data-agent="agent_4401m79mvp9sepgssr57ysbxjzrq" data-icon="../assets/icon.svg"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 8v4M6.5 5v10M10 3v14M13.5 6v8M17 8.5v3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span class="al">Ask DEVPROOF</span></button>
 
 <footer><div class="wrap">
   <nav class="fnav" id="contents" aria-label="Contents"><ul>
@@ -1433,19 +1432,19 @@ d.addEventListener('keydown',function(e){
 (function(){
 'use strict';
 var d=document,btn=d.getElementById('agent');if(!btn||!window.WebSocket)return;
-var EN=d.documentElement.lang=='en',AGENT=btn.dataset.agent,SDK=btn.dataset.src;
+var EN=d.documentElement.lang=='en',AGENT=btn.dataset.agent,SDK=btn.dataset.src,ICON=btn.dataset.icon;
 var T=EN?{
   name:'DEVPROOF',ready:'Guide · replies in seconds',conn:'Connecting',typing:'Typing',input:'Ask about the app or pricing',send:'Send',close:'Close',
-  hello:'Hi, I am the DEVPROOF guide. Anything about the app, pricing or the free trial?',
-  chips:['What does the report show?','How does the trial work?','Is my code uploaded?'],
+  hello:'Hi. What would you like to know?',
+  chips:['What does it cost?','Free trial','Is my code uploaded?'],
   err:'Could not connect. Try again, or email edin@nokto.no.',cut:'The reply was interrupted when you left the page. Ask again.',
-  foot:'Handled by ElevenLabs for NOKTO, kept for 30 days.',priv:'Privacy',unread:'new reply'
+  foot:'Powered by',unread:'new reply'
 }:{
   name:'DEVPROOF',ready:'Guide · svarer på sekunder',conn:'Kobler til',typing:'Skriver',input:'Spør om appen eller prisen',send:'Send',close:'Lukk',
-  hello:'Hei, jeg er DEVPROOF-guiden. Lurer du på noe om appen, prisene eller prøveperioden?',
-  chips:['Hva viser rapporten?','Hvordan virker prøveperioden?','Lastes koden min opp?'],
+  hello:'Hei. Hva lurer du på?',
+  chips:['Hva koster det?','Prøv gratis','Lastes koden opp?'],
   err:'Fikk ikke kontakt. Prøv igjen, eller send e-post til edin@nokto.no.',cut:'Svaret ble avbrutt da du forlot siden. Spør på nytt.',
-  foot:'Behandles av ElevenLabs for NOKTO, lagres i 30 dager.',priv:'Personvern',unread:'nytt svar'
+  foot:'Drevet av',unread:'nytt svar'
 };
 var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,fine=!matchMedia('(pointer: coarse)').matches;
 function el(t,c,h){var e=d.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e}
@@ -1455,14 +1454,14 @@ var MARK='<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 8v
 
 var panel=el('section','dpc');panel.id='dpc';panel.hidden=true;panel.tabIndex=-1;panel.setAttribute('aria-label',T.name);
 panel.innerHTML=
- '<div class="dpc-h"><span class="dpc-av">'+MARK+'</span><div><strong>'+T.name+'<i>guide</i></strong><span class="dpc-st" aria-live="polite"><b></b><span>'+T.ready+'</span></span></div>'+
+ '<div class="dpc-h"><span class="dpc-logo"><img src="'+ICON+'" alt="" width="26" height="26"><b>DEVPROOF</b></span><span class="dpc-st vh" aria-live="polite"><span>'+T.ready+'</span></span>'+
  '<button type="button" class="dpc-x" aria-label="'+T.close+'">'+X+'</button></div>'+
  '<div class="dpc-log" aria-live="polite"></div>'+
  '<div class="dpc-chips">'+T.chips.map(function(c){return '<button type="button">'+c+'</button>'}).join('')+'</div>'+
  '<form class="dpc-f"><span class="dpc-p" aria-hidden="true">&gt;</span><input type="text" autocomplete="off" maxlength="600" placeholder="'+T.input+'" aria-label="'+T.input+'"><button type="submit" aria-label="'+T.send+'">'+ARR+'</button></form>'+
- '<p class="dpc-ft">'+T.foot+' <a href="#personvern">'+T.priv+'</a></p>';
+ '<p class="dpc-ft">'+T.foot+' <a href="https://nokto.no/" rel="noopener" target="_blank"><img src="'+ICON+'" alt="" width="12" height="12">NOKTO</a></p>';
 d.body.appendChild(panel);
-btn.setAttribute('aria-controls','dpc');btn.setAttribute('aria-expanded','false');
+btn.insertAdjacentHTML('beforeend','<span class="ax">'+X+'</span>');btn.setAttribute('aria-controls','dpc');btn.setAttribute('aria-expanded','false');
 btn.setAttribute('aria-label',EN?'Ask DEVPROOF':'Spør DEVPROOF');
 var $=function(s){return panel.querySelector(s)};
 var log=$('.dpc-log'),st=$('.dpc-st span'),chips=$('.dpc-chips'),form=$('.dpc-f'),input=$('input');
@@ -1547,7 +1546,6 @@ form.addEventListener('submit',function(e){e.preventDefault();send(input.value)}
 panel.addEventListener('click',function(e){var c=e.target.closest&&e.target.closest('.dpc-chips button');if(c)send(c.textContent)});
 input.addEventListener('input',function(){if(conv&&conv.sendUserActivity)conv.sendUserActivity()});
 $('.dpc-x').addEventListener('click',close);
-panel.querySelector('.dpc-ft a').addEventListener('click',function(){close()});
 btn.addEventListener('click',function(){panel.hidden?open():close()});
 d.addEventListener('keydown',function(e){if(e.key=='Escape'&&!panel.hidden)close()});
 addEventListener('pagehide',function(){save();if(conv)conv.endSession().catch(function(){})});
