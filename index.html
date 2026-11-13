@@ -1530,7 +1530,7 @@ function bubble(who,t,restore,fra){
   if(who=='ai'){fra=fra||avsender();if(fra!==sisteAvsender){var f=el('p','dpc-from');f.textContent=fra;log.appendChild(f);sisteAvsender=fra}}else if(who=='user')sisteAvsender='';
   var b=el('p','dpc-m dpc-'+who);if(who=='ai')fill(b,t);else b.textContent=t;
   log.appendChild(b);log.scrollTop=log.scrollHeight;
-  if(!restore&&(who=='ai'||who=='user')){saved.push(who=='ai'?{h:who,t:t,f:fra}:{h:who,t:t});if(saved.length>40)saved.shift();hist.push((who=='ai'?'Guide: ':'Personen: ')+t);if(hist.length>12)hist.shift();save()}
+  if(!restore&&(who=='ai'||who=='user')){saved.push(who=='ai'?{h:who,t:t,f:fra}:{h:who,t:t});if(saved.length>40)saved.shift();hist.push((who=='ai'?(fra||avsender())+': ':'Personen: ')+t);if(hist.length>12)hist.shift();save()}
   if(who=='ai'&&panel.hidden&&!restore){btn.classList.add('unread');btn.setAttribute('aria-label',(EN?'Ask DEV – ':'Spør DEV – ')+T.unread)}
   return b;
 }
@@ -1618,7 +1618,7 @@ addEventListener('pagehide',function(){save();if(conv)conv.endSession().catch(fu
 
 var prev=null;try{prev=JSON.parse(sessionStorage.getItem(KEY)||'null')}catch(e){}
 if(prev&&prev.log&&prev.log.length){
-  prev.log.forEach(function(m){if(m.h=='ai'||m.h=='user'){bubble(m.h,m.t,true,m.f);saved.push(m);hist.push((m.h=='ai'?'Guide: ':'Personen: ')+m.t)}});
+  prev.log.forEach(function(m){if(m.h=='ai'||m.h=='user'){bubble(m.h,m.t,true,m.f);saved.push(m);hist.push((m.h=='ai'?(m.f||'DEV')+': ':'Personen: ')+m.t)}});
   if(prev.wait)bubble('sys',T.cut,true);
   if(prev.open)open(false);
 }
