@@ -1438,13 +1438,13 @@ var T=EN?{
   hello:'Hi. What would you like to know?',
   chips:['What does it cost?','Free trial','Is my code uploaded?'],
   err:'Could not connect. Try again, or email edin@nokto.no.',cut:'The reply was interrupted when you left the page. Ask again.',
-  foot:'Powered by',unread:'new reply'
+  foot:'AI assistant · Powered by',unread:'new reply'
 }:{
   name:'DEVPROOF',ready:'Guide · svarer på sekunder',conn:'Kobler til',typing:'Skriver',input:'Spør om appen eller prisen',send:'Send',close:'Lukk',
   hello:'Hei. Hva lurer du på?',
   chips:['Hva koster det?','Prøv gratis','Lastes koden opp?'],
   err:'Fikk ikke kontakt. Prøv igjen, eller send e-post til edin@nokto.no.',cut:'Svaret ble avbrutt da du forlot siden. Spør på nytt.',
-  foot:'Drevet av',unread:'nytt svar'
+  foot:'KI-assistent · Drevet av',unread:'nytt svar'
 };
 var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,fine=!matchMedia('(pointer: coarse)').matches;
 function el(t,c,h){var e=d.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e}
@@ -1470,7 +1470,7 @@ var conv=null,starting=null,firstAi=false,wait=null,lastAi='',hist=[],saved=[],K
 function save(open){try{sessionStorage.setItem(KEY,JSON.stringify({log:saved,open:open===undefined?!panel.hidden:open,wait:!!wait}))}catch(e){}}
 function dropChips(){if(chips){chips.remove();chips=null}}
 // Lenker: bare devproof.no, Stripe-kassene og edin@nokto.no blir klikkbare.
-var LINK=/(https?:\/\/(?:www\.)?devproof\.no(?:\/[^\s<>()\[\]`*]*[^\s<>()\[\]`*.,;:!?»"'_~])?\/?|https:\/\/buy\.stripe\.com\/[A-Za-z0-9]+(?:\?[^\s<>()\[\]`*]*[^\s<>()\[\]`*.,;:!?»"'_~])?)|((?<![\w.@\/-])(?:www\.)?devproof\.no(?:\/[^\s<>()\[\]`*]*[^\s<>()\[\]`*.,;:!?»"'_~])?)|((?<![\w+.-])edin@nokto\.no)(?![\w-]|\.\w)/gi;
+var LINK=/(https?:\/\/(?:www\.)?devproof\.no(?:\/[^\s<>()\[\]`*]*[^\s<>()\[\]`*.,;:!?»"'_~])?\/?|https:\/\/buy\.stripe\.com\/[A-Za-z0-9]+(?:\?[^\s<>()\[\]`*]*[^\s<>()\[\]`*.,;:!?»"'_~])?|https:\/\/github\.com\/noktohq\/nokto-devproof-download\/releases\/latest)|((?<![\w.@\/-])(?:www\.)?devproof\.no(?:\/[^\s<>()\[\]`*]*[^\s<>()\[\]`*.,;:!?»"'_~])?)|((?<![\w+.-])edin@nokto\.no)(?![\w-]|\.\w)/gi;
 function fill(n,t){
   t=t.replace(/\[([^\]\n]{1,200})\]\((https?:\/\/[^\s)]+)\)/g,'$1 $2').replace(/\*\*([^*\n]+)\*\*/g,'$1').replace(/`([^`\n]+)`/g,'$1');
   var p=0,m;LINK.lastIndex=0;
@@ -1478,7 +1478,7 @@ function fill(n,t){
     if(m.index>p)n.appendChild(d.createTextNode(t.slice(p,m.index)));
     var a=d.createElement('a');
     if(m[3]){a.href='mailto:'+m[3];a.textContent=m[3]}
-    else{var u=m[1]||('https://'+m[2]);a.href=u;a.textContent=/stripe/.test(u)?(EN?'Open checkout':'Åpne kassen'):u.replace(/^https?:\/\/(www\.)?/,'');if(/stripe/.test(u)){a.target='_blank';a.rel='noopener'}}
+    else{var u=m[1]||('https://'+m[2]);a.href=u;a.textContent=/stripe/.test(u)?(EN?'Open checkout':'Åpne kassen'):/github\.com/.test(u)?(EN?'Download for Windows':'Last ned for Windows'):u.replace(/^https?:\/\/(www\.)?/,'');if(/stripe|github\.com/.test(u)){a.target='_blank';a.rel='noopener'}}
     n.appendChild(a);p=LINK.lastIndex;
   }
   if(p<t.length)n.appendChild(d.createTextNode(t.slice(p)));
