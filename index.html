@@ -1497,7 +1497,7 @@ function start(){
   firstAi=true;setSt(T.conn);panel.classList.add('is-conn');
   var prev=hist.slice();
   starting=loadSdk().then(function(C){
-    var o={agentId:AGENT,connectionType:'websocket',textOnly:true,
+    var o={agentId:AGENT,connectionType:'websocket',textOnly:true,dynamicVariables:{source:'widget',page:String(location.pathname).slice(0,200),caller_name:'',caller_company:'',caller_phone:'',caller_email:''},
       onConnect:function(){panel.classList.remove('is-conn');panel.classList.add('is-live');setSt(T.ready)},
       onDisconnect:function(x){noWait();conv=null;panel.classList.remove('is-live','is-conn');setSt(T.ready);if(x&&x.reason=='error')bubble('sys',T.err)},
       onError:function(){noWait();bubble('sys',T.err);setSt(T.ready)},
@@ -1507,10 +1507,11 @@ function start(){
         if(firstAi){firstAi=false;return}
         noWait();bubble('ai',p.message);setSt(T.ready);
       }};
-    if(EN)o.overrides={agent:{language:'en'}};
     return C.startSession(o);
   }).then(function(c){
     conv=c;starting=null;
+    // Engelsk side: agenten får beskjed før første melding (språkvalg som override er sperret i agenten).
+    if(EN&&c.sendContextualUpdate)c.sendContextualUpdate('Personen er på den engelske utgaven av devproof.no (/en/). Svar på engelsk.');
     if(prev.length&&c.sendContextualUpdate)c.sendContextualUpdate('Samtalen fortsetter fra en tidligere økt på devproof.no. Dette er skrevet så langt:\n'+prev.join('\n'));
     return c;
   }).catch(function(e){starting=null;noWait();panel.classList.remove('is-conn');setSt(T.ready);bubble('sys',T.err);throw e});
