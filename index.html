@@ -1478,7 +1478,10 @@ var conv=null,starting=null,firstAi=false,wait=null,lastAi='',hist=[],saved=[],K
 // Rollemerket: Resepsjonen er inngangen og har ikke merke. ID-ene til Salg og Kundeservice står på #agent.
 var ROLLER={};if(btn.dataset.salg)ROLLER[btn.dataset.salg]=T.salg;if(btn.dataset.kundeservice)ROLLER[btn.dataset.kundeservice]=T.kundeservice;
 // Nokto-agentene DEV kan sette over til (Shopify-arbeid). Bare for merket, ikke for gjetting av rolle.
-var EKSTERNE={agent_0301m6mt7540fvmrbg0er3cr0kzq:'NOKTO',agent_0901m6mt7742fdzt3qse8631qs6a:EN?'NOKTO Sales':'NOKTO Salg',agent_1601m7a72vbrfz4bnj3mnmr6wa53:EN?'NOKTO Support':'NOKTO Kundeservice'};
+var EKSTERNE={agent_0301m6mt7540fvmrbg0er3cr0kzq:'NOKTO',agent_0901m6mt7742fdzt3qse8631qs6a:EN?'NOKTO Sales':'NOKTO Salg',agent_1601m7a72vbrfz4bnj3mnmr6wa53:EN?'NOKTO Support':'NOKTO Kundeservice',agent_2001m76bbdqkfdka72m5p23pypjc:'Eltempo',agent_3301m76bbf62fnh80tnt2jzesay7:EN?'Eltempo Sales':'Eltempo Salg',agent_7801m76bbgs0e7t8q693cet03tp7:EN?'Eltempo Support':'Eltempo Kundeservice',agent_0601m76b9akxfswbavb5mf330992:'EYEY',agent_0501m76b9bz1fe1apb13907awx11:EN?'EYEY Sales':'EYEY Salg'};
+// Hvem som følger opp hos partnerne (tom: avhenger av saken, agenten sier det selv). DEVPROOF og NOKTO: Edin.
+var FOLGER={agent_2001m76bbdqkfdka72m5p23pypjc:'',agent_3301m76bbf62fnh80tnt2jzesay7:'Axel',agent_7801m76bbgs0e7t8q693cet03tp7:'',agent_0601m76b9akxfswbavb5mf330992:''};
+function folgerFor(id){return Object.prototype.hasOwnProperty.call(FOLGER,id)?FOLGER[id]:'Edin'}
 function navnFor(id){return Object.prototype.hasOwnProperty.call(ROLLER,id)?ROLLER[id]:Object.prototype.hasOwnProperty.call(EKSTERNE,id)?EKSTERNE[id]:''}
 var rolleEl=$('.dpc-rolle'),rolle='',sprang=0,MAKS_SPRANG=2,sisteKall='';
 function setRolle(id){
@@ -1499,12 +1502,12 @@ function onTool(p){
   if(!til&&ny){var ids=Object.keys(ROLLER);til=ids.length==1?ids[0]:rolle?ids.filter(function(i){return i!==rolle})[0]:null}
   if(til||ny)setRolle(til);
   // Synlig skille i samtalen, så personen ser at en annen svarer nå (målet er ofte ukjent for klienten).
-  if(ny){dropChips();var n=til?navnFor(til):'';var d=el('p','dpc-m dpc-handoff');var sp=el('span');sp.textContent=(!n?T.satt:T.til+(/NOKTO/.test(n)?n:n.toLowerCase()))+T.folger;d.appendChild(sp);log.appendChild(d);log.scrollTop=log.scrollHeight}
+  if(ny){dropChips();var n=til?navnFor(til):'';var d=el('p','dpc-m dpc-handoff');var sp=el('span');var fo=til?folgerFor(til):'Edin';sp.textContent=(!n?T.satt:T.til+(/^(Salg|Kundeservice|Sales|Support)$/.test(n)?n.toLowerCase():n))+(fo?T.folger.replace('Edin',fo):'');d.appendChild(sp);log.appendChild(d);log.scrollTop=log.scrollHeight}
 }
 function save(open){try{sessionStorage.setItem(KEY,JSON.stringify({log:saved,open:open===undefined?!panel.hidden:open,wait:!!wait}))}catch(e){}}
 function dropChips(){if(chips){chips.remove();chips=null}}
 // Lenker: bare devproof.no, Stripe-kassene og edin@nokto.no blir klikkbare.
-var LINK=/(https?:\/\/(?:www\.)?devproof\.no(?:\/[^\s<>()\[\]`*]*[^\s<>()\[\]`*.,;:!?»"'_~])?\/?|https:\/\/buy\.stripe\.com\/[A-Za-z0-9]+(?:\?[^\s<>()\[\]`*]*[^\s<>()\[\]`*.,;:!?»"'_~])?|https:\/\/github\.com\/noktohq\/nokto-devproof-download\/releases\/latest)|((?<![\w.@\/-])(?:www\.)?devproof\.no(?:\/[^\s<>()\[\]`*]*[^\s<>()\[\]`*.,;:!?»"'_~])?)|((?<![\w+.-])edin@nokto\.no)(?![\w-]|\.\w)/gi;
+var LINK=/(https?:\/\/(?:www\.)?(?:devproof|nokto|eltempo|eyey)\.no(?:\/[^\s<>()\[\]`*]*[^\s<>()\[\]`*.,;:!?»"'_~])?\/?|https:\/\/buy\.stripe\.com\/[A-Za-z0-9]+(?:\?[^\s<>()\[\]`*]*[^\s<>()\[\]`*.,;:!?»"'_~])?|https:\/\/github\.com\/noktohq\/nokto-devproof-download\/releases\/latest)|((?<![\w.@\/-])(?:www\.)?devproof\.no(?:\/[^\s<>()\[\]`*]*[^\s<>()\[\]`*.,;:!?»"'_~])?)|((?<![\w+.-])edin@nokto\.no)(?![\w-]|\.\w)/gi;
 function fill(n,t){
   t=t.replace(/\[([^\]\n]{1,200})\]\((https?:\/\/[^\s)]+)\)/g,'$1 $2').replace(/\*\*([^*\n]+)\*\*/g,'$1').replace(/`([^`\n]+)`/g,'$1');
   var p=0,m;LINK.lastIndex=0;
@@ -1512,7 +1515,7 @@ function fill(n,t){
     if(m.index>p)n.appendChild(d.createTextNode(t.slice(p,m.index)));
     var a=d.createElement('a');
     if(m[3]){a.href='mailto:'+m[3];a.textContent=m[3]}
-    else{var u=m[1]||('https://'+m[2]);a.href=u;a.textContent=/stripe/.test(u)?(EN?'Open checkout':'Åpne kassen'):/github\.com/.test(u)?(EN?'Download for Windows':'Last ned for Windows'):u.replace(/^https?:\/\/(www\.)?/,'');if(/stripe|github\.com/.test(u)){a.target='_blank';a.rel='noopener'}}
+    else{var u=m[1]||('https://'+m[2]);a.href=u;a.textContent=/stripe/.test(u)?(EN?'Open checkout':'Åpne kassen'):/github\.com/.test(u)?(EN?'Download for Windows':'Last ned for Windows'):u.replace(/^https?:\/\/(www\.)?/,'');if(/stripe|github\.com|(nokto|eltempo|eyey)\.no/.test(u)){a.target='_blank';a.rel='noopener'}}
     n.appendChild(a);p=LINK.lastIndex;
   }
   if(p<t.length)n.appendChild(d.createTextNode(t.slice(p)));
