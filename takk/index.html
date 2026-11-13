@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Takk for kjøpet – DEVPROOF</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#060806">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#060806;--bg-2:#0a0d0a;--surface:#0f140f;--surface-2:#151b15;--panel:#111711;--panel-2:#172017;
+  --line:rgba(240,255,244,.08);--line-strong:rgba(240,255,244,.16);
+  --text:#f0fff4;--text-2:#c6d1c7;--muted:#8b9a8c;
+  --green:#95BF47;--accent:#B8E05A;--accent-ink:#0b1206;--warn:#f2c36b;
+  --r:20px;--r-lg:28px;--shadow:0 24px 64px rgba(0,0,0,.55);
+  --glow:0 0 0 1px rgba(184,224,90,.28),0 20px 60px -10px rgba(149,191,71,.35);
+  --tight:-.032em;--serif:'Instrument Serif',Georgia,'Times New Roman',serif;
+  --mono:ui-monospace,'SF Mono','Cascadia Mono',Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,'Segoe UI',sans-serif;font-size:16.5px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.05;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+a{color:inherit;text-decoration:none}
+em.s{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--accent);letter-spacing:-.01em}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+.micro{font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+[hidden]{display:none!important}
+
+nav{position:sticky;top:0;z-index:50;background:rgba(6,8,6,.78);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:20px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:.16em;font-size:15px}
+.brand img{width:28px;height:28px}
+.brand small{font-weight:500;letter-spacing:.02em;color:var(--muted);font-size:12.5px}
+.navlink{font-size:14px;color:var(--text-2);font-weight:500}
+.navlink:hover{color:var(--text)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:999px;padding:15px 26px;font:inherit;font-weight:700;font-size:15.5px;transition:transform .18s,box-shadow .18s,background .18s,border-color .18s;white-space:nowrap;cursor:pointer;border:0}
+.btn svg{width:16px;height:16px;flex:none}
+.btn-a{background:var(--accent);color:var(--accent-ink);box-shadow:var(--glow)}
+.btn-a:hover{background:#c6ea6c;transform:translateY(-1px)}
+.btn-g{border:1px solid var(--line-strong);color:var(--text);background:rgba(240,255,244,.02)}
+.btn-g:hover{border-color:rgba(240,255,244,.32);background:rgba(240,255,244,.05)}
+.btn:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.pill{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line-strong);background:rgba(15,20,15,.7);border-radius:999px;padding:7px 14px 7px 12px;color:var(--text-2)}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px rgba(184,224,90,.18),0 0 12px rgba(184,224,90,.7);flex:none}
+.pill.warn .dot{background:var(--warn);box-shadow:0 0 0 3px rgba(242,195,107,.18),0 0 12px rgba(242,195,107,.6)}
+
+main{flex:1;position:relative;overflow:hidden;padding:72px 0 96px}
+main:before{content:"";position:absolute;right:-18%;top:-22%;width:900px;height:900px;background:radial-gradient(circle,rgba(149,191,71,.15),transparent 62%);pointer-events:none}
+main .wrap{position:relative}
+h1{font-size:clamp(40px,6vw,72px);line-height:.98;letter-spacing:var(--tight);font-weight:800;margin:22px 0 18px}
+h1 em.s{font-size:1.08em;line-height:.9}
+.lead{font-size:clamp(17px,1.6vw,19px);color:var(--text-2);max-width:600px;margin:0 0 40px}
+
+/* state card */
+.panel{position:relative;border-radius:var(--r-lg);padding:34px;background:linear-gradient(180deg,var(--panel-2),var(--panel));border:1px solid var(--line)}
+.panel.hot{border-color:rgba(184,224,90,.45);box-shadow:var(--glow);background:radial-gradient(120% 80% at 100% 0%,rgba(149,191,71,.14),transparent 60%),linear-gradient(180deg,var(--panel-2),var(--panel))}
+.panel h2{font-size:clamp(22px,2.4vw,28px);line-height:1.15;letter-spacing:-.02em;margin:0 0 8px;font-weight:700}
+.panel p{margin:0;color:var(--text-2)}
+.panel .muted{color:var(--muted);font-size:14.5px}
+.row{display:flex;align-items:center;gap:18px}
+.spin{flex:none;width:44px;height:44px;border-radius:50%;border:3px solid rgba(184,224,90,.16);border-top-color:var(--accent);animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.ic{flex:none;display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:rgba(184,224,90,.1);border:1px solid rgba(184,224,90,.28);color:var(--accent)}
+.ic svg{width:21px;height:21px}
+.ic.warn{background:rgba(242,195,107,.08);border-color:rgba(242,195,107,.3);color:var(--warn)}
+.bar{height:3px;border-radius:3px;background:rgba(240,255,244,.06);margin-top:26px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--green),var(--accent));border-radius:3px;transition:width .9s linear}
+
+.keylabel{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:26px 0 10px;color:var(--muted)}
+.keybox{font-family:var(--mono);font-size:13.5px;line-height:1.65;color:var(--text);background:rgba(6,8,6,.75);border:1px solid var(--line-strong);border-radius:14px;padding:16px 18px;word-break:break-all;overflow-wrap:anywhere;user-select:all;-webkit-user-select:all;max-height:220px;overflow:auto}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px;align-items:center}
+.copied{font-size:14px;color:var(--accent);font-weight:600}
+.copied.warn{color:var(--warn)}
+.save{display:flex;gap:12px;margin-top:22px;padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:rgba(15,20,15,.55);color:var(--text-2);font-size:14.5px}
+.save svg{flex:none;width:18px;height:18px;margin-top:2px;color:var(--accent)}
+.ref{font-family:var(--mono);font-size:12.5px;color:var(--muted);word-break:break-all;margin-top:14px}
+
+/* steps */
+.steps-head{margin:64px 0 22px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--accent)}
+.eyebrow:before{content:"";width:22px;height:1px;background:var(--accent)}
+.steps-head h2{font-size:clamp(28px,3.4vw,42px);line-height:1.05;letter-spacing:var(--tight);margin:14px 0 0;font-weight:800}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;list-style:none;padding:0;margin:0}
+.step{position:relative;background:linear-gradient(180deg,var(--panel-2),var(--panel));border:1px solid var(--line);border-radius:var(--r);padding:26px 26px 24px;overflow:hidden;transition:border-color .25s,transform .25s}
+.step:hover{border-color:rgba(184,224,90,.35);transform:translateY(-2px)}
+.step .k{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--accent);color:var(--accent-ink);font-size:12.5px;font-weight:800;margin-bottom:16px;box-shadow:0 0 0 4px rgba(184,224,90,.14)}
+.step b{display:block;font-size:17.5px;margin-bottom:6px;letter-spacing:-.015em;line-height:1.35}
+.step p{margin:0;color:var(--muted);font-size:15px}
+.step .btn{margin-top:18px;padding:11px 18px;font-size:14px}
+.step a.inl{color:var(--accent)}
+.step a.inl:hover{text-decoration:underline}
+
+footer{border-top:1px solid var(--line);padding:32px 0;color:var(--muted);font-size:13.5px;background:var(--bg-2)}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+footer .l{display:flex;align-items:center;gap:14px}
+footer .l img{width:24px;height:24px}
+footer .r{display:flex;gap:22px;flex-wrap:wrap}
+footer a:hover{color:var(--text)}
+
+@media (max-width:860px){.steps{grid-template-columns:1fr}}
+@media (max-width:640px){
+  .wrap{padding:0 16px}
+  .brand small{display:none}
+  main{padding:44px 0 72px}
+  .lead{margin-bottom:30px}
+  .panel{padding:24px 20px;border-radius:var(--r)}
+  .row{align-items:flex-start;gap:14px}
+  .spin,.ic{width:38px;height:38px}
+  .actions .btn{width:100%}
+  .keybox{font-size:12.5px;padding:14px}
+  .steps-head{margin-top:48px}
+}
+@media (prefers-reduced-motion:reduce){.spin{animation-duration:3s}.bar i{transition:none}.step,.btn{transition:none}}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <a class="brand" href="https://devproof.no/"><img src="/assets/icon.svg" alt="">DEVPROOF <small>av NOKTO</small></a>
+  <a class="navlink" href="mailto:edin@nokto.no">edin@nokto.no</a>
+</div></nav>
+
+<main><div class="wrap">
+  <span class="pill micro" id="pill"><span class="dot"></span><span id="pill-text">Henter lisens</span></span>
+  <h1>Takk for <em class="s">kjøpet</em>.</h1>
+  <p class="lead" id="lead">Her får du lisensnøkkelen og alt du trenger for å komme i gang med DEVPROOF.</p>
+
+  <!-- pending -->
+  <section class="panel" id="st-pending" aria-live="polite">
+    <div class="row">
+      <span class="spin" aria-hidden="true"></span>
+      <div>
+        <h2>Henter lisensnøkkelen …</h2>
+        <p class="muted">Vi venter på bekreftelse fra Stripe. Det tar vanligvis noen sekunder. Ikke lukk siden.</p>
+      </div>
+    </div>
+    <div class="bar" aria-hidden="true"><i id="bar"></i></div>
+  </section>
+
+  <!-- success -->
+  <section class="panel hot" id="st-success" hidden aria-live="polite">
+    <div class="row">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M4.5 10.3l3.4 3.4 7.6-7.7" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <div>
+        <h2>Lisensen er klar</h2>
+        <p class="muted" id="licensed-to">Fornyes automatisk sammen med abonnementet.</p>
+      </div>
+    </div>
+    <div class="keylabel"><span class="micro">Lisensnøkkel</span></div>
+    <div class="keybox" id="key" tabindex="0" aria-label="Lisensnøkkel"></div>
+    <div class="actions">
+      <button class="btn btn-a" type="button" id="copy"><svg viewBox="0 0 16 16" fill="none"><rect x="5" y="5" width="8.5" height="8.5" rx="1.8" stroke="currentColor" stroke-width="1.6"/><path d="M10.5 3.2V3a1 1 0 00-1-1H3.3a1 1 0 00-1 1v6.3a1 1 0 001 1h.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span id="copy-label">Kopier nøkkel</span></button>
+      <span class="copied" id="copied" role="status"></span>
+    </div>
+    <div class="save">
+      <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 2.5l6 2.5v4.5c0 4-2.7 6.7-6 8-3.3-1.3-6-4-6-8V5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+      <span>Ta vare på nøkkelen, for eksempel i passordbehandleren din. Du kan åpne denne siden igjen fra samme lenke for å hente den på nytt.</span>
+    </div>
+  </section>
+
+  <!-- error / timeout -->
+  <section class="panel" id="st-error" hidden aria-live="polite">
+    <div class="row">
+      <span class="ic warn" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7.2" stroke="currentColor" stroke-width="1.6"/><path d="M10 6.2v4.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="10" cy="13.7" r="1" fill="currentColor"/></svg></span>
+      <div>
+        <h2>Vi fant ikke kjøpet ennå</h2>
+        <p class="muted" id="error-text">Betalingen kan fortsatt være under behandling. Prøv igjen om litt. Kommer nøkkelen ikke, skriv til edin@nokto.no med kjøpsreferansen, så sender vi nøkkelen.</p>
+      </div>
+    </div>
+    <div class="actions">
+      <button class="btn btn-a" type="button" id="retry">Prøv igjen</button>
+      <a class="btn btn-g" id="mail" href="mailto:edin@nokto.no">Skriv til edin@nokto.no</a>
+    </div>
+    <p class="ref" id="ref"></p>
+  </section>
+
+  <!-- no session id -->
+  <section class="panel" id="st-none" hidden>
+    <div class="row">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M5 2.5h7l3.5 3.5v11.5H5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8 10h5M8 13h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+      <div>
+        <h2>Denne siden vises etter et kjøp</h2>
+        <p class="muted">Vi fant ingen kjøpsreferanse i lenken. Har du betalt, skriv til edin@nokto.no med kvitteringen fra betalingen, så sender vi nøkkelen.</p>
+      </div>
+    </div>
+    <div class="actions">
+      <a class="btn btn-a" href="https://devproof.no/">Gå til devproof.no<svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a class="btn btn-g" href="mailto:edin@nokto.no">Skriv til oss</a>
+    </div>
+  </section>
+
+  <div id="steps-wrap">
+    <div class="steps-head">
+      <span class="eyebrow micro">Kom i gang</span>
+      <h2>Tre steg, så er du <em class="s">i gang</em>.</h2>
+    </div>
+    <ol class="steps">
+      <li class="step"><span class="k">1</span><b>Last ned DEVPROOF for Windows</b><p>Siste versjon ligger alltid på samme sted.</p>
+        <a class="btn btn-g" href="https://github.com/noktohq/nokto-devproof-download/releases/latest" rel="noopener">Last ned<svg viewBox="0 0 16 16" fill="none"><path d="M8 2.5v8M4.5 7.5L8 11l3.5-3.5M3 13.5h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+      <li class="step"><span class="k">2</span><b>Installer og åpne appen</b><p>Sier Windows «Windows beskyttet PC-en», velger du «Mer info» og «Kjør likevel». Installasjonsfilen er ennå ikke kodesignert.</p></li>
+      <li class="step"><span class="k">3</span><b>Lim inn nøkkelen når appen ber om den</b><p>Eller under Innstillinger → Lisens.</p></li>
+    </ol>
+  </div>
+</div></main>
+
+<footer><div class="wrap">
+  <div class="l"><img src="/assets/icon.svg" alt=""><span>DEVPROOF er laget av NOKTO · Org.nr. 929 345 029</span></div>
+  <div class="r"><a href="mailto:edin@nokto.no">edin@nokto.no</a><a href="https://devproof.no/">devproof.no</a></div>
+</div></footer>
+
+<script>
+// ===== CONFIG: base URL of the license server (Cloudflare Worker), no trailing slash =====
+const LICENSE_URL = "https://REPLACE.workers.dev";
+// =========================================================================================
+
+(function () {
+  'use strict';
+  var POLL_MS = 3000, MAX_MS = 90000, REQ_TIMEOUT_MS = 10000;
+  var SESSION_RE = /^cs_(live|test)_[A-Za-z0-9]+$/;
+  var $ = function (id) { return document.getElementById(id); };
+  var states = ['pending', 'success', 'error', 'none'];
+  var sessionId = (new URLSearchParams(location.search).get('session_id') || '').trim();
+  var started = 0, timer = null, barTimer = null, licenseKey = '';
+
+  function show(name) {
+    states.forEach(function (s) { $('st-' + s).hidden = s !== name; });
+    var pill = $('pill'), txt = $('pill-text');
+    pill.classList.toggle('warn', name === 'error');
+    txt.textContent = name === 'success' ? 'Betaling bekreftet'
+      : name === 'error' ? 'Venter på bekreftelse'
+      : name === 'none' ? 'DEVPROOF' : 'Henter lisens';
+    if (name === 'none') {
+      $('lead').textContent = 'Lisensnøkkelen vises her rett etter betaling.';
+    }
+  }
+
+  function setMailto() {
+    var subject = 'DEVPROOF-lisens: finner ikke kjøpet (' + sessionId + ')';
+    var body = 'Hei,\n\nJeg har kjøpt DEVPROOF, men takkesiden fant ikke lisensnøkkelen.\n\nKjøpsreferanse: ' + sessionId + '\n';
+    $('mail').href = 'mailto:edin@nokto.no?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    $('ref').textContent = 'Kjøpsreferanse: ' + sessionId;
+  }
+
+  function fail(text) {
+    clearTimeout(timer); clearInterval(barTimer);
+    if (text) $('error-text').textContent = text;
+    setMailto();
+    show('error');
+  }
+
+  function success(data) {
+    clearTimeout(timer); clearInterval(barTimer);
+    licenseKey = String(data.key || '').trim();
+    $('key').textContent = licenseKey;
+    if (data.email) $('licensed-to').textContent = 'Registrert på ' + data.email + '. Fornyes sammen med abonnementet.';
+    show('success');
+  }
+
+  function progress() {
+    var pct = Math.min(100, ((Date.now() - started) / MAX_MS) * 100);
+    $('bar').style.width = pct.toFixed(1) + '%';
+  }
+
+  function next() {
+    if (Date.now() - started + POLL_MS > MAX_MS) { fail(); return; }
+    timer = setTimeout(poll, POLL_MS);
+  }
+
+  function poll() {
+    var ctrl = 'AbortController' in window ? new AbortController() : null;
+    var to = ctrl ? setTimeout(function () { ctrl.abort(); }, REQ_TIMEOUT_MS) : null;
+    fetch(LICENSE_URL + '/v1/claim?session_id=' + encodeURIComponent(sessionId), {
+      method: 'GET', cache: 'no-store', credentials: 'omit', signal: ctrl ? ctrl.signal : undefined
+    }).then(function (res) {
+      clearTimeout(to);
+      if (res.status === 200) {
+        return res.json().then(function (d) { if (d && d.key) success(d); else next(); });
+      }
+      if (res.status === 202) { next(); return; }
+      if (res.status === 400 || res.status === 404) {
+        fail('Vi kjenner ikke igjen denne kjøpsreferansen. Skriv til edin@nokto.no med kjøpsreferansen, så sender vi nøkkelen.');
+        return;
+      }
+      next(); // 5xx and other transient answers: keep trying until the time limit
+    }).catch(function () { clearTimeout(to); next(); });
+  }
+
+  function start() {
+    started = Date.now();
+    $('bar').style.width = '0%';
+    show('pending');
+    clearInterval(barTimer);
+    barTimer = setInterval(progress, 1000);
+    poll();
+  }
+
+  function copied(ok) {
+    var el = $('copied');
+    el.classList.toggle('warn', !ok);
+    el.textContent = ok ? 'Kopiert' : 'Merk nøkkelen og kopier den med Ctrl+C';
+    if (ok) {
+      $('copy-label').textContent = 'Kopiert';
+      setTimeout(function () { $('copy-label').textContent = 'Kopier nøkkel'; el.textContent = ''; }, 2500);
+    } else {
+      var r = document.createRange(); r.selectNodeContents($('key'));
+      var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
+    }
+  }
+
+  function fallbackCopy(text) {
+    var ta = document.createElement('textarea');
+    ta.value = text; ta.setAttribute('readonly', '');
+    ta.style.position = 'fixed'; ta.style.top = '0'; ta.style.left = '0'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    var ok = false;
+    try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+    document.body.removeChild(ta);
+    return ok;
+  }
+
+  $('copy').addEventListener('click', function () {
+    if (!licenseKey) return;
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(licenseKey).then(function () { copied(true); }, function () { copied(fallbackCopy(licenseKey)); });
+    } else {
+      copied(fallbackCopy(licenseKey));
+    }
+  });
+  $('retry').addEventListener('click', start);
+
+  if (!SESSION_RE.test(sessionId)) { show('none'); return; }
+  start();
+})();
+</script>
+</body>
+</html>
