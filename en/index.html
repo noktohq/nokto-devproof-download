@@ -15,8 +15,8 @@
 <meta property="og:site_name" content="DEVPROOF">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="nb_NO">
-<meta property="og:image" content="https://devproof.no/assets/og-en-1200.jpg">
-<meta property="og:image:secure_url" content="https://devproof.no/assets/og-en-1200.jpg">
+<meta property="og:image" content="https://devproof.no/assets/og-en-1200.jpg?v=1113">
+<meta property="og:image:secure_url" content="https://devproof.no/assets/og-en-1200.jpg?v=1113">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:type" content="image/jpeg">
@@ -24,7 +24,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="DEVPROOF – Prove your work">
 <meta name="twitter:description" content="Auto time tracking from Git and VS Code. Client reports, your logo.">
-<meta name="twitter:image" content="https://devproof.no/assets/og-en-1200.jpg">
+<meta name="twitter:image" content="https://devproof.no/assets/og-en-1200.jpg?v=1113">
 <meta name="twitter:image:alt" content="DEVPROOF – stop explaining, start proving. Client report with your own logo.">
 <link rel="alternate" hreflang="nb" href="https://devproof.no/">
 <link rel="alternate" hreflang="no" href="https://devproof.no/">
@@ -538,6 +538,50 @@ html:has(#sbar.on) .agent{bottom:calc(88px + env(safe-area-inset-bottom))}
 .btn svg{flex:none}
 .tier .btn{white-space:normal;text-align:center}
 @media (min-width:1100px) and (max-width:1399px){.tier{padding:34px 26px 26px}.tier .btn{padding:15px 16px;font-size:15px;gap:8px}.tl{font-size:11.5px;padding:12px 14px}.tl li{gap:10px}.tl li span{min-width:8ch}}
+.agent.unread:after{content:"";position:absolute;top:6px;right:8px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px #0a0e0a}
+.dpc-open .agent{border-color:var(--accent)}
+.dpc{padding:0;margin:0;position:fixed;right:20px;bottom:calc(84px + env(safe-area-inset-bottom));z-index:59;width:min(400px,calc(100vw - 40px));height:min(600px,calc(100dvh - 120px));display:flex;flex-direction:column;border-radius:22px;border:1px solid var(--line-strong);background:linear-gradient(180deg,#0f150f,#090c09);box-shadow:0 30px 80px rgba(0,0,0,.7),0 0 0 1px rgba(184,224,90,.08),0 0 60px -20px rgba(149,191,71,.45);overflow:hidden;font-family:Inter,'Inter Fallback',system-ui,sans-serif;transform-origin:100% 100%;animation:dpcIn .22s cubic-bezier(.2,.8,.2,1)}
+.dpc:focus{outline:0}
+@keyframes dpcIn{from{opacity:0;transform:translateY(10px) scale(.98)}}
+@media (prefers-reduced-motion:reduce){.dpc{animation:none}}
+.dpc-h{display:flex;align-items:center;gap:12px;padding:14px 14px 14px 16px;border-bottom:1px solid var(--line);background:rgba(184,224,90,.03)}
+.dpc-h>div{flex:1;min-width:0}
+.dpc-av{flex:none;display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:#0b120b;border:1px solid rgba(184,224,90,.35);color:var(--accent)}
+.dpc-av svg{width:20px;height:20px}
+.dpc-h strong{display:flex;align-items:baseline;gap:8px;font-size:15px;letter-spacing:.02em}
+.dpc-h strong i{font:500 11px/1 var(--mono);font-style:normal;color:var(--muted);letter-spacing:0}
+.dpc-st{display:flex;align-items:center;gap:7px;margin-top:3px;font:12px/1.2 var(--mono);color:var(--muted)}
+.dpc-st b{width:7px;height:7px;border-radius:50%;background:#4a564a;flex:none}
+.dpc.is-live .dpc-st b{background:var(--accent);box-shadow:0 0 10px var(--accent)}
+.dpc.is-conn .dpc-st b{background:var(--n);animation:blink 1s steps(1) infinite}
+.dpc-x{flex:none;display:grid;place-items:center;width:36px;height:36px;border-radius:10px;border:1px solid transparent;background:none;color:var(--text-2);cursor:pointer}
+.dpc-x:hover{border-color:var(--line-strong);color:var(--text)}
+.dpc-x svg,.dpc-f button svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.dpc-log{flex:1;overflow-y:auto;overscroll-behavior:contain;padding:18px 16px 8px;display:flex;flex-direction:column;gap:10px;scrollbar-width:thin;scrollbar-color:#253025 transparent}
+.dpc-m{margin:0;max-width:86%;padding:10px 13px;border-radius:14px;font-size:14.5px;line-height:1.5;white-space:pre-line;overflow-wrap:anywhere}
+.dpc-ai{align-self:flex-start;background:#141b14;border:1px solid var(--line);color:var(--text);border-top-left-radius:4px}
+.dpc-user{align-self:flex-end;background:var(--accent);color:var(--accent-ink);font-weight:500;border-top-right-radius:4px}
+.dpc-sys{align-self:center;max-width:100%;background:none;color:var(--muted);font:12px/1.5 var(--mono);text-align:center;padding:4px 8px}
+.dpc-ai a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+.dpc-w{display:flex;gap:5px;padding:14px 15px}
+.dpc-w i{width:6px;height:6px;border-radius:50%;background:var(--muted);animation:dpcDot 1s infinite}
+.dpc-w i:nth-child(2){animation-delay:.15s}.dpc-w i:nth-child(3){animation-delay:.3s}
+@keyframes dpcDot{0%,60%,100%{opacity:.3;transform:none}30%{opacity:1;transform:translateY(-3px)}}
+.dpc-chips{display:flex;flex-wrap:wrap;gap:8px;padding:4px 16px 12px}
+.dpc-chips button{border:1px solid rgba(184,224,90,.3);background:rgba(184,224,90,.05);color:var(--text-2);border-radius:999px;padding:7px 12px;font:13px/1.2 Inter,'Inter Fallback',system-ui,sans-serif;cursor:pointer}
+.dpc-chips button:hover{border-color:var(--accent);color:var(--text)}
+.dpc-f{display:flex;align-items:center;gap:8px;margin:0 12px;padding:6px 6px 6px 14px;border:1px solid var(--line-strong);border-radius:14px;background:#070a07}
+.dpc-f:focus-within{border-color:rgba(184,224,90,.6);box-shadow:0 0 0 3px rgba(184,224,90,.12)}
+.dpc-p{font:600 14px/1 var(--mono);color:var(--accent)}
+.dpc-f input{flex:1;min-width:0;border:0;background:none;color:var(--text);font:16px/1.4 Inter,'Inter Fallback',system-ui,sans-serif;padding:8px 0;outline:0}
+.dpc-f input::placeholder{color:#6f7d70}
+.dpc-f button{flex:none;display:grid;place-items:center;width:38px;height:38px;border:0;border-radius:10px;background:var(--accent);color:var(--accent-ink);cursor:pointer}
+.dpc-ft{margin:0;padding:10px 16px 12px;font:11.5px/1.4 var(--mono);color:#6f7d70}
+.dpc-ft a{color:var(--text-2);text-decoration:underline;text-underline-offset:2px}
+@media (max-width:860px){
+.dpc{left:8px;right:8px;width:auto;bottom:calc(8px + env(safe-area-inset-bottom));height:min(640px,calc(100dvh - 16px));border-radius:20px}
+.dpc-open .agent,.dpc-open .sbar{display:none!important}
+}
 </style>
 <script type="application/ld+json">
 {
@@ -602,7 +646,7 @@ html:has(#sbar.on) .agent{bottom:calc(88px + env(safe-area-inset-bottom))}
    },
    "primaryImageOfPage": {
     "@type": "ImageObject",
-    "url": "https://devproof.no/assets/og-en-1200.jpg",
+    "url": "https://devproof.no/assets/og-en-1200.jpg?v=1113",
     "width": 2400,
     "height": 1260
    },
@@ -624,7 +668,7 @@ html:has(#sbar.on) .agent{bottom:calc(88px + env(safe-area-inset-bottom))}
    "inLanguage": "nb",
    "description": "DEVPROOF connects your working day in Git, GitHub, VS Code and Claude Code to what you actually delivered – and gives your client a report with your own logo.",
    "url": "https://devproof.no/en/",
-   "image": "https://devproof.no/assets/og-en-1200.jpg",
+   "image": "https://devproof.no/assets/og-en-1200.jpg?v=1113",
    "screenshot": [
     "https://devproof.no/assets/rapport-s1.webp",
     "https://devproof.no/assets/rapport-s2.webp",
@@ -1093,6 +1137,11 @@ html:has(#sbar.on) .agent{bottom:calc(88px + env(safe-area-inset-bottom))}
         <li>Unlimited projects</li>
         <li>Automatic updates</li>
       </ul>
+      <ol class="tl mono" aria-label="How Solo is charged">
+        <li><span>day 0–14</span>free, nothing is charged</li>
+        <li><span>day 14</span>NOK&nbsp;1,250, first year</li>
+        <li><span>year 2 →</span>NOK&nbsp;2,500 per year</li>
+      </ol>
       <a class="btn btn-a" href="https://buy.stripe.com/14AeVdgCGe7r0RjgMHdfG0u?prefilled_promo_code=BLACKFRIDAY50">Try free – then NOK&nbsp;1,250<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
     <div class="tier">
@@ -1107,10 +1156,14 @@ html:has(#sbar.on) .agent{bottom:calc(88px + env(safe-area-inset-bottom))}
         <li>Email support from NOKTO</li>
         <li>No commitment beyond the year you paid for</li>
       </ul>
-      <ol class="tl mono" aria-label="How Solo is charged">
+      <ol class="tl mono" data-bf aria-label="After the first year">
+        <li><span>year 2 →</span>NOK&nbsp;2,500 per year</li>
+        <li><span>cancel</span>before the renewal date</li>
+        <li><span>lock-in</span>none beyond the paid year</li>
+      </ol>
+      <a class="btn btn-b" href="https://buy.stripe.com/14AeVdgCGe7r0RjgMHdfG0u?prefilled_promo_code=BLACKFRIDAY50" data-bf>Choose Solo – NOK&nbsp;1,250 first year<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <ol class="tl mono" aria-label="How Solo is charged" data-after-bf hidden>
         <li><span>day 0–14</span>free, nothing is charged</li>
-        <li data-bf><span>day 14</span>NOK&nbsp;1,250, first year</li>
-        <li data-bf><span>year 2 →</span>NOK&nbsp;2,500 per year</li>
         <li data-after-bf hidden><span>day 14 →</span>NOK&nbsp;2,500 per year</li>
       </ol>
       <a class="btn btn-a" href="https://buy.stripe.com/14AeVdgCGe7r0RjgMHdfG0u?prefilled_promo_code=BLACKFRIDAY50" data-after-bf hidden>Try free – then NOK&nbsp;2,500 per year<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
@@ -1169,7 +1222,7 @@ html:has(#sbar.on) .agent{bottom:calc(88px + env(safe-area-inset-bottom))}
 </div></section>
 </main>
 <div class="sbar" id="sbar" data-bf aria-hidden="true"><div class="i"><b>NOK&nbsp;1,250</b><s>NOK&nbsp;2,500</s><small><i>−50%</i> first year · ends in <span class="cdi">–</span></small></div><a class="btn btn-a" tabindex="-1" href="https://buy.stripe.com/14AeVdgCGe7r0RjgMHdfG0u?prefilled_promo_code=BLACKFRIDAY50">Try free<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
-<button type="button" class="agent" id="agent" data-src="../assets/vendor/convai-widget-embed-0.22.2.js" data-agent="agent_4401m79mvp9sepgssr57ysbxjzrq" data-lang="en" aria-label="Ask DEVPROOF – opens the guide from ElevenLabs"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 8v4M6.5 5v10M10 3v14M13.5 6v8M17 8.5v3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span class="al">Ask DEVPROOF</span></button>
+<button type="button" class="agent" id="agent" data-src="../assets/js/dp-sdk.js?v=1250" data-agent="agent_4401m79mvp9sepgssr57ysbxjzrq"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 8v4M6.5 5v10M10 3v14M13.5 6v8M17 8.5v3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span class="al">Ask DEVPROOF</span></button>
 
 <footer><div class="wrap">
   <nav class="fnav" id="contents" aria-label="Contents"><ul>
@@ -1375,25 +1428,136 @@ d.addEventListener('keydown',function(e){
 });
 })();
 
-/* spør devproof: ElevenLabs lastes først ved klikk */
+/* spør devproof: egen chat mot ElevenLabs-agenten. Tekst over websocket, ingen widget.
+   SDK-en (assets/js/dp-sdk.js) lastes først når panelet åpnes. */
 (function(){
-var d=document,b=d.getElementById('agent');if(!b)return;
-var EN=d.documentElement.lang=='en',lbl=b.querySelector('.al'),txt=lbl.textContent;
-b.addEventListener('click',function(){
-  if(b.getAttribute('aria-busy')=='true')return;
-  b.setAttribute('aria-busy','true');b.classList.add('busy');lbl.textContent=EN?'Loading …':'Laster …';
-  var done=function(){
-    var el=d.createElement('elevenlabs-convai');
-    el.setAttribute('agent-id',b.dataset.agent);el.setAttribute('default-expanded','true');el.setAttribute('dismissible','true');
-    if(b.dataset.lang)el.setAttribute('override-language',b.dataset.lang);
-    d.body.appendChild(el);d.documentElement.classList.add('agent-on');b.hidden=true;
-  };
-  if(customElements.get('elevenlabs-convai'))return done();
-  var s=d.createElement('script');s.src=b.dataset.src;s.async=true;
-  s.onload=done;
-  s.onerror=function(){s.remove();b.removeAttribute('aria-busy');b.classList.remove('busy');lbl.textContent=EN?'Could not load – try again':'Kunne ikke laste – prøv igjen'};
-  d.head.appendChild(s);
-});
+'use strict';
+var d=document,btn=d.getElementById('agent');if(!btn||!window.WebSocket)return;
+var EN=d.documentElement.lang=='en',AGENT=btn.dataset.agent,SDK=btn.dataset.src;
+var T=EN?{
+  name:'DEVPROOF',ready:'Guide · replies in seconds',conn:'Connecting',typing:'Typing',input:'Ask about the app or pricing',send:'Send',close:'Close',
+  hello:'Hi, I am the DEVPROOF guide. Anything about the app, pricing or the free trial?',
+  chips:['What does the report show?','How does the trial work?','Is my code uploaded?'],
+  err:'Could not connect. Try again, or email edin@nokto.no.',cut:'The reply was interrupted when you left the page. Ask again.',
+  foot:'Handled by ElevenLabs for NOKTO, kept for 30 days.',priv:'Privacy',unread:'new reply'
+}:{
+  name:'DEVPROOF',ready:'Guide · svarer på sekunder',conn:'Kobler til',typing:'Skriver',input:'Spør om appen eller prisen',send:'Send',close:'Lukk',
+  hello:'Hei, jeg er DEVPROOF-guiden. Lurer du på noe om appen, prisene eller prøveperioden?',
+  chips:['Hva viser rapporten?','Hvordan virker prøveperioden?','Lastes koden min opp?'],
+  err:'Fikk ikke kontakt. Prøv igjen, eller send e-post til edin@nokto.no.',cut:'Svaret ble avbrutt da du forlot siden. Spør på nytt.',
+  foot:'Behandles av ElevenLabs for NOKTO, lagres i 30 dager.',priv:'Personvern',unread:'nytt svar'
+};
+var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,fine=!matchMedia('(pointer: coarse)').matches;
+function el(t,c,h){var e=d.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e}
+var X='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>';
+var ARR='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>';
+var MARK='<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 8v4M6.5 5v10M10 3v14M13.5 6v8M17 8.5v3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
+
+var panel=el('section','dpc');panel.id='dpc';panel.hidden=true;panel.tabIndex=-1;panel.setAttribute('aria-label',T.name);
+panel.innerHTML=
+ '<div class="dpc-h"><span class="dpc-av">'+MARK+'</span><div><strong>'+T.name+'<i>guide</i></strong><span class="dpc-st" aria-live="polite"><b></b><span>'+T.ready+'</span></span></div>'+
+ '<button type="button" class="dpc-x" aria-label="'+T.close+'">'+X+'</button></div>'+
+ '<div class="dpc-log" aria-live="polite"></div>'+
+ '<div class="dpc-chips">'+T.chips.map(function(c){return '<button type="button">'+c+'</button>'}).join('')+'</div>'+
+ '<form class="dpc-f"><span class="dpc-p" aria-hidden="true">&gt;</span><input type="text" autocomplete="off" maxlength="600" placeholder="'+T.input+'" aria-label="'+T.input+'"><button type="submit" aria-label="'+T.send+'">'+ARR+'</button></form>'+
+ '<p class="dpc-ft">'+T.foot+' <a href="#personvern">'+T.priv+'</a></p>';
+d.body.appendChild(panel);
+btn.setAttribute('aria-controls','dpc');btn.setAttribute('aria-expanded','false');
+btn.setAttribute('aria-label',EN?'Ask DEVPROOF':'Spør DEVPROOF');
+var $=function(s){return panel.querySelector(s)};
+var log=$('.dpc-log'),st=$('.dpc-st span'),chips=$('.dpc-chips'),form=$('.dpc-f'),input=$('input');
+
+var conv=null,starting=null,firstAi=false,wait=null,lastAi='',hist=[],saved=[],KEY='dp-chat-v1';
+function save(open){try{sessionStorage.setItem(KEY,JSON.stringify({log:saved,open:open===undefined?!panel.hidden:open,wait:!!wait}))}catch(e){}}
+function dropChips(){if(chips){chips.remove();chips=null}}
+// Lenker: bare devproof.no, Stripe-kassene og edin@nokto.no blir klikkbare.
+var LINK=/(https?:\/\/(?:www\.)?devproof\.no(?:\/[^\s<>()\[\]`*]*[^\s<>()\[\]`*.,;:!?»"'_~])?\/?|https:\/\/buy\.stripe\.com\/[A-Za-z0-9]+(?:\?[^\s<>()\[\]`*]*[^\s<>()\[\]`*.,;:!?»"'_~])?)|((?<![\w.@\/-])(?:www\.)?devproof\.no(?:\/[^\s<>()\[\]`*]*[^\s<>()\[\]`*.,;:!?»"'_~])?)|((?<![\w+.-])edin@nokto\.no)(?![\w-]|\.\w)/gi;
+function fill(n,t){
+  t=t.replace(/\[([^\]\n]{1,200})\]\((https?:\/\/[^\s)]+)\)/g,'$1 $2').replace(/\*\*([^*\n]+)\*\*/g,'$1').replace(/`([^`\n]+)`/g,'$1');
+  var p=0,m;LINK.lastIndex=0;
+  while((m=LINK.exec(t))){
+    if(m.index>p)n.appendChild(d.createTextNode(t.slice(p,m.index)));
+    var a=d.createElement('a');
+    if(m[3]){a.href='mailto:'+m[3];a.textContent=m[3]}
+    else{var u=m[1]||('https://'+m[2]);a.href=u;a.textContent=/stripe/.test(u)?(EN?'Open checkout':'Åpne kassen'):u.replace(/^https?:\/\/(www\.)?/,'');if(/stripe/.test(u)){a.target='_blank';a.rel='noopener'}}
+    n.appendChild(a);p=LINK.lastIndex;
+  }
+  if(p<t.length)n.appendChild(d.createTextNode(t.slice(p)));
+}
+function bubble(who,t,restore){
+  t=String(t).trim().replace(/[ \t]*\n[ \t]*(\n[ \t]*)+/g,'\n');if(!t)return null;
+  if(who=='ai'){if(t===lastAi)return null;lastAi=t}
+  if(who!='sys')dropChips();
+  var b=el('p','dpc-m dpc-'+who);if(who=='ai')fill(b,t);else b.textContent=t;
+  log.appendChild(b);log.scrollTop=log.scrollHeight;
+  if(!restore&&(who=='ai'||who=='user')){saved.push({h:who,t:t});if(saved.length>40)saved.shift();hist.push((who=='ai'?'Guide: ':'Personen: ')+t);if(hist.length>12)hist.shift();save()}
+  if(who=='ai'&&panel.hidden&&!restore){btn.classList.add('unread');btn.setAttribute('aria-label',(EN?'Ask DEVPROOF – ':'Spør DEVPROOF – ')+T.unread)}
+  return b;
+}
+function noWait(){if(wait){wait.remove();wait=null}}
+function typing(){noWait();dropChips();wait=el('p','dpc-m dpc-ai dpc-w','<i></i><i></i><i></i>');wait.setAttribute('aria-label',T.typing);log.appendChild(wait);log.scrollTop=log.scrollHeight}
+function setSt(s){st.textContent=s}
+
+function loadSdk(){
+  if(window.DPConversation)return Promise.resolve(window.DPConversation);
+  return new Promise(function(ok,no){var s=d.createElement('script');s.src=SDK;s.async=true;s.onload=function(){window.DPConversation?ok(window.DPConversation):no(new Error('sdk'))};s.onerror=function(){s.remove();no(new Error('sdk'))};d.head.appendChild(s)});
+}
+function start(){
+  if(conv)return Promise.resolve(conv);if(starting)return starting;
+  firstAi=true;setSt(T.conn);panel.classList.add('is-conn');
+  var prev=hist.slice();
+  starting=loadSdk().then(function(C){
+    var o={agentId:AGENT,connectionType:'websocket',textOnly:true,
+      onConnect:function(){panel.classList.remove('is-conn');panel.classList.add('is-live');setSt(T.ready)},
+      onDisconnect:function(x){noWait();conv=null;panel.classList.remove('is-live','is-conn');setSt(T.ready);if(x&&x.reason=='error')bubble('sys',T.err)},
+      onError:function(){noWait();bubble('sys',T.err);setSt(T.ready)},
+      onMessage:function(p){
+        if(!p||!p.message||p.source!=='ai')return;
+        // Agentens åpningsreplikk kommer ved hver ny økt; hilsenen står alt i panelet.
+        if(firstAi){firstAi=false;return}
+        noWait();bubble('ai',p.message);setSt(T.ready);
+      }};
+    if(EN)o.overrides={agent:{language:'en'}};
+    return C.startSession(o);
+  }).then(function(c){
+    conv=c;starting=null;
+    if(prev.length&&c.sendContextualUpdate)c.sendContextualUpdate('Samtalen fortsetter fra en tidligere økt på devproof.no. Dette er skrevet så langt:\n'+prev.join('\n'));
+    return c;
+  }).catch(function(e){starting=null;noWait();panel.classList.remove('is-conn');setSt(T.ready);bubble('sys',T.err);throw e});
+  return starting;
+}
+function send(t){
+  t=t.trim();if(!t)return;input.value='';bubble('user',t);typing();setSt(T.typing);
+  start().then(function(c){c.sendUserMessage(t)}).catch(function(){noWait()});
+}
+function open(focus){
+  btn.classList.remove('unread');btn.setAttribute('aria-label',EN?'Ask DEVPROOF':'Spør DEVPROOF');
+  panel.hidden=false;d.documentElement.classList.add('dpc-open');btn.setAttribute('aria-expanded','true');save(true);
+  if(!log.childElementCount){var h=el('p','dpc-m dpc-ai');h.textContent=T.hello;lastAi=T.hello;log.appendChild(h)}
+  // Last SDK-en i bakgrunnen, så første svar kommer raskere. Økten starter ved første melding.
+  loadSdk().catch(function(){});
+  if(focus===false)return;
+  setTimeout(function(){fine?input.focus():panel.focus({preventScroll:true})},reduce?0:180);
+}
+function close(){
+  var had=panel.contains(d.activeElement);panel.hidden=true;d.documentElement.classList.remove('dpc-open');btn.setAttribute('aria-expanded','false');save(false);
+  if(had)btn.focus();
+}
+form.addEventListener('submit',function(e){e.preventDefault();send(input.value)});
+panel.addEventListener('click',function(e){var c=e.target.closest&&e.target.closest('.dpc-chips button');if(c)send(c.textContent)});
+input.addEventListener('input',function(){if(conv&&conv.sendUserActivity)conv.sendUserActivity()});
+$('.dpc-x').addEventListener('click',close);
+panel.querySelector('.dpc-ft a').addEventListener('click',function(){close()});
+btn.addEventListener('click',function(){panel.hidden?open():close()});
+d.addEventListener('keydown',function(e){if(e.key=='Escape'&&!panel.hidden)close()});
+addEventListener('pagehide',function(){save();if(conv)conv.endSession().catch(function(){})});
+
+var prev=null;try{prev=JSON.parse(sessionStorage.getItem(KEY)||'null')}catch(e){}
+if(prev&&prev.log&&prev.log.length){
+  prev.log.forEach(function(m){if(m.h=='ai'||m.h=='user'){bubble(m.h,m.t,true);saved.push(m);hist.push((m.h=='ai'?'Guide: ':'Personen: ')+m.t)}});
+  if(prev.wait)bubble('sys',T.cut,true);
+  if(prev.open)open(false);
+}
 })();</script>
 </body>
 </html>
