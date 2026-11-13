@@ -307,6 +307,53 @@ footer a:hover{color:var(--text)}
 @media (max-width:420px){.top .links{display:none}}
 @media (max-width:360px){nav .wrap{gap:10px}.navr{gap:6px}.brand{gap:8px;letter-spacing:.1em;font-size:13.5px;min-width:0}.brand img{width:24px;height:24px}nav .btn{padding:10px 14px}}
 @media (prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0s!important}.chip{animation:none}html{scroll-behavior:auto}.hs .ring:after{display:none}}
+
+/* black friday hooks */
+.live .hot{background:var(--accent);color:var(--accent-ink);border-radius:999px;padding:1px 8px;font-weight:800;font-size:11.5px;letter-spacing:.02em}
+.cdi{font-variant-numeric:tabular-nums;color:var(--text);font-weight:600}
+.tiles{display:flex;gap:8px}
+.tiles>div{position:relative;min-width:62px;flex:1;text-align:center;background:linear-gradient(180deg,rgba(240,255,244,.06),rgba(240,255,244,.015));border:1px solid var(--line-strong);border-radius:14px;padding:10px 6px 8px;overflow:hidden}
+.tiles>div:after{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:rgba(0,0,0,.35)}
+.tiles b{display:block;font-size:28px;font-weight:800;letter-spacing:-.03em;line-height:1.05;font-variant-numeric:tabular-nums;color:var(--text)}
+.tiles span{display:block;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-top:3px}
+.tiles .s b{color:var(--accent)}
+.tiles b.bump{animation:bump .35s cubic-bezier(.2,.8,.2,1)}
+@keyframes bump{0%{transform:translateY(-35%);opacity:.2}100%{transform:none;opacity:1}}
+.deal{margin-top:26px;display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center;padding:18px 18px 18px 22px;border-radius:var(--r);border:1px solid rgba(184,224,90,.4);background:radial-gradient(120% 140% at 0% 0%,rgba(149,191,71,.16),transparent 60%),rgba(15,20,15,.75);box-shadow:var(--glow);max-width:600px}
+.deal .t{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.deal .p{margin-top:6px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.deal .p b{font-size:30px;font-weight:800;letter-spacing:-.035em;line-height:1}
+.deal .p s{color:var(--muted);font-size:16px}
+.deal .p em{font-style:normal;font-size:13px;color:var(--muted)}
+.deal .m{margin-top:6px;font-size:13px;color:var(--text-2)}
+.deal .m strong{color:var(--accent);font-weight:700}
+.deal .tiles>div{min-width:54px;padding:8px 4px 6px}
+.deal .tiles b{font-size:22px}
+.deal .tiles span{font-size:9.5px}
+.count.tiles{margin-top:22px}
+.finalcd{display:flex;flex-direction:column;align-items:center;gap:12px;margin:26px auto 30px;position:relative}
+.finalcd .lbl{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.finalcd .tiles>div{min-width:84px;padding:14px 8px 10px}
+.finalcd .tiles b{font-size:44px}
+.sbar{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:60;display:none;align-items:center;gap:12px;padding:10px 10px 10px 16px;border-radius:18px;background:rgba(10,14,10,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(184,224,90,.4);box-shadow:0 18px 50px rgba(0,0,0,.7),0 0 40px -12px rgba(149,191,71,.55);transform:translateY(140%);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.sbar.on{transform:none}
+.sbar .i{flex:1;min-width:0;line-height:1.25}
+.sbar .i b{font-size:17px;font-weight:800;letter-spacing:-.02em}
+.sbar .i s{color:var(--muted);font-size:12.5px;margin-left:6px}
+.sbar .i small{display:block;font-size:12px;color:var(--text-2);font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sbar .i small i{font-style:normal;color:var(--accent);font-weight:700}
+.sbar .btn{padding:12px 18px;font-size:15px;min-height:44px}
+@media (max-width:860px){.sbar{display:flex}}
+@media (max-width:640px){
+  .deal{grid-template-columns:1fr;padding:16px}
+  .deal .tiles>div{min-width:0}
+  .finalcd .tiles>div{min-width:0;padding:12px 4px 8px}
+  .finalcd .tiles b{font-size:32px}
+  .tiles b{font-size:24px}
+  footer{padding-bottom:110px}
+}
+@media (max-width:340px){.tiles{gap:5px}.tiles>div{min-width:0;padding:8px 2px 6px}.deal{padding:14px 12px}.deal .tiles b{font-size:19px}.count.tiles b{font-size:20px}.finalcd .tiles b{font-size:26px}.sbar{padding:8px 8px 8px 12px;gap:8px}.sbar .btn{padding:10px 14px}.tiles span{font-size:8.5px;letter-spacing:.06em}.deal .p b{font-size:26px}.top .live{font-size:11.5px}}
+@media (prefers-reduced-motion:reduce){.tiles b.bump{animation:none}.sbar{transition:none}}
 </style>
 <script type="application/ld+json">
 {
@@ -560,7 +607,7 @@ footer a:hover{color:var(--text)}
 <a class="skip" href="#innhold">Hopp til innhold</a>
 
 <aside class="top" aria-label="Tilbud"><div class="wrap">
-  <span class="live"><span class="dot"></span>Black Friday · første år 1&nbsp;250&nbsp;kr eks. mva</span>
+  <span class="live"><span class="dot"></span><span class="lt"><span class="hot">−50&nbsp;%</span> Black Friday · slutter om <span class="cdi">–</span></span></span>
   <span class="links"><a href="https://nokto.no">nokto.no</a><a href="mailto:edin@nokto.no">edin@nokto.no</a></span>
 </div></aside>
 
@@ -580,6 +627,7 @@ footer a:hover{color:var(--text)}
       <a class="btn btn-a" href="https://buy.stripe.com/14AeVdgCGe7r0RjgMHdfG0u?prefilled_promo_code=BLACKFRIDAY50">Kjøp DEVPROOF<svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       <a class="btn btn-g" href="#slik">Se hvordan det virker</a>
     </div>
+    <div class="deal" data-bf><div><div class="t"><span class="dot"></span>Halv pris første år</div><div class="p"><b>1&nbsp;250&nbsp;kr</b><s>2&nbsp;500&nbsp;kr</s><em>eks. mva</em></div><div class="m"><strong>Du sparer 1&nbsp;250&nbsp;kr</strong> · Maks 20 kjøpere · til og med 30.&nbsp;november</div></div><div class="tiles " data-cd role="timer" aria-live="off" aria-label="Tid igjen av tilbudet"><div class="d"><b data-u="d">–</b><span>dager</span></div><div class="h"><b data-u="h">–</b><span>timer</span></div><div class="m"><b data-u="m">–</b><span>min</span></div><div class="s"><b data-u="s">–</b><span>sek</span></div></div></div>
     <p class="note">Alt lagres lokalt · Ingen skjermopptak · Ingen bindingstid utover betalt år</p>
   </div>
   <div class="stage">
@@ -684,7 +732,7 @@ footer a:hover{color:var(--text)}
       <p class="for">Full versjon. Samme produkt, lavere startpris.</p>
       <div class="amt"><b>1&nbsp;250&nbsp;kr</b><span><s>2&nbsp;500&nbsp;kr</s> første år</span></div>
       <p class="vat">eks. mva · 1&nbsp;562,50&nbsp;kr inkl. 25&nbsp;% mva</p>
-      <div class="count" id="count" role="timer" aria-live="off" aria-label="Tid igjen av tilbudet"><div><b id="d">–</b><span>dager</span></div><div><b id="h">–</b><span>timer</span></div><div><b id="m">–</b><span>min</span></div></div>
+      <div class="tiles count" data-cd role="timer" aria-live="off" aria-label="Tid igjen av tilbudet"><div class="d"><b data-u="d">–</b><span>dager</span></div><div class="h"><b data-u="h">–</b><span>timer</span></div><div class="m"><b data-u="m">–</b><span>min</span></div><div class="s"><b data-u="s">–</b><span>sek</span></div></div>
       <ul class="list">
         <li>Full versjon for Windows</li>
         <li>Kunderapporter med egen logo og farge</li>
@@ -725,13 +773,16 @@ footer a:hover{color:var(--text)}
   </div>
 </div></section>
 
-<section class="final" aria-labelledby="final-tittel"><div class="wrap">
+<section class="final" aria-labelledby="final-tittel"><div class="wrap" id="final-cta">
   <span class="pill micro"><span class="dot"></span>Black Friday til og med 30.&nbsp;november · 20 plasser</span>
+  <div class="finalcd" data-bf><span class="lbl">Tilbudet slutter om</span><div class="tiles " data-cd role="timer" aria-live="off" aria-label="Tid igjen av tilbudet"><div class="d"><b data-u="d">–</b><span>dager</span></div><div class="h"><b data-u="h">–</b><span>timer</span></div><div class="m"><b data-u="m">–</b><span>min</span></div><div class="s"><b data-u="s">–</b><span>sek</span></div></div></div>
   <h2 id="final-tittel">Slutt å forklare.<br>Begynn å <em class="s">bevise</em>.</h2>
   <div class="cta"><a class="btn btn-a" href="https://buy.stripe.com/14AeVdgCGe7r0RjgMHdfG0u?prefilled_promo_code=BLACKFRIDAY50">Kjøp DEVPROOF for 1&nbsp;250&nbsp;kr første år<svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
   <p class="note">Priser eks. mva</p>
 </div></section>
 </main>
+<div class="sbar" id="sbar" data-bf aria-hidden="true"><div class="i"><b>1&nbsp;250&nbsp;kr</b><s>2&nbsp;500&nbsp;kr</s><small><i>−50&nbsp;%</i> · slutter om <span class="cdi">–</span></small></div><a class="btn btn-a" tabindex="-1" href="https://buy.stripe.com/14AeVdgCGe7r0RjgMHdfG0u?prefilled_promo_code=BLACKFRIDAY50">Kjøp<svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+
 
 <footer><div class="wrap">
   <div class="l"><img src="assets/icon.svg" alt="" width="24" height="24"><span>DEVPROOF er laget av NOKTO · Org.nr.&nbsp;929&nbsp;345&nbsp;029</span></div>
@@ -749,16 +800,39 @@ footer a:hover{color:var(--text)}
     st.style.setProperty('--ry',(x*14).toFixed(2)+'deg');st.style.setProperty('--rx',(8-y*10).toFixed(2)+'deg');});
   st.addEventListener('pointerleave',function(){st.style.removeProperty('--ry');st.style.removeProperty('--rx');});
 })();
+
 (function(){
-  var end = new Date('2026-12-01T00:00:00+01:00').getTime();
+  var END=new Date('2026-12-01T00:00:00+01:00').getTime(), U=["d", "t", "m", "s"], OVER="Black Friday er over";
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function pad(n){return n<10?'0'+n:''+n}
+  function parts(ms){var s=Math.floor(ms/1e3);return{d:Math.floor(s/86400),h:Math.floor(s/3600)%24,m:Math.floor(s/60)%60,s:s%60}}
+  var last={};
   function tick(){
-    var left = end - Date.now();
-    if (left <= 0) { var c = document.getElementById('count'); if (c) c.style.display = 'none'; return; }
-    document.getElementById('d').textContent = Math.floor(left / 864e5);
-    document.getElementById('h').textContent = Math.floor(left / 36e5) % 24;
-    document.getElementById('m').textContent = Math.floor(left / 6e4) % 60;
+    var left=END-Date.now();
+    if(left<=0){
+      document.querySelectorAll('[data-bf]').forEach(function(e){e.hidden=true});
+      document.querySelectorAll('[data-cd],.cdi').forEach(function(e){e.style.display='none'});
+      document.querySelectorAll('.live .lt').forEach(function(e){e.textContent=OVER});
+      var sb=document.getElementById('sbar'); if(sb) sb.remove();
+      clearInterval(iv); return;
+    }
+    var p=parts(left);
+    document.querySelectorAll('[data-u]').forEach(function(e){
+      var k=e.getAttribute('data-u'), v=k==='d'?''+p.d:pad(p[k]);
+      if(e.textContent!==v){e.textContent=v; if(!reduce&&e.closest('.tiles')&&(k==='s'||last[k]!==undefined)){e.classList.remove('bump');void e.offsetWidth;e.classList.add('bump');}}
+    });
+    var t=p.d+U[0]+' '+pad(p.h)+U[1]+' '+pad(p.m)+U[2]+' '+pad(p.s)+U[3];
+    document.querySelectorAll('.cdi').forEach(function(e){e.textContent=t});
+    last=p;
   }
-  tick(); setInterval(tick, 30000);
+  var iv=setInterval(tick,1000); tick();
+  var sb=document.getElementById('sbar'); if(!sb||!('IntersectionObserver' in window)) return;
+  var hero=document.querySelector('.hero .cta'), seen={};
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){seen[e.target.id||'hero']=e.isIntersecting});
+    var show=!seen.hero&&!seen.pris&&!seen['final-cta']&&window.scrollY>200;
+    sb.classList.toggle('on',show); sb.setAttribute('aria-hidden',show?'false':'true'); sb.querySelector('a').tabIndex=show?0:-1;},{threshold:0});
+  if(hero) io.observe(hero);
+  ['pris','final-cta'].forEach(function(id){var el=document.getElementById(id); if(el) io.observe(el);});
 })();
 </script>
 </body>
