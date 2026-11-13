@@ -309,6 +309,19 @@ footer a:hover{color:var(--text)}
 @media (max-width:360px){nav .wrap{gap:10px}.navr{gap:6px}.brand{gap:8px;letter-spacing:.1em;font-size:13.5px;min-width:0}.brand img{width:24px;height:24px}nav .btn{padding:10px 14px}}
 @media (prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0s!important}.chip{animation:none}html{scroll-behavior:auto}.hs .ring:after{display:none}}
 
+
+/* hero: overskrift i full bredde på desktop */
+@media (min-width:1001px){
+  .hero .grid{grid-template-columns:minmax(0,1fr) minmax(0,1.12fr);grid-template-areas:"pill pill" "h1 h1" "lead stage" "cta stage" "deal stage" "note stage";column-gap:64px;row-gap:0;align-items:start}
+  .hero .grid>div:first-child{display:contents}
+  .hero .grid .pill{grid-area:pill;justify-self:start}
+  .hero .grid h1{grid-area:h1;font-size:clamp(72px,8.2vw,124px);line-height:.96;margin:28px 0 44px}
+  .hero .grid .lead{grid-area:lead;margin-top:6px}
+  .hero .grid .cta{grid-area:cta}
+  .hero .grid .deal{grid-area:deal}
+  .hero .grid .note{grid-area:note}
+  .hero .grid .stage{grid-area:stage;align-self:start;margin-top:6px}
+}
 /* black friday hooks */
 .live .hot{background:var(--accent);color:var(--accent-ink);border-radius:999px;padding:1px 8px;font-weight:800;font-size:11.5px;letter-spacing:.02em}
 .cdi{font-variant-numeric:tabular-nums;color:var(--text);font-weight:600}
