@@ -17,7 +17,6 @@ DEVPROOF connects a developer's working day to what was actually delivered (comm
   - After that: NOK 2,500 per year (NOK 3,125 incl. VAT).
 - Subscription: paid one year in advance and renews automatically. Cancel by emailing edin@nokto.no before the renewal date; you keep access for the period you have paid for. Periods already paid are not refunded.
 - Checkout: secure payment via Stripe. Checkout is in Norwegian.
-- Installer: not code-signed yet, so Windows SmartScreen may show "Windows protected your PC". Choose "More info" and "Run anyway".
 
 ## Pages
 

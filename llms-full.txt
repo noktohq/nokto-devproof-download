@@ -115,10 +115,6 @@ GitHub provides deliveries and projects automatically. Time from your PC, VS Cod
 
 The app itself is in Norwegian today. Client reports can be created in English or Norwegian.
 
-### Windows says “Windows protected your PC”. Is that dangerous?
-
-No. The installer is not code-signed yet, so Windows does not recognise it. Choose “More info” and “Run anyway”.
-
 ### Can I cancel?
 
 Yes. The subscription is paid one year in advance and renews automatically. Email edin@nokto.no before the renewal date and we stop the renewal. You keep access for the period you have paid for. Periods already paid are not refunded.
