@@ -1473,11 +1473,14 @@ var log=$('.dpc-log'),st=$('.dpc-st span'),chips=$('.dpc-chips'),form=$('.dpc-f'
 var conv=null,starting=null,firstAi=false,wait=null,lastAi='',hist=[],saved=[],KEY='dp-chat-v1';
 // Rollemerket: Resepsjonen er inngangen og har ikke merke. ID-ene til Salg og Kundeservice står på #agent.
 var ROLLER={};if(btn.dataset.salg)ROLLER[btn.dataset.salg]=T.salg;if(btn.dataset.kundeservice)ROLLER[btn.dataset.kundeservice]=T.kundeservice;
+// Nokto-agentene DEV kan sette over til (Shopify-arbeid). Bare for merket, ikke for gjetting av rolle.
+var EKSTERNE={agent_0301m6mt7540fvmrbg0er3cr0kzq:'NOKTO',agent_0901m6mt7742fdzt3qse8631qs6a:'NOKTO',agent_1601m7a72vbrfz4bnj3mnmr6wa53:'NOKTO'};
+function navnFor(id){return Object.prototype.hasOwnProperty.call(ROLLER,id)?ROLLER[id]:Object.prototype.hasOwnProperty.call(EKSTERNE,id)?EKSTERNE[id]:''}
 var rolleEl=$('.dpc-rolle'),rolle='',sprang=0,MAKS_SPRANG=2,sisteKall='';
 function setRolle(id){
-  rolle=id&&Object.prototype.hasOwnProperty.call(ROLLER,id)?id:'';
-  rolleEl.textContent=rolle?ROLLER[rolle]:'';rolleEl.hidden=!rolle;
-  panel.setAttribute('aria-label',rolle?T.name+' · '+ROLLER[rolle]:T.name);
+  rolle=id&&navnFor(id)?id:'';
+  rolleEl.textContent=rolle?navnFor(rolle):'';rolleEl.hidden=!rolle;
+  panel.setAttribute('aria-label',rolle?T.name+' · '+navnFor(rolle):T.name);
 }
 // Overføringen kommer som verktøysvar. full_tool_result (med to_agent) kan mangle; da avgjør
 // topologien: Salg sender bare til Kundeservice og omvendt. Fra Resepsjonen er målet ukjent, og da vises ikke noe merke.
