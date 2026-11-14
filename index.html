@@ -501,6 +501,7 @@ footer{padding-bottom:110px}
 .price:has(>.tier.hot[hidden]){grid-template-columns:repeat(2,minmax(0,1fr));max-width:920px}
 }
 .agent{position:fixed;right:20px;bottom:calc(20px + env(safe-area-inset-bottom));z-index:58;display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 18px 0 14px;border-radius:999px;border:1px solid rgba(184,224,90,.45);background:rgba(10,14,10,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:var(--text);font:600 14px/1 Inter,'Inter Fallback',system-ui,sans-serif;box-shadow:0 14px 40px rgba(0,0,0,.6),0 0 30px -12px rgba(149,191,71,.6);cursor:pointer;transition:border-color .2s,transform .2s,bottom .35s cubic-bezier(.2,.8,.2,1)}
+.agent[hidden]{display:none!important}
 .agent:hover{border-color:var(--accent);transform:translateY(-1px)}
 .agent:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .agent svg{width:20px;height:20px;color:var(--accent);flex:none}
@@ -1220,7 +1221,8 @@ html:has(#sbar.on) .agent{bottom:calc(88px + env(safe-area-inset-bottom))}
 </div></section>
 </main>
 <div class="sbar" id="sbar" data-bf aria-hidden="true"><div class="i"><b>1&nbsp;250&nbsp;kr</b><s>2&nbsp;500&nbsp;kr</s><small><i>−50&nbsp;%</i> første år · slutter om <span class="cdi">–</span></small></div><a class="btn btn-a" tabindex="-1" href="https://buy.stripe.com/14AeVdgCGe7r0RjgMHdfG0u?prefilled_promo_code=BLACKFRIDAY50">Prøv gratis<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
-<button type="button" class="agent" id="agent" data-src="assets/js/dp-sdk.js?v=1250" data-agent="agent_4401m79mvp9sepgssr57ysbxjzrq" data-salg="agent_3801m7a55dmme4r82jc17z8hnzbv" data-kundeservice="agent_3701m7a55fdper2sc64jfp8je7cm" data-icon="assets/icon.svg"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 8v4M6.5 5v10M10 3v14M13.5 6v8M17 8.5v3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span class="al">Spør DEV</span></button>
+<!-- Chatten: «hidden» på #agent er bryteren. Av 14.11.2026 (Edin): ElevenLabs-kreditten tom. Slå på igjen når kreditten er fylt på (17.11). Fjern «hidden» for å slå den på. -->
+<button type="button" class="agent" id="agent" hidden data-src="assets/js/dp-sdk.js?v=1250" data-agent="agent_4401m79mvp9sepgssr57ysbxjzrq" data-salg="agent_3801m7a55dmme4r82jc17z8hnzbv" data-kundeservice="agent_3701m7a55fdper2sc64jfp8je7cm" data-icon="assets/icon.svg"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 8v4M6.5 5v10M10 3v14M13.5 6v8M17 8.5v3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span class="al">Spør DEV</span></button>
 
 <footer><div class="wrap">
   <nav class="fnav" id="innhold" aria-label="Innhold"><ul>
@@ -1427,10 +1429,12 @@ d.addEventListener('keydown',function(e){
 })();
 
 /* spør devproof: egen chat mot ElevenLabs-agenten. Tekst over websocket, ingen widget.
-   SDK-en (assets/js/dp-sdk.js) lastes først når panelet åpnes. */
+   SDK-en (assets/js/dp-sdk.js) lastes først når panelet åpnes.
+   AV siden 14.11.2026 (ElevenLabs-kreditten tom): #agent har «hidden», da vises ingen knapp og skriptet starter ikke.
+   Slå på igjen: fjern «hidden» på #agent. */
 (function(){
 'use strict';
-var d=document,btn=d.getElementById('agent');if(!btn||!window.WebSocket)return;
+var d=document,btn=d.getElementById('agent');if(!btn||btn.hidden||!window.WebSocket)return;
 var EN=d.documentElement.lang=='en',AGENT=btn.dataset.agent,SDK=btn.dataset.src,ICON=btn.dataset.icon;
 var T=EN?{
   name:'DEV',ready:'Online',conn:'Connecting',typing:'Typing',input:'Ask about the app or pricing',send:'Send',close:'Close',
